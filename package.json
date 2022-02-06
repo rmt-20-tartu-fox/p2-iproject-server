@@ -16,5 +16,14 @@
   "bugs": {
     "url": "https://github.com/agyadnkr/p2-iproject-server-1/issues"
   },
-  "homepage": "https://github.com/agyadnkr/p2-iproject-server-1#readme"
+  "homepage": "https://github.com/agyadnkr/p2-iproject-server-1#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.2",
+    "jsonwebtoken": "^8.5.1",
+    "pg": "^8.7.3",
+    "sequelize": "^6.15.1"
+  }
 }
