@@ -1,0 +1,92 @@
+[
+  {
+    "name": "Glaz",
+    "iconUrl": "https://staticctf.akamaized.net/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/5UAZVgyOutPh6bLTV3fGXf/c59d484fd599d09a947ec423b2119620/Y0R6_BADGE_Glaz_L.png",
+    "imageUrl": "https://staticctf.akamaized.net/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/1xYMcXH9CNiKHI5Wqoxw8y/ac8414157d7647ea8377dd5c7ce6d2bb/R6-operator-glaz.png",
+    "ability": "Flip Sight",
+    "quote": "Imagination keeps you alive. It`s how you find your way out of the dark. That, and a flashlight.",
+    "content": "Glaz is a back-line marksman, capable of soft breaching and providing covering fire from a distance. Glaz is capable of ranged shooting through his unique scope ability: HDS Flipsight.",
+    "videoUrl": "https://youtu.be/-fezVmNKHoE"
+  },
+  {
+    "name": "Fuze",
+    "iconUrl": "https://staticctf.akamaized.net/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/1wkdQ0viuTEguji14qXMJG/5858418baa8cca04a6e42a2d6256c093/Y0R6_BADGE_Fuze_L.png",
+    "imageUrl": "https://staticctf.akamaized.net/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/pzeHydBjAc16X63nQH6Sm/33adb500a2abe9fbcaf368fa601ef59b/R6-operator-fuze.png",
+    "ability": "Cluster Charge",
+    "quote": "Chaos is only an enemy if you`re unable to adapt.",
+    "content": "Fuze is best played as an aggressive flanker and area denial Operator. His strengths allow him to dispatch defensive capabilities and harass enemies anchored in defensive positions. Fuze's APM-6 cluster charge propels a group of explosive cluster grenades through any soft breach surface.",
+    "videoUrl": "https://youtu.be/UZcTeYY3xsc"
+  },
+  {
+    "name": "IQ",
+    "iconUrl": "https://staticctf.akamaized.net/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/4xnVj2iZB8Otchiw7j69UO/13c864a4e2eb976c1978dc79411b450c/Y0R6_BADGE_IQ_L.png",
+    "imageUrl": "https://staticctf.akamaized.net/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/2bdUfjHxFfSn9YzMjlUThL/d1b3519228790ba30785eebab03bbc38/R6-operator-iq.png",
+    "ability": "Electronic Detector",
+    "quote": "Life is the ultimate Rube Goldberg machine.",
+    "content": "Wrist-mounted, Mobile phone-sized sensor.",
+    "videoUrl": "https://youtu.be/E8l2Yx2Nbuc"
+  },
+  {
+    "name": "Blitz",
+    "iconUrl": "https://staticctf.akamaized.net/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/2YTGfm1Df9PtldLcGodcTV/9a235b550cdf5066d686cef750eba090/Y0R6_BADGE_Blitz_L.png",
+    "imageUrl": "https://staticctf.akamaized.net/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/MlN3NUzTAYwPkFughKR23/19b3155bf7d69c7415cafa36f52f67e7/R6-operator-blitz.png",
+    "ability": "Flash Shield",
+    "quote": "I don`t like photos of myself. The lighting is always wrong.",
+    "content": "Ballistic shield, Three rows of eight flash-bang grenades provide a high intensity light source.",
+    "videoUrl": "https://youtu.be/H7q9lKFJL0M"
+  },
+  {
+    "name": "Twitch",
+    "iconUrl": "https://staticctf.akamaized.net/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/3YgCpOSM2R4SDgExstxm7P/ff84e6ac53bd9f690deee78870f9c23b/Y0R6_BADGE_Twitch_L.png",
+    "imageUrl": "https://staticctf.akamaized.net/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/5jaeo9LkOu6deQz4mOF9a2/9a07011ac08bc25d58cbfc828b442e3a/R6-operator-twitch.png",
+    "ability": "Shock Drones",
+    "quote": "Machine learning and teamwork have one thing in common: Always lead by example.",
+    "content": "Twitch is a disabler and intel Operator. She can utilize these skills as either a remote back-line support or as an aggressive entry fragger.Twitch is capable of remote disabling through her unique ability: RSD MODEL 1 SHOCK DRONE.",
+    "videoUrl": "https://youtu.be/xEuaxniVNV4"
+  },
+  {
+    "name": "Montagne",
+    "iconUrl": "https://staticctf.akamaized.net/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/7qWONT0mrNYtUZVTVVT8Yj/e0da552d6bb6548ddf74cf4cc44d75c5/Y0R6_BADGE_Montagne_L.png",
+    "imageUrl": "https://staticctf.akamaized.net/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/37v1tD14BQ9A59vqXO7I9p/ba1d199bf7697f5ede61b93cdec60686/R6-operator-montagne.png",
+    "ability": "Le Roc Shield",
+    "quote": "Every conflict is an iteration upon the last. Every scar, a victory.",
+    "content": "Collapses into half its size, providing increased mobility to its wielder.Composite of reinforced alloys and Kevlar. Provides protection against small-arms fire and close combat attacks.",
+    "videoUrl": "https://youtu.be/uSr2c6UpXWM"
+  },
+  {
+    "name": "Thermite",
+    "iconUrl": "https://staticctf.akamaized.net/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/6tow5mqLao5TrJVL52csSc/46aa934c9f3f02189e9c04df0114a081/Y0R6_BADGE_Thermite_L.png",
+    "imageUrl": "https://staticctf.akamaized.net/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/4c4cEUFWUwXTT4p3V5wAjm/e755c2a37a050de118eabc667c55c511/R6-operator-thermite.png",
+    "ability": "Exothermic Charge",
+    "quote": "You see a wall, I see an opportunity.",
+    "content": "Thermite is an important backline support for an attacking team. As one of the only hard-breachers in the game, losing Thermite early in the round will hinder your team significantly. Playing Thermite requires patience, leadership and strong communication with your team.",
+    "videoUrl": "https://youtu.be/vwOfi7Wg9TY"
+  },
+  {
+    "name": "Ash",
+    "iconUrl": "https://staticctf.akamaized.net/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/58Y4Q2x7msL8uQUoiA7LGM/b204acc9c5a015029140723ef2e435bb/Y0R6_BADGE_Ash_L.png",
+    "imageUrl": "https://staticctf.akamaized.net/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/4uyWdmCF6zI9vcn4vKp9zx/1b9393a63e1071daeccb95732e530d40/r6-operator-ash_229846.png",
+    "ability": "Breaching Rounds",
+    "quote": "You can never truly understand a conflict until you`ve been on both sides.",
+    "content": "Ash is a fast-paced front liner; capable of breaching, flanking and dividing the Defender's attention in seconds.Ash is capable of ranged soft breaching thanks to her modified M120 CREM Breaching Rounds.",
+    "videoUrl": "https://youtu.be/S4fSk1EcVPs"
+  },
+  {
+    "name": "Thatcher",
+    "iconUrl": "https://staticctf.akamaized.net/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/5NbqTdEPmYy9qOZmN9StVT/f75b0f2610a37f9e5bdcb8ba9d551a38/Y0R6_BADGE_Thatcher_L.png",
+    "imageUrl": "https://staticctf.akamaized.net/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/4yGZXsXNG7gxH0YIwnii6F/e895af50867dc913f192050c10913abd/R6-operator-thatcher.png",
+    "ability": "EMP Grenade",
+    "quote": "What you can feel, what you can touch, those are the things that are real. Everything else is just a distraction.",
+    "content": "The copper spool builds up the EMP by spinning. LED gauge. Twist top 45 degrees to activate the device.",
+    "videoUrl": "https://youtu.be/ueveGDiv_OQ"
+  },
+  {
+    "name": "Sledge",
+    "iconUrl": "https://staticctf.akamaized.net/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/4lgK1mOTVAoBhoj5qjYuyd/83c83d56e977f96ac0e9621c0d1c07d2/Y0R6_BADGE_Sledge_L.png",
+    "imageUrl": "https://staticctf.akamaized.net/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/2p5MyJkqbsfL8kCRNJVhcz/90aa196a11f2ea49ea107aab69789053/R6-operator-sledge.png",
+    "ability": "Tactical Breaching Hammer",
+    "quote": "Coming through!",
+    "content": "Sledge is a soft breacher and flanker, he excels at creating new lines of fire and entry points, harassing the defenders. Sledge is capable of breaching non-reinforced surfaces thanks to his tactical breaching hammer: The Caber.",
+    "videoUrl": "https://youtu.be/LYtaXaawQOY"
+  }
+]
