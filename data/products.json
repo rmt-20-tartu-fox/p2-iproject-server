@@ -1,0 +1,47 @@
+[
+  {
+    "name": "Cappucino",
+    "price": 20000,
+    "description": "Cappuccino adalah latte yang dibuat dengan lebih banyak busa (foam) daripada steamed milk, ditambah dengan taburan bubuk kakao atau kayu manis di atasnya. Terdapat juga variasi cappuccino yang menggunakan krim sebagai pengganti susu atau yang memberikan penambah rasa.",
+    "stock": 100,
+    "imageUrl": "https://img.kurio.network/sg4J2e5k0VYYDrrtdpMCEhfVUhI=/411x231/filters:quality(80)/https://kurio-img.kurioapps.com/19/05/28/50de339f-7e20-4738-b9a4-a2ba49991add.jpg",
+    "AuthorId": 1,
+    "status": "public"
+  },
+  {
+    "name": "Americano",
+    "price": 25000,
+    "description": "Jenis minuman kopi yang keempat adalah americano. Dengan rasa yang mirip dengan kopi hitam, americano terdiri dari espresso shot yang diencerkan dengan air panas. Tips profesional khusus untuk Anda yang ingin membuat americano sendiri di rumah ialah, tuangkan espresso terlebih dahulu, baru tambahkan air panas.",
+    "stock": 90,
+    "imageUrl": "https://fdc-market.com/wp-content/uploads/2020/06/americano-coffe-Hot-Ice-3-e1601286550502.jpg",
+    "status": "public",
+    "AuthorId": 1
+  },
+  {
+    "name": "Black Coffee",
+    "price": 30000,
+    "description": "Jenis minuman kopi yang pertama adalah black coffee atau kopi hitam. Siapa sih yang tidak kenal dengan jenis minuman kopi yang satu ini? Kopi hitam terutama sangat disukai oleh orang-orang dewasa. Kopi hitam adalah jenis minuman kopi yang sederhana, dibuat dengan biji kopi bubuk yang direndam dalam air panas, dan disajikan hangat. Jika Anda ingin terdengar mewah, Anda bisa menyebut kopi hitam dengan nama aslinya, yakni cafe noir.",
+    "stock": 30,
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/4/45/A_small_cup_of_coffee.JPG",
+    "status": "public",
+    "AuthorId": 1
+  },
+  {
+    "name": "Latte",
+    "price": 40000,
+    "description": "Jenis minuman kopi yang kedua adalah latte. Sebagai minuman kopi paling populer di dunia, latte terdiri dari espresso dan steamed milk dengan sedikit busa di atasnya. Latte bisa dipesan dalam bentuk dan rasa originalnya, atau dengan tambahan perasa mulai dari vanilla hingga kayu manis. Latte juga terkenal dengan latte art-nya, yakni seni menggambar bentuk atau pola di atas busa minuman ini.",
+    "stock": 72,
+    "imageUrl": "https://cdn.idntimes.com/content-images/community/2020/12/fromandroid-ea14173c39f922d23e0ccf95bb1a5e34_600x400.jpg",
+    "status": "public",
+    "AuthorId": 1
+  },
+  {
+    "name": "Espresso",
+    "price": 23000,
+    "description": "Jenis minuman kopi yang kelima adalah espresso. Espresso adalah jenis minuman kopi yang sangat pekat. Meski sederhana dalam penampilan, espresso cenderung sulit untuk diminum bagi pemula karena rasanya yang pahit dan kental. Minuman espresso dapat disajikan sendiri atau digunakan sebagai dasar dari sebagian besar jenis minuman kopi, seperti latte dan macchiatos.",
+    "stock": 72,
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/4/41/Espresso_BW_1.jpg",
+    "status": "public",
+    "AuthorId": 1
+  }
+]

@@ -1,0 +1,22 @@
+[
+  {
+    "isCheckout": false,
+    "ProductId": 3,
+    "UserId": 1
+  },
+  {
+    "isCheckout": false,
+    "ProductId": 2,
+    "UserId": 1
+  },
+  {
+    "isCheckout": false,
+    "ProductId": 1,
+    "UserId": 2
+  },
+  {
+    "isCheckout": false,
+    "ProductId": 4,
+    "UserId": 2
+  }
+]
