@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express()
-const port = 2009
+const port = 2000
 const router = require('./routes')
 const { User, Product, Cart } = require('./models');
 const errorHandler = require("./middlewares/errorHandler");

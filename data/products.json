@@ -6,7 +6,8 @@
     "stock": 100,
     "imageUrl": "https://img.kurio.network/sg4J2e5k0VYYDrrtdpMCEhfVUhI=/411x231/filters:quality(80)/https://kurio-img.kurioapps.com/19/05/28/50de339f-7e20-4738-b9a4-a2ba49991add.jpg",
     "AuthorId": 1,
-    "status": "public"
+    "status": "public",
+    "CategoryId": 1
   },
   {
     "name": "Americano",
@@ -15,7 +16,8 @@
     "stock": 90,
     "imageUrl": "https://fdc-market.com/wp-content/uploads/2020/06/americano-coffe-Hot-Ice-3-e1601286550502.jpg",
     "status": "public",
-    "AuthorId": 1
+    "AuthorId": 1,
+    "CategoryId": 1
   },
   {
     "name": "Black Coffee",
@@ -24,7 +26,8 @@
     "stock": 30,
     "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/4/45/A_small_cup_of_coffee.JPG",
     "status": "public",
-    "AuthorId": 1
+    "AuthorId": 1,
+    "CategoryId": 1
   },
   {
     "name": "Latte",
@@ -33,7 +36,8 @@
     "stock": 72,
     "imageUrl": "https://cdn.idntimes.com/content-images/community/2020/12/fromandroid-ea14173c39f922d23e0ccf95bb1a5e34_600x400.jpg",
     "status": "public",
-    "AuthorId": 1
+    "AuthorId": 1,
+    "CategoryId": 1
   },
   {
     "name": "Espresso",
@@ -42,6 +46,77 @@
     "stock": 72,
     "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/4/41/Espresso_BW_1.jpg",
     "status": "public",
-    "AuthorId": 1
+    "AuthorId": 1,
+    "CategoryId": 1
+  },
+  {
+    "name": "Pisang Goreng",
+    "price": 15000,
+    "description": "Topping: coklat, keju, susu, Nutella, Caramel, Oreo, Greentea.",
+    "stock": 72,
+    "imageUrl": "https://i0.wp.com/indobubbletea.blog/wp-content/uploads/2016/04/pisang-goreng.jpg?w=255&h=170&ssl=1",
+    "status": "public",
+    "AuthorId": 1,
+    "CategoryId": 2
+  },
+  {
+    "name": "Roti Bakar",
+    "price": 20000,
+    "description": "Roti mempunyai kandungan gizi yang baik bagi tubuh, sehingga bisa dikatakan sekali tepuk dua lalat, selain menikmati kelezatan Roti Bakar, kita juga mendapatkan gizinya. hehehe.. Roti bakar manis menggunakan topping coklat, keju, stroberi, bahkan ice cream atau roti bakar jenis asin (sandwich) dengan bahan telur, keju dan daging",
+    "stock": 49,
+    "imageUrl": "https://i0.wp.com/indobubbletea.blog/wp-content/uploads/2016/04/roti-panggang-coklat-keju-malang.jpg?w=320&h=238&ssl=1",
+    "status": "public",
+    "AuthorId": 1,
+    "CategoryId": 2
+  },
+  {
+    "name": "Nachos",
+    "price": 20000,
+    "description": "Nachos merupakan cemilan khas dari Negara Meksiko, tetapi anda tidak perlu jauh-jauh ke Meksiko untuk mencicipi Nachos. hehehe.. Nachos adalah keripik jagung yang menyehatkan dan kaya rasa, dengan rasa manis, asin, gurih dan pedas. Menu ini biasanya disajikan di cafe kelas menengah atas.",
+    "stock": 59,
+    "imageUrl": "https://i0.wp.com/indobubbletea.blog/wp-content/uploads/2016/04/nachos.png?w=252&h=167&ssl=1",
+    "status": "public",
+    "AuthorId": 1,
+    "CategoryId": 2
+  },
+  {
+    "name": "Onion Ring",
+    "price": 20000,
+    "description": "Onion ring merupakan bawang bombai goreng yang sering disajikan dengan menggunakan mayonnaise, mudah dibuat dan memiliki rasa yang manis gurih. Saat sudah matang,  bawang bombai pedas bisa berubah menjadi lebih manis.",
+    "stock": 100,
+    "imageUrl": "https://i0.wp.com/indobubbletea.blog/wp-content/uploads/2016/04/bigstock-onion-rings-48385277.jpg?w=267&h=177&ssl=1",
+    "status": "public",
+    "AuthorId": 1,
+    "CategoryId": 2
+  },
+  {
+    "name": "Chicken Fingers",
+    "price": 20000,
+    "description": "Potongan daging ayam yang dipotong panjang-panjang seperti stick yang sangat lezat.",
+    "stock": 59,
+    "imageUrl": "https://i0.wp.com/indobubbletea.blog/wp-content/uploads/2016/04/408245.jpg?w=229&h=170&ssl=1",
+    "status": "public",
+    "AuthorId": 1,
+    "CategoryId": 2
+  },
+  {
+    "name": "Crispy Chiken",
+    "price": 20000,
+    "description": "Snack yang sudah lebih dahulu dikenal di mall dengan brand Shihlin atau Hot Star. Crispy chicken sangat gurih dan banyak digemari oleh anak muda jaman sekarang. Snack ini disajikan dengan taburan bumbu berbagai macam rasa seperti barbeque, rumput laut.",
+    "stock": 100,
+    "imageUrl": "https://i0.wp.com/indobubbletea.blog/wp-content/uploads/2016/04/5973fd8d0455b6a18fd929eec548b18a.jpg?w=279&h=157&ssl=1",
+    "status": "public",
+    "AuthorId": 1,
+    "CategoryId": 2
+  },
+  {
+    "name": "Martabak Mie / Omelet Mie",
+    "price": 20000,
+    "description": "Merupakan makanan jadul yang dulu sempat booming pada eranya. Memiliki bahan utama mie dan telur. Selain sangat mudah dibuat, martabak mie patut disediakan untuk menu cafe sebagai hidangan nostalgia yang dapat membangkitkan kenangan kembali pada masa-masa itu.",
+    "stock": 55,
+    "imageUrl": "https://i0.wp.com/indobubbletea.blog/wp-content/uploads/2016/04/resep-omelet-mi-sarapan-praktis-murah-hjqbbndqmq.jpg?w=413&h=217&ssl=1",
+    "status": "public",
+    "AuthorId": 1,
+    "CategoryId": 2
   }
 ]
