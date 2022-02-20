@@ -1,6 +1,6 @@
 const {
   User
-} = require('../models')
+} = require('../..//models')
 
 class RegisterCustomerController {
   static async register(req, res, next) {

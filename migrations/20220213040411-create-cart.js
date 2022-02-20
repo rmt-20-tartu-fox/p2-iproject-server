@@ -11,6 +11,9 @@ module.exports = {
       isCheckout: {
         type: Sequelize.BOOLEAN
       },
+      isSelect: {
+        type: Sequelize.BOOLEAN
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

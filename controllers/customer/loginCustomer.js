@@ -1,13 +1,13 @@
 const {
   checkPassword
-} = require("../helper/bcrypt")
+} = require("../../helper/bcrypt")
 const {
   convertToToken
-} = require("../helper/jwt")
+} = require("../../helper/jwt")
 
 const {
   User
-} = require('../models')
+} = require('../../models')
 
 class LoginCustomerController {
   static async login(req, res, next) {

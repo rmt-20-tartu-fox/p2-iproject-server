@@ -1,5 +1,5 @@
-const LoginCustomerController = require('../controllers/loginCustomer')
-const RegisterCustomerController = require('../controllers/registerCustomer')
+const LoginCustomerController = require('../controllers/customer/loginCustomer')
+const RegisterCustomerController = require('../controllers/customer/registerCustomer')
 const router = require('express').Router()
 
 router.post('/login', LoginCustomerController.login)

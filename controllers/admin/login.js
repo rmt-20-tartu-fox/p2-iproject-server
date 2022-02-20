@@ -1,12 +1,21 @@
-const { checkPassword } = require("../helper/bcrypt")
-const { convertToToken } = require("../helper/jwt")
+const {
+  checkPassword
+} = require("../../helper/bcrypt")
+const {
+  convertToToken
+} = require("../../helper/jwt")
 
-const { User } = require('../models')
+const {
+  User
+} = require('../../models')
 
 class LoginController {
   static async login(req, res, next) {
     try {
-      const { email, password } = req.body
+      const {
+        email,
+        password
+      } = req.body
       const user = await User.findOne({
         where: {
           email
@@ -34,11 +43,15 @@ class LoginController {
 
       const payload = {
         id: user.id,
-        name: user.name, 
+        name: user.name,
         role: user.role
       }
       const token = convertToToken(payload)
-      res.status(200).json({ access_token: token, name: user.name, role: user.role })
+      res.status(200).json({
+        access_token: token,
+        name: user.name,
+        role: user.role
+      })
     } catch (err) {
       next(err)
     }
