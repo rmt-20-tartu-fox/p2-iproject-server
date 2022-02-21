@@ -12,11 +12,11 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       Strat.belongsTo(models.Map, {foreignKey: 'MapId'})
-      Strat.belongsTo(models.Operator, {foreignKey: 'Op1Id'})
-      Strat.belongsTo(models.Operator, {foreignKey: 'Op2Id'})
-      Strat.belongsTo(models.Operator, {foreignKey: 'Op3Id'})
-      Strat.belongsTo(models.Operator, {foreignKey: 'Op4Id'})
-      Strat.belongsTo(models.Operator, {foreignKey: 'Op5Id'})
+      Strat.belongsTo(models.Operator, {foreignKey: 'Op1Id', as: 'Op1'})
+      Strat.belongsTo(models.Operator, {foreignKey: 'Op2Id', as: 'Op2'})
+      Strat.belongsTo(models.Operator, {foreignKey: 'Op3Id', as: 'Op3'})
+      Strat.belongsTo(models.Operator, {foreignKey: 'Op4Id', as: 'Op4'})
+      Strat.belongsTo(models.Operator, {foreignKey: 'Op5Id', as: 'Op5'})
       Strat.belongsTo(models.User, {foreignKey: 'UserId'})
     }
   }
