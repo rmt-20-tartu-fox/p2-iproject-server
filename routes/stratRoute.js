@@ -6,6 +6,7 @@ const {authn} = require('../middlewares/authn.js')
 
 router.get('/', Controller.getAllStrat)
 
+router.get('/:stratId', Controller.getOneStrat)
 
 //!Authentication
 router.use(authn)

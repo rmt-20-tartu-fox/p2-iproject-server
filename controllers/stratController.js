@@ -11,11 +11,34 @@ class Controller{
           'Op5',
           {
             model: Map
+          },
+          {
+            model: User,
+            attributes: {
+              exclude: ['password']
+            }
           }
         ]
       })
 
-      res.status(200).json(allStrat)
+      let allStrats = allStrat.map((el) => {
+        el.dataValues['myOperators'] = []
+        el.dataValues.myOperators.push(el.dataValues.Op1)
+        el.dataValues.myOperators.push(el.dataValues.Op2)
+        el.dataValues.myOperators.push(el.dataValues.Op3)
+        el.dataValues.myOperators.push(el.dataValues.Op4)
+        el.dataValues.myOperators.push(el.dataValues.Op5)
+
+        delete el.dataValues.Op1
+        delete el.dataValues.Op2
+        delete el.dataValues.Op3
+        delete el.dataValues.Op4
+        delete el.dataValues.Op5
+
+        return el
+      })
+      // console.log(allStrats[0])
+      res.status(200).json(allStrats)
     } catch (error) {
       console.log(error)
       res.status(500).json({message: 'Internal server error'})
@@ -79,6 +102,54 @@ class Controller{
       }
     } catch (error) {
       res.status(500).json({message: "Internal server error"})
+    }
+  }
+
+  static async getOneStrat(req, res, next){
+    let {stratId} = req.params
+    console.log(stratId)
+    try {
+      let oneStrat = await Strat.findOne({
+        include: [
+          'Op1',
+          'Op2',
+          'Op3',
+          'Op4',
+          'Op5',
+          {
+            model: Map
+          },
+          {
+            model: User,
+            attributes: {
+              exclude: ['password']
+            }
+          }
+        ],
+        where: {
+          id: stratId
+        }
+      })
+
+      oneStrat.dataValues['myOperators'] = []
+      oneStrat.dataValues.myOperators.push(oneStrat.dataValues.Op1)
+      oneStrat.dataValues.myOperators.push(oneStrat.dataValues.Op2)
+      oneStrat.dataValues.myOperators.push(oneStrat.dataValues.Op3)
+      oneStrat.dataValues.myOperators.push(oneStrat.dataValues.Op4)
+      oneStrat.dataValues.myOperators.push(oneStrat.dataValues.Op5)
+
+      delete oneStrat.dataValues.Op1
+      delete oneStrat.dataValues.Op2
+      delete oneStrat.dataValues.Op3
+      delete oneStrat.dataValues.Op4
+      delete oneStrat.dataValues.Op5
+      if (!oneStrat){
+        res.status(404).json({message: 'Strategy Not Found'})
+      }
+
+      res.status(200).json(oneStrat)
+    } catch (error) {
+      
     }
   }
 }
