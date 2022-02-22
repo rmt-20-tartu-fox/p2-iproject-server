@@ -2,7 +2,10 @@ const {User, Customer, Product, Category, sequelize} = require('../models')
 
 const fetchProducts = async (req, res, next) => {
   try {
-    const products = await Product.findAll()
+    let products = await Product.findAll()
+    products = products.map( e => {
+      return {id: e.id, name: e.name, price: e.price, discount: e.discount, CategoryId: e.CategoryId, imageUrl: e.imageUrl, status: e.status}
+    })
     res.status(200).json(products)
   } catch (error) {
     next(error)
@@ -31,11 +34,18 @@ const editProduct = async (req, res, next) => {
         where: {id},
         returning: true
       })
-      const data = result[1][0].map( e => {
-        return {id: e.id, name: e.name, price: e.price, discount: e.discount, CategoryId: e.CategoryId, imageUrl: e.imageUrl, status: e.status}
-      })
-      res.status(200).json(data)
+      res.status(200).json({id: result[1][0].id, name: result[1][0].name, price: result[1][0].price, discount: result[1][0].discount, CategoryId: result[1][0].CategoryId, imageUrl: result[1][0].imageUrl, status: result[1][0].status})
     }
+  } catch (error) {
+    next(error)
+  }
+}
+
+const removeProduct = async (req, res, next) => {
+  try {
+    const {id} = req.params
+    await Product.destroy({where: {id}})
+    res.status(201).json({message: `Product with id ${id} has been deleted`})
   } catch (error) {
     next(error)
   }
@@ -43,5 +53,7 @@ const editProduct = async (req, res, next) => {
 
 module.exports = {
   fetchProducts,
-  addProduct
+  addProduct,
+  editProduct,
+  removeProduct
 }
