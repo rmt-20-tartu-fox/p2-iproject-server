@@ -1,4 +1,4 @@
-const { convertToken } = require("../helper/jwt");
+const { convertToken } = require("../helpers/jwt");
 const { User } = require("../models");
 
 async function authentification(req, res, next) {

@@ -21,7 +21,6 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: "OtherUserId",
       });
       User.hasOne(models.Profile, { foreignKey: "UserId" });
-      User.hasOne(models.Preference, { foreignKey: "UserId" });
       User.hasOne(models.Geo, { foreignKey: "UserId" });
     }
   }

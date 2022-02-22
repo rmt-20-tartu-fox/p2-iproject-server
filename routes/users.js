@@ -1,28 +1,24 @@
 const express = require("express");
+const userController = require("../controllers/usersControllers");
 const router = express.Router();
 
 // get all users
-router.get("/");
+router.get("/", userController.getAllUsers);
 
 // get only one user
 router.get("/:id");
 
 // authorization
 
-// user profiles
-router.post("/profiles");
-// router.get("/profiles");
-// router.put("/profiles");
-
-// user preferences
-router.post("/preferences");
-// router.get("/preferences");
-// router.put("/preferences");
-
 // user geos
 router.post("/geos");
 // router.get("/geos");
 // router.put("/geos");
+
+// user profiles
+router.post("/profiles");
+// router.get("/profiles");
+// router.put("/profiles");
 
 // user likes
 router.post("/likes");
