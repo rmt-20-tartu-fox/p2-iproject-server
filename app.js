@@ -54,13 +54,44 @@ app.post("/loginToken", (req, res, next) => {
     .post(uri, {}, config)
     .then((resp) => {
       token = resp.data.Token;
-      console.log(token);
       res.status(200).json(resp.data);
     })
     .catch((err) => {
       console.log(err);
       res.send(err);
     });
+});
+
+//* Get all symptoms
+app.post("/symptoms", (req, res, next) => {
+  // const { token } = req.body;
+
+  //!Dummy url
+  let url = `https://sandbox-healthservice.priaid.ch/symptoms?token=${token}&language=${language}`;
+
+  //? Real url
+  // let url = `	https://healthservice.priaid.ch/symptoms?token=${token}&language=${language}`;
+
+  axios
+    .get(url)
+    .then((resp) => {
+      res.status(200).json(resp.data);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.send(err);
+    });
+});
+
+//* Get symptoms from json
+app.get("/symptoms", (req, res, next) => {
+  //* Real data
+  // let data = require("./data/symptoms.json");
+
+  //! Dummy data
+  let data = require("./data/dummySymptoms.json");
+
+  res.status(200).json(data);
 });
 
 app.listen(port, () => {
