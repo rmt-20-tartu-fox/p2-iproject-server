@@ -2,6 +2,15 @@ const {User, Customer, Product, Category, sequelize} = require('../models')
 const {getToken} = require('../helpers/jwt')
 const {validatePassword} = require('../helpers/bcrypt')
 
+const fetchUsers = async (req, res, next) => {
+  try {
+    const user = await User.findAll()
+    res.status(200).json(user)
+  } catch (error) {
+    next(error)
+  }
+}
+
 const register = async (req, res, next) => {
   try {
     const {firstname, email, password} = req.body
@@ -42,5 +51,6 @@ const login = async (req, res, next) => {
 
 module.exports = {
   register,
-  login
+  login,
+  fetchUsers
 }
