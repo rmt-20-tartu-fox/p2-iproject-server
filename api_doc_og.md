@@ -52,7 +52,6 @@ _like_
 
 - `GET /memes`
 - `POST /memes`
-- `POST /memes`
 
 - `GET /likes`
 - `POST /likes/:memeId`

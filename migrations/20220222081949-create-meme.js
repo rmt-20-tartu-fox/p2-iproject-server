@@ -11,10 +11,7 @@ module.exports = {
       title: {
         type: Sequelize.STRING,
       },
-      imageUrl: {
-        type: Sequelize.STRING,
-      },
-      imageDir: {
+      image: {
         type: Sequelize.STRING,
       },
       nsfw: {

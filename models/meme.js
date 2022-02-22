@@ -21,8 +21,14 @@ module.exports = (sequelize, DataTypes) => {
           notNull: { msg: "Title is required" },
         },
       },
-      imageUrl: DataTypes.STRING,
-      imageDir: DataTypes.STRING,
+      image: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          notEmpty: { msg: "Image is required" },
+          notNull: { msg: "Image is required" },
+        },
+      },
       nsfw: {
         type: DataTypes.BOOLEAN,
         allowNull: false,
