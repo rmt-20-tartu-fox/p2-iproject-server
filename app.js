@@ -129,7 +129,7 @@ app.post("/diagnosis", (req, res, next) => {
       //* Get diagnose
       const { symptoms, gender, yearOfBirth } = req.body;
 
-      let url = `https://sandbox-healthservice.priaid.ch/diagnosis?symptoms=${symptoms}&gender=${gender}&year_of_birth=${yearOfBirth}&token=${token}&language=${language}`;
+      let url = `https://sandbox-healthservice.priaid.ch/diagnosis?symptoms=[${symptoms}]&gender=${gender}&year_of_birth=${yearOfBirth}&token=${token}&language=${language}`;
 
       return axios.get(url);
     })
