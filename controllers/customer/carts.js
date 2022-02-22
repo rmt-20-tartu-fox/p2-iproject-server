@@ -3,6 +3,8 @@ const {
   Cart,
   Product
 } = require('../../models')
+const HistoryController = require('./history')
+const HistoryDetailController = require('./historyDetail')
 
 class CartController {
   static async allCartByUserId(req, res, next) {
@@ -18,8 +20,8 @@ class CartController {
         include: ['productCart']
       })
       res.status(200).json(userAndCarts)
-      // const carts = userAndCarts.Products.filter(el => !el.Cart.isCheckout)
-      // res.status(200).json(carts)
+      const carts = userAndCarts.Products.filter(el => !el.Cart.isCheckout)
+      res.status(200).json(carts)
     } catch (err) {
       next(err)
     }
@@ -112,10 +114,24 @@ class CartController {
   static async checkout(req, res, next) {
     try {
       const {
-        UserId
+        UserId,
+        name
       } = req.userLogin
+      const {
+        table
+      } = req.body
+
+      const cartsSelected = await Cart.findAll({
+        where: {
+          UserId,
+          isSelect: true
+        },
+        include: [ Product ]
+      })
+
       const updateCartStatus = await Cart.update({
-        isCheckout: true
+        isCheckout: true,
+        isSelect: false
       }, {
         where: {
           UserId,
@@ -129,6 +145,30 @@ class CartController {
           message: 'No Coffee or Food you want checkout'
         })
       }
+
+      let totalPrice = 0
+      cartsSelected.forEach(el => {
+        let price = el.quantity * el.Product.price
+        totalPrice += price
+      });
+
+      const payload = {
+        name,
+        table,
+        total: totalPrice
+      }
+      const createHistory = await HistoryController.addHistories(payload)
+      if (createHistory !== false) {
+        const createDetail = await HistoryDetailController.addDetail(cartsSelected, createHistory.id)
+        console.log("🚀 ~ file: carts.js ~ line 163 ~ CartController ~ checkout ~ createDetail", createDetail)
+      }
+
+      // if (!createHistory || !createDetail) {
+      //   throw ({
+      //     message: "Internal server error",
+      //     code: 500,
+      //   })
+      // }
       res.status(200).json({
         message: 'Checkout successfully!'
       })
@@ -147,7 +187,7 @@ class CartController {
 
       const cart = await Cart.findOne({
         where: {
-          id
+          id: +id
         }
       })
 
@@ -165,7 +205,7 @@ class CartController {
             isSelect: true
           }, {
             where: {
-              UserId
+              id: +id
             }
           })
           res.status(200).json({
@@ -177,7 +217,7 @@ class CartController {
             isSelect: false
           }, {
             where: {
-              UserId
+              id: +id
             }
           })
           res.status(200).json({
@@ -186,6 +226,7 @@ class CartController {
           break;
       }
     } catch (err) {
+      console.log(err);
       next(err)
     }
   }
@@ -194,6 +235,80 @@ class CartController {
   }
   static async unselectCart(req, res, next) {
     CartController.changeIsSelect(req, res, next, "unselect")
+  }
+  static async quantityInc(req, res, next) {
+    try {
+      const {
+        id
+      } = req.params
+      const {
+        UserId
+      } = req.userLogin
+
+      const cart = await Cart.findOne({
+        where: {
+          id: +id
+        },
+        include: [ Product ]
+      })
+
+      if (!cart) {
+        throw ({
+          name: 'NOT FOUND',
+          message: 'Cart not found!',
+          code: 404
+        })
+      }
+
+      if (cart.Product.stock === cart.quantity || cart.Product.stock === cart .quantity + 1) {
+        throw ({
+          code: 400,
+          message: "Stock not availabe with quantity",
+          name: "Bad Request"
+        })
+      }
+
+      Cart.increment('quantity', { where: { id: +id }});
+      res.status(200).json({
+        message: 'Quantity Increment'
+      })
+    } catch (err) {
+      next(err)
+    }
+  }
+  static async quantityDec(req, res, next) {
+    try {
+      const {
+        id
+      } = req.params
+      const {
+        UserId
+      } = req.userLogin
+
+      const cart = await Cart.findOne({
+        where: {
+          id: +id
+        }
+      })
+
+      if (!cart) {
+        throw ({
+          name: 'NOT FOUND',
+          message: 'Cart not found!',
+          code: 404
+        })
+      }
+
+      if (cart.quantity !== 1) {
+        Cart.decrement('quantity', { where: { id: +id }});
+      }
+
+      res.status(200).json({
+        message: 'Quantity Decrement'
+      })
+    } catch (err) {
+      next(err)
+    }
   }
 }
 
