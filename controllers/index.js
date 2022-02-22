@@ -39,8 +39,18 @@ class UserController {
 class BooksController{
   static getBookBySubject = async (req, res) => {
     try {
-      const result = await openLibraryApi.get("/subjects/film")
+      const result = await openLibraryApi.get("/subjects/accessible_book#ebooks=true")
       res.status(200).json(result.data.works)
+    } catch (error) {
+      
+    }
+  }
+
+  static getBookByTitle = async (req, res) => {
+    try {
+      const { title } = req.query
+      const result = await openLibraryApi.get(`/search?title=${title}`)
+      res.status(200).json(result.data.docs)
     } catch (error) {
       res.status(500).json({message: "Internal server error"})
     }
