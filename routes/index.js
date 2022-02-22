@@ -1,8 +1,10 @@
+const UserController = require('../controllers/user');
+
 const indexRouter = require('express').Router();
 
-indexRouter.get("/login")
-indexRouter.get("/register")
-indexRouter.get("/login-google")
+indexRouter.post("/login")
+indexRouter.post("/register", UserController.register)
+indexRouter.post("/login-google")
 
 indexRouter.get("/restaurants")
 indexRouter.post("/restaurants")
