@@ -94,10 +94,6 @@ app.get("/symptoms", (req, res, next) => {
   res.status(200).json(data);
 });
 
-app.listen(port, () => {
-  console.log("Server runs on port", port);
-});
-
 //* get diagnosis
 app.post("/diagnosis", (req, res, next) => {
   //* get token
@@ -158,4 +154,27 @@ app.post("/diagnosis", (req, res, next) => {
   //     console.log(err);
   //     res.send(err);
   //   });
+});
+
+//* get longitude and latitude
+app.post("/coordinate", (req, res, next) => {
+  const { location } = req.body;
+  let url = `https://api.mapbox.com/geocoding/v5/mapbox.places/${location}.json?access_token=${mapboxAccessToken}&limit=1`;
+
+  axios
+    .get(url)
+    .then((resp) => {
+      longitude = resp.data.features[0].center[0];
+      latitude = resp.data.features[0].center[1];
+      console.log(longitude, latitude);
+      res.status(200).json(resp.data);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.send(err);
+    });
+});
+
+app.listen(port, () => {
+  console.log("Server runs on port", port);
 });
