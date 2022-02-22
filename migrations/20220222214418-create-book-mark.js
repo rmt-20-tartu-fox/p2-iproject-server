@@ -8,10 +8,6 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      name: {
-        allowNull: false,
-        type: Sequelize.STRING
-      },
       hotel_id: {
         allowNull: false,
         type: Sequelize.INTEGER
@@ -31,14 +27,6 @@ module.exports = {
         },
         onUpdate: 'cascade',
         ondelete: 'cascade'
-      },
-      long: {
-        allowNull: false,
-        type: Sequelize.STRING
-      },
-      lat: {
-        allowNull: false,
-        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,

@@ -1,4 +1,6 @@
 'use strict';
+const Helper = require('../helper/helper.js')
+
 const {
   Model
 } = require('sequelize');
@@ -43,9 +45,38 @@ module.exports = (sequelize, DataTypes) => {
         }
       }
     },
+    role: {
+      type: DataTypes.STRING,
+      defaultValue: "costumer",
+      validate: {
+        notEmpty: {
+          msg: "Role is required."
+        },
+        isIn: {
+          args: ['costumer', 'admin']
+        }
+      }
+    },
+    status: {
+      type: DataTypes.STRING,
+      defaultValue: "member",
+      validate: {
+        notEmpty: {
+          msg: "Status is required."
+        },
+        isIn: {
+          args: ['member', 'VIP']
+        }
+      }
+    },
   }, {
     sequelize,
     modelName: 'User',
+    hooks: {
+      beforeCreate(user) {
+        user.password = Helper.bcrypt(user.password)
+      }
+    }
   });
   return User;
 };

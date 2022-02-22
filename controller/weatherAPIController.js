@@ -1,4 +1,5 @@
 const axios = require("axios").default;
+const { Weather } = require("../models");
 
 class WeatherAPI {
   static async getWeather(req, res, next) {
@@ -26,6 +27,16 @@ class WeatherAPI {
       data = data.data.filter((el, i) => i % 12 == 0);
 
       res.status(200).json(data);
+    } catch (err) {
+      next(err);
+    }
+  }
+
+  static async fetchWeather(req, res, next) {
+    try {
+      const weather = await Weather.findAll({
+        attributes: { exclude: ["createdAt", "updatedAt"] },
+      });
     } catch (err) {
       next(err);
     }

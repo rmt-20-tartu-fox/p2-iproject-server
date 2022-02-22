@@ -15,14 +15,6 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   BookMark.init({
-    name: {
-      type: DataTypes.STRING,
-      validate: {
-        notEmpty: {
-          msg: "Name is required."
-        }
-      }
-    },
     hotel_id: {
       type: DataTypes.INTEGER,
       validate: {
@@ -44,23 +36,7 @@ module.exports = (sequelize, DataTypes) => {
       validate: {
         notEmpty: "User Id is required."
       }
-    },
-    long: {
-      type: DataTypes.STRING,
-      validate: {
-        notEmpty: {
-          msg: "Longitude is required."
-        }
-      }
-    },
-    lat: {
-      type: DataTypes.STRING,
-      validate: {
-        notEmpty: {
-          msg: "Latitude is required."
-        }
-      }
-    },
+    }
   }, {
     sequelize,
     modelName: 'BookMark',
