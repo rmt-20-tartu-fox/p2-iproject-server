@@ -21,7 +21,13 @@ module.exports = {
       },
       CategoryId: {
         allowNull: false,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+          model: "Categories",
+          key: "id"
+        },
+        onDelete: "CASCADE",
+        onUpdate: "CASCADE"
       },
       imageUrl: {
         type: Sequelize.TEXT
