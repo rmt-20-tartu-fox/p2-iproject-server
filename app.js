@@ -175,6 +175,44 @@ app.post("/coordinate", (req, res, next) => {
     });
 });
 
+//* Get nearby hospital
+app.post("/nearby", (req, res, next) => {
+  const { location, radius } = req.body;
+  let url = `https://api.mapbox.com/geocoding/v5/mapbox.places/${location}.json?access_token=${mapboxAccessToken}&limit=1`;
+  axios
+    .get(url)
+    .then((resp) => {
+      longitude = resp.data.features[0].center[0];
+      latitude = resp.data.features[0].center[1];
+      let categories = "healthcare.hospital";
+      let limit = 20;
+      let url = `https://api.geoapify.com/v2/places?categories=${categories}&filter=circle:${longitude},${latitude},${radius}&limit=${limit}&apiKey=${geopifyAPI}`;
+      return axios.get(url);
+    })
+    .then((resp) => {
+      res.status(200).json(resp.data);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.send(err);
+    });
+
+  //! old code
+  // let categories = "healthcare.hospital";
+  // let limit = 20;
+  // let url = `https://api.geoapify.com/v2/places?categories=${categories}&filter=circle:${longitude},${latitude},${radius}&limit=${limit}&apiKey=${geopifyAPI}`;
+  // axios
+  //   .get(url)
+  //   .then((resp) => {
+  //     console.log(resp.data);
+  //     res.status(200).json(resp.data);
+  //   })
+  //   .catch((err) => {
+  //     console.log(err);
+  //     res.send(err);
+  //   });
+});
+
 app.listen(port, () => {
   console.log("Server runs on port", port);
 });
