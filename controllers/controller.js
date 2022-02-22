@@ -75,6 +75,15 @@ class Controller {
       next(err)
     }
   }
+  static async getBalance(req, res, next) {
+    try {
+      const UserId = req.loginUser.id
+      const result = await Balance.findAll({ where: { UserId } })
+      res.status(201).json(result)
+    } catch (err) {
+      next(err)
+    }
+  }
 }
 
 module.exports = Controller
