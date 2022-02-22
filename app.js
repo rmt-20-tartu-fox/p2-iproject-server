@@ -11,6 +11,7 @@ app.use(express.urlencoded({ extended: true }));
 app.post("/register", UserController.postRegister)
 app.post("/login", UserController.postLogin)
 app.get("/books", BooksController.getBookBySubject)
+app.get("/books/search", BooksController.getBookByTitle)
 
 app.listen(PORT, _=>{
   console.log(`running in port ${PORT}`);
