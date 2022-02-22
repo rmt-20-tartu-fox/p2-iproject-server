@@ -39,6 +39,7 @@ class Controller {
         id: user.id,
         email: user.email,
       });
+      // postgeo
       res.status(200).json({ access_token: token });
     } catch (error) {
       next(error);
