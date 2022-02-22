@@ -11,18 +11,56 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      BookMark.belongsTo(models.City, {foreignKey: "CityId", as: "city"})
       BookMark.belongsTo(models.User, {foreignKey: "UserId", as: "user"})
     }
   }
   BookMark.init({
-    name: DataTypes.STRING,
-    hotel_id: DataTypes.STRING,
-    CityId: DataTypes.STRING,
-    UserId: DataTypes.STRING,
-    imgUrl: DataTypes.STRING,
-    title: DataTypes.STRING,
-    description: DataTypes.STRING
+    name: {
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty: {
+          msg: "Name is required."
+        }
+      }
+    },
+    hotel_id: {
+      type: DataTypes.INTEGER,
+      validate: {
+        notEmpty: {
+          msg: "Hotel Id is required."
+        }
+      }
+    },
+    room_id: {
+      type: DataTypes.INTEGER,
+      validate: {
+        notEmpty: {
+          msg: "Room Id is required."
+        }
+      }
+    },
+    UserId: {
+      type: DataTypes.INTEGER,
+      validate: {
+        notEmpty: "User Id is required."
+      }
+    },
+    long: {
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty: {
+          msg: "Longitude is required."
+        }
+      }
+    },
+    lat: {
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty: {
+          msg: "Latitude is required."
+        }
+      }
+    },
   }, {
     sequelize,
     modelName: 'BookMark',

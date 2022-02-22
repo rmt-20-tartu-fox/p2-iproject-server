@@ -11,14 +11,57 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      City.belongsToMany(models.User, {foreignKey: "UserId", through: 'BookMarks', as: 'user'})
     }
   }
   City.init({
-    name: DataTypes.STRING,
-    long: DataTypes.STRING,
-    lat: DataTypes.STRING,
-    imgUrl: DataTypes.STRING
+    name: {
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty: {
+          msg: "Name is required."
+        }
+      }
+    },
+    long: {
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty: {
+          msg: "Longitude is required."
+        }
+      }
+    },
+    lat: {
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty: {
+          msg: "Latitude is required."
+        }
+      }
+    },
+    imgUrl: {
+      type: DataTypes.TEXT,
+      validate: {
+        notEmpty: {
+          msg: "Image Url is required."
+        }
+      }
+    },
+    title: {
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty: {
+          msg: "Title is required."
+        }
+      }
+    },
+    description: {
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty: {
+          msg: "Description is required."
+        }
+      }
+    },
   }, {
     sequelize,
     modelName: 'City',

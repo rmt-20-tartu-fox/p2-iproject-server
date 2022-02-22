@@ -1,7 +1,7 @@
 'use strict';
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Cities', {
+    await queryInterface.createTable('Weather', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -12,25 +12,9 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING
       },
-      long: {
-        allowNull: false,
-        type: Sequelize.STRING
-      },
-      lat: {
-        allowNull: false,
-        type: Sequelize.STRING
-      },
       imgUrl: {
         allowNull: false,
         type: Sequelize.TEXT
-      },
-      title: {
-        allowNull: false,
-        type: Sequelize.STRING
-      },
-      description: {
-        allowNull: false,
-        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,
@@ -43,6 +27,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Cities');
+    await queryInterface.dropTable('Weather');
   }
 };

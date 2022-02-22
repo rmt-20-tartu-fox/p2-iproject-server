@@ -1,0 +1,50 @@
+[
+  {
+    "name": "CIWIDEY",
+    "long": "-7.0849",
+    "lat": "107.4461",
+    "imgUrl": "@/assets/images/carousel/bandung-ciwidey.jpg",
+    "title": "SUNSET AT CIWIDEY",
+    "description": "BANDUNG DESTINATION HOLIDAY"
+  },
+  {
+    "name": "MALANG",
+    "long": "-7.9666",
+    "lat": "112.6326",
+    "imgUrl": "@/assets/images/carousel/JawaTimur_Malang-JurassicPark.jpg",
+    "title": "JURASSIC PARK",
+    "description": "MALANG DESTINATION HOLIDAY"
+  },
+  {
+    "name": "NUSA TENGGARA TIMUR",
+    "long": "-8.4538",
+    "lat": "119.8728",
+    "imgUrl": "@/assets/images/carousel/NTT-labuan_bajo.jpg",
+    "title": "LABUAN BAJO",
+    "description": "NTT DESTINATION HOLIDAY"
+  },
+  {
+    "name": "KUTA",
+    "long": "-8.7224",
+    "lat": "115.1767",
+    "imgUrl": "@/assets/images/carousel/bali-kuta.jpg",
+    "title": "SUNSET AT KUTA BEACH",
+    "description": "BALI DESTINATION HOLIDAY"
+  },
+  {
+    "name": "BUNAKEN",
+    "long": "1.6235",
+    "lat": "124.7603",
+    "imgUrl": "@/assets/images/carousel/SulUt-Bunaken.jpg",
+    "title": "DIVING AT BUNAKEN ISLAND",
+    "description": "MANADO DESTINATION HOLIDAY"
+  },
+  {
+    "name": "RAJA AMPAT",
+    "long": "-1.0915",
+    "lat": "130.8779",
+    "imgUrl": "@/assets/images/carousel/Papua-RajaAmpat.jpg",
+    "title": "RAJA AMPAT",
+    "description": "PAPUA DESTINATION HOLIDAY"
+  }
+]

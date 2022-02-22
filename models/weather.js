@@ -3,7 +3,7 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class User extends Model {
+  class Weather extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -11,41 +11,28 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      User.hasMany(models.BookMark, {foreignKey: "CityId", as: 'bookmark'})
     }
   }
-  User.init({
+  Weather.init({
     name: {
       type: DataTypes.STRING,
       validate: {
         notEmpty: {
-          msg: "Name is required."
+          msg: "Weather Name is required."
         }
       }
     },
-    email: {
-      type: DataTypes.STRING,
-      unique: {
-        args: true,
-        msg: "Email must be unique"
-      },
+    imgUrl: {
+      type: DataTypes.TEXT,
       validate: {
         notEmpty: {
-          msg: "Email is required."
-        }
-      }
-    },
-    password: {
-      type: DataTypes.STRING,
-      validate: {
-        notEmpty: {
-          msg: "Password is required."
+          msg: "Image Url is required."
         }
       }
     },
   }, {
     sequelize,
-    modelName: 'User',
+    modelName: 'Weather',
   });
-  return User;
+  return Weather;
 };

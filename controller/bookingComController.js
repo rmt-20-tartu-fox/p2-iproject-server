@@ -69,6 +69,27 @@ class BookingAPI {
     }
   }
 
+  static async searchLocation(req, res, next) {
+    try {
+      const { search } = req.query
+
+      var options = {
+        method: 'GET',
+        url: 'https://booking-com.p.rapidapi.com/v1/hotels/locations',
+        params: {locale: 'id', name: search},
+        headers: {
+          'x-rapidapi-host': 'booking-com.p.rapidapi.com',
+          'x-rapidapi-key': 'b2d6979e45msh4535f2eb6faae6ep1bd4acjsneebd13a671c8'
+        }
+      };
+      
+      const {data} = await axios.request(options)
+      res.status(200).json(data)
+    } catch (err) {
+      next(err)
+    }
+  }
+
 }
 
 module.exports = BookingAPI

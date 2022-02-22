@@ -16,17 +16,9 @@ module.exports = {
         allowNull: false,
         type: Sequelize.INTEGER
       },
-      CityId: {
+      room_id: {
         allowNull: false,
-        type: Sequelize.INTEGER,
-        references: {
-          model: {
-            tableName: 'Cities'
-          },
-          key: 'id'
-        },
-        onUpdate: 'CASCADE', 
-        onDelete: 'CASCADE'
+        type: Sequelize.INTEGER
       },
       UserId: {
         allowNull: false,
@@ -40,15 +32,11 @@ module.exports = {
         onUpdate: 'cascade',
         ondelete: 'cascade'
       },
-      imgUrl: {
+      long: {
         allowNull: false,
         type: Sequelize.STRING
       },
-      title: {
-        allowNull: false,
-        type: Sequelize.STRING
-      },
-      description: {
+      lat: {
         allowNull: false,
         type: Sequelize.STRING
       },
