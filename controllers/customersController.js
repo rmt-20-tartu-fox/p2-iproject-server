@@ -1,6 +1,9 @@
-const { User } = require("../models");
+const { User, Transaction, Book } = require("../models");
 const { comparePassword } = require("../helpers/bcrypt");
 const { signToken } = require("../helpers/jwt");
+const librivox = require("../apis/librivox");
+const serpapi = require("../apis/serpapi");
+
 const registerCustomer = async (req, res, next) => {
   try {
     let { email, password } = req.body;
@@ -29,7 +32,31 @@ const loginCustomer = async (req, res, next) => {
   }
 };
 
-const getCarts = async (req, res, next) => {
+const getBooks = async (req, res, next) => {
+  try {
+    const resp = await librivox.get(`/?limit=10&offset=0&format=json`);
+    let book = await Book.findAll();
+    // let filter = book.filter((el) => {});
+    // resp.data.forEach((e) => {
+    //   await Book.create({
+    //     title: e.title,
+    //     price: 100000,
+    //     link: e.url_zip_file,
+    //     language: e.language,
+    //     totalTime: e.totaltime,
+    //     imageUrl: await serpapi.get(
+    //       `/q=${e.title}&api_key=${process.env.API_KEY_SERPAPI}`
+    //     ),
+    //   });
+    // });
+
+    res.status(200).json(resp.data);
+  } catch (error) {
+    next(error);
+  }
+};
+
+const getTransaction = async (req, res, next) => {
   try {
   } catch (error) {
     next(error);
@@ -39,4 +66,6 @@ const getCarts = async (req, res, next) => {
 module.exports = {
   registerCustomer,
   loginCustomer,
+  getTransaction,
+  getBooks,
 };

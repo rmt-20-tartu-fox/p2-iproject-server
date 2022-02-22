@@ -1,25 +1,36 @@
 "use strict";
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable("Transactions", {
+    await queryInterface.createTable("Books", {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      UserId: {
+      title: {
+        allowNull: false,
+        unique: true,
+        type: Sequelize.STRING,
+      },
+      imageUrl: {
+        allowNull: false,
+        type: Sequelize.STRING,
+      },
+      price: {
         allowNull: false,
         type: Sequelize.INTEGER,
-        references: {
-          model: "Users",
-          key: "id",
-        },
-        onUpdate: "cascade",
-        onDelete: "cascade",
       },
-      status: {
-        defaultValue: "Uncompleted",
+      language: {
+        allowNull: false,
+        type: Sequelize.STRING,
+      },
+      totalTime: {
+        allowNull: false,
+        type: Sequelize.STRING,
+      },
+      link: {
+        allowNull: false,
         type: Sequelize.STRING,
       },
       createdAt: {
@@ -33,6 +44,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable("Transactions");
+    await queryInterface.dropTable("Books");
   },
 };
