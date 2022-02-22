@@ -1,5 +1,5 @@
 const axios = require("axios");
-const serpapi = `https://serpapi.com/search.json?`;
+const serpapi = `https://serpapi.com`;
 
 const instance = axios.create({
   baseURL: serpapi,

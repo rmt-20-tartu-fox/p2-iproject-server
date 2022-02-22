@@ -3,6 +3,7 @@ const { comparePassword } = require("../helpers/bcrypt");
 const { signToken } = require("../helpers/jwt");
 const librivox = require("../apis/librivox");
 const serpapi = require("../apis/serpapi");
+const { default: axios } = require("axios");
 
 const registerCustomer = async (req, res, next) => {
   try {
@@ -32,32 +33,62 @@ const loginCustomer = async (req, res, next) => {
   }
 };
 
-const getBooks = async (req, res, next) => {
+const addBooksToDB = async (req, res, next) => {
   try {
-    const resp = await librivox.get(`/?limit=10&offset=0&format=json`);
-    let book = await Book.findAll();
-    // let filter = book.filter((el) => {});
-    // resp.data.forEach((e) => {
-    //   await Book.create({
-    //     title: e.title,
-    //     price: 100000,
-    //     link: e.url_zip_file,
-    //     language: e.language,
-    //     totalTime: e.totaltime,
-    //     imageUrl: await serpapi.get(
-    //       `/q=${e.title}&api_key=${process.env.API_KEY_SERPAPI}`
-    //     ),
-    //   });
+    let resp = await librivox.get(`/?limit=10&offset=20&format=json`);
+    // let image = await axios.get(
+    //   `https://serpapi.com/search.json?q=${resp.data.books[0].title}&tbm=isch&ijn=0&api_key=${process.env.API_KEY_SERPAPI}`
+    // );
+    // resp.data.books.forEach((e) => {
+    //   e.imageUrl = image.data.images_results[0].original;
     // });
+    let books = await Book.findAll();
+    let sameBook = [];
+    resp.data.books.forEach((e) => {
+      books.forEach((el) => {
+        if (e.title == el.title) {
+          sameBook.push(e.push);
+        }
+      });
+    });
+    console.log(sameBook.length);
+    if (sameBook.length == 0) {
+      resp.data.books.forEach((e, i) => {
+        serpapi
+          .get(
+            `/search.json?q=${resp.data.books[i].title}&tbm=isch&ijn=0&api_key=${process.env.API_KEY_SERPAPI}`
+          )
+          .then((resp) => {
+            Book.create({
+              title: e.title,
+              price: 100000,
+              link: e.url_zip_file,
+              language: e.language,
+              totalTime: e.totaltime,
+              imageUrl: resp.data.images_results[0].original,
+            });
+          })
+          .catch((error) => {
+            next(error);
+          });
+      });
+    }
 
-    res.status(200).json(resp.data);
+    res.status(200).json(books);
   } catch (error) {
     next(error);
   }
 };
 
-const getTransaction = async (req, res, next) => {
+const getBooks = async (req, res, next) => {
   try {
+    let { page } = req.query;
+
+    let books = await Book.findAndCountAll({
+      limit: 10,
+      offset: (page - 1) * 10,
+    });
+    res.status(200).json(books);
   } catch (error) {
     next(error);
   }
@@ -66,6 +97,6 @@ const getTransaction = async (req, res, next) => {
 module.exports = {
   registerCustomer,
   loginCustomer,
-  getTransaction,
+  addBooksToDB,
   getBooks,
 };
