@@ -11,17 +11,17 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       User.belongsToMany(models.Restaurant, {
         through: models.Wishlist,
-        foreignKey: "UserId"
-      })
+        foreignKey: "UserId",
+      });
       User.hasMany(models.Restaurant, {
-        foreignKey: "UserId"
-      })
+        foreignKey: "UserId",
+      });
       User.hasMany(models.Review, {
-        foreignKey: "UserId"
-      })
+        foreignKey: "UserId",
+      });
       User.hasMany(models.ReviewImage, {
-        foreignKey: "UserId"
-      })
+        foreignKey: "UserId",
+      });
     }
   }
   User.init(
@@ -91,7 +91,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   );
   User.beforeCreate((instance, option) => {
-    instance.password = hashPassword(instance.password)
-  })
+    instance.password = hashPassword(instance.password);
+  });
   return User;
 };
