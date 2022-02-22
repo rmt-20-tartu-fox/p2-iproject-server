@@ -97,3 +97,65 @@ app.get("/symptoms", (req, res, next) => {
 app.listen(port, () => {
   console.log("Server runs on port", port);
 });
+
+//* get diagnosis
+app.post("/diagnosis", (req, res, next) => {
+  //* get token
+  //! Sandbox, dummy data
+  var uri = "https://sandbox-authservice.priaid.ch/login";
+  var secret_key = apiMedicSecretKey;
+
+  //? Real data
+  // var uri = "https://authservice.priaid.ch/login";
+  // var secret_key = process.env.API_MEDIC_SECRET_KEY;
+
+  var computedHash = CryptoJS.HmacMD5(uri, secret_key);
+  var computedHashString = computedHash.toString(CryptoJS.enc.Base64);
+
+  //! Dummy data
+  const config = {
+    headers: {
+      Authorization: `Bearer jubelsinaga13@gmail.com:${computedHashString}`,
+    },
+  };
+
+  //? Real data
+  // const config = {
+  //   headers: {
+  //     Authorization: `Bearer ${process.env.API_MEDIC_USER}:${computedHashString}`,
+  //   },
+  // };
+
+  axios
+    .post(uri, {}, config)
+    .then((resp) => {
+      token = resp.data.Token;
+      //* Get diagnose
+      const { symptoms, gender, yearOfBirth } = req.body;
+
+      let url = `https://sandbox-healthservice.priaid.ch/diagnosis?symptoms=${symptoms}&gender=${gender}&year_of_birth=${yearOfBirth}&token=${token}&language=${language}`;
+
+      return axios.get(url);
+    })
+    .then((resp) => {
+      res.status(200).json(resp.data);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.send(err);
+    });
+
+  //* Get diagnose
+  // const { symptoms, gender, yearOfBirth } = req.body;
+
+  // let url = `https://sandbox-healthservice.priaid.ch/diagnosis?symptoms=${symptoms}&gender=${gender}&year_of_birth=${yearOfBirth}&token=${token}&language=${language}`;
+  // axios
+  //   .get(url)
+  //   .then((resp) => {
+  //     res.status(200).json(resp.data);
+  //   })
+  //   .catch((err) => {
+  //     console.log(err);
+  //     res.send(err);
+  //   });
+});
