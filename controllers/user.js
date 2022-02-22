@@ -3,11 +3,31 @@ const axios = require("axios");
 
 class UserController {
   static async register(req, res, next) {
-    const { username, email, password } = req.body;
+    try {
+      const { username, email, password, role } = req.body;
 
-    const imgUrl = await axios.get("https://picsum.photos/400")
+      const response = await axios.get("https://picsum.photos/400");
 
-    console.log(imgUrl)
+      // console.log(imgUrl.request._redirectable._options.href)
+      // console.log(imgUrl.data)
+
+      const result = await User.create({
+        username,
+        email,
+        password,
+        imgUrl: response.request._redirectable._options.href,
+        role,
+      });
+
+      res.status(200).json({
+        id: result.id,
+        username: result.username,
+        email: result.email,
+        role: result.role,
+      });
+    } catch (error) {
+      next(error);
+    }
   }
 }
 
