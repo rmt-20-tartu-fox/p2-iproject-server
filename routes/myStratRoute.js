@@ -2,15 +2,16 @@ const express = require('express')
 const router = express.Router()
 const Controller = require('../controllers/stratController')
 const {authn} = require('../middlewares/authn.js')
+const {authz} = require('../middlewares/authz.js')
 
-
-router.get('/', Controller.getAllStrat)
-
-router.get('/:stratId', Controller.getOneStrat)
 
 //!Authentication
 router.use(authn)
-router.post('/', Controller.addNewStrat)
+
+router.get('/', Controller.getMyStrats)
+
+
+router.delete('/:stratId', authz, Controller.deleteMyStrat)
 
 
 

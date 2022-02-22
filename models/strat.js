@@ -21,14 +21,15 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Strat.init({
-    currentRole: DataTypes.INTEGER,
+    currentRole: DataTypes.STRING,
     MapId: DataTypes.INTEGER,
     Op1Id: DataTypes.INTEGER,
     Op2Id: DataTypes.INTEGER,
     Op3Id: DataTypes.INTEGER,
     Op4Id: DataTypes.INTEGER,
     Op5Id: DataTypes.INTEGER,
-    UserId: DataTypes.INTEGER
+    UserId: DataTypes.INTEGER,
+    description: DataTypes.TEXT
   }, {
     sequelize,
     modelName: 'Strat',

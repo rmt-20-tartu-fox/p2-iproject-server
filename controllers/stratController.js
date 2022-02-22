@@ -47,15 +47,15 @@ class Controller{
 
   static async addNewStrat(req, res, next){
     // console.log("OK")
-    let {currentRole, MapId, Op1Id, Op2Id, Op3Id, Op4Id, Op5Id} = req.body
-    console.log(currentRole, MapId, Op1Id, Op2Id, Op3Id, Op4Id, Op5Id)
+    let {currentRole, MapId, Op1Id, Op2Id, Op3Id, Op4Id, Op5Id, description} = req.body
+    console.log(currentRole, MapId, Op1Id, Op2Id, Op3Id, Op4Id, Op5Id, description)
     let {id, email, role, username} = req.loggedUser
     try {
 
-      if (currentRole !== 'Defend' || currentRole === 'Attack'){
-        res.status(400).json({message: "Choose Your Side"})
-        return
-      }
+      // if (currentRole !== 'Defend' || currentRole !== 'Attack'){
+      //   res.status(400).json({message: "Choose Your Side"})
+      //   return
+      // }
       if (!MapId){
         res.status(400).json({message: "Choose A Map"})
       }
@@ -94,7 +94,8 @@ class Controller{
           Op4Id,
           Op5Id,
           currentRole,
-          UserId: +id
+          UserId: +id,
+          description
 
         })
 
@@ -150,6 +151,74 @@ class Controller{
       res.status(200).json(oneStrat)
     } catch (error) {
       
+    }
+  }
+
+  static async getMyStrats(req, res, next){
+    console.log(req.loggedUser)
+    let {id, email, username, role} = req.loggedUser
+    try {
+      let allStrat = await Strat.findAll({
+        include: [
+          'Op1',
+          'Op2',
+          'Op3',
+          'Op4',
+          'Op5',
+          {
+            model: Map
+          },
+          {
+            model: User,
+            attributes: {
+              exclude: ['password']
+            }
+          }
+        ],
+        where: {
+          UserId: +id
+        }
+      })
+
+      let allStrats = allStrat.map((el) => {
+        el.dataValues['myOperators'] = []
+        el.dataValues.myOperators.push(el.dataValues.Op1)
+        el.dataValues.myOperators.push(el.dataValues.Op2)
+        el.dataValues.myOperators.push(el.dataValues.Op3)
+        el.dataValues.myOperators.push(el.dataValues.Op4)
+        el.dataValues.myOperators.push(el.dataValues.Op5)
+
+        delete el.dataValues.Op1
+        delete el.dataValues.Op2
+        delete el.dataValues.Op3
+        delete el.dataValues.Op4
+        delete el.dataValues.Op5
+
+        return el
+      })
+      // console.log(allStrats[0])
+      res.status(200).json(allStrats)
+    } catch (error) {
+      console.log(error)
+      res.status(500).json({message: 'Internal server error'})
+    }
+  }
+
+  static async deleteMyStrat(req, res, next){
+    let {id, email, username, role} = req.loggedUser
+    let {stratId} = req.params
+
+    try {
+      let deletedStrat = Strat.destroy({
+        where: {
+          UserId: id,
+          id: +stratId
+        }
+      })
+
+      res.status(200).json({"message": "Your Strat Has Been Banned"})
+    } catch (error) {
+      res.status(500).json({"message": "Internal server error"})
     }
   }
 }

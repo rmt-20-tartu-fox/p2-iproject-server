@@ -20,7 +20,8 @@ class Controller{
         email: newUser.email,
         role: newUser.role
       }
-      res.status(201).json(payload)
+      let access_token = signToken(payload)
+      res.status(201).json({payload, access_token: access_token})
     } catch (error) {
       console.log(error)
       if (error.name === 'SequelizeValidationError' || error.name === 'SequelizeUniqueConstraintError'){

@@ -4,6 +4,8 @@ const operatorRoute = require('./operatorRoute')
 const mapRoute = require('./mapRoute')
 const userRoute = require('./userRoute')
 const stratRoute = require('./stratRoute')
+const friendRoute = require('./friendRoute')
+const myStratRoute = require('./myStratRoute')
 
 
 //!Route Operator
@@ -16,8 +18,11 @@ router.use('/maps', mapRoute)
 router.use('/users', userRoute)
 
 
-
 router.use('/strats', stratRoute)
+router.use('/mystrats', myStratRoute)
+
+//!Route
+router.use('/friends', friendRoute)
 
 
 module.exports = router
