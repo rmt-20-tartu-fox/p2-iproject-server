@@ -2,21 +2,29 @@
   {
     "isCheckout": false,
     "ProductId": 3,
-    "UserId": 1
+    "UserId": 1,
+    "quantity": 3,
+    "isSelect": false
   },
   {
     "isCheckout": false,
     "ProductId": 2,
-    "UserId": 1
+    "UserId": 1,
+    "quantity": 2,
+    "isSelect": false
   },
   {
     "isCheckout": false,
     "ProductId": 1,
-    "UserId": 2
+    "UserId": 2,
+    "quantity": 2,
+    "isSelect": false
   },
   {
     "isCheckout": false,
     "ProductId": 4,
-    "UserId": 2
+    "UserId": 2,
+    "quantity": 2,
+    "isSelect": false
   }
 ]

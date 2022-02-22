@@ -15,18 +15,13 @@ class CartController {
         where: {
           id: UserId
         },
-        include: {
-          model: Product,
-        }
+        include: ['productCart']
       })
-      const carts = userAndCarts.Products.filter(el => !el.Cart.isCheckout)
-      res.status(200).json(carts)
+      res.status(200).json(userAndCarts)
+      // const carts = userAndCarts.Products.filter(el => !el.Cart.isCheckout)
+      // res.status(200).json(carts)
     } catch (err) {
-      console.log("🚀 ~ file: carts.js ~ line 25 ~ CartController ~ allCartByUserId ~ err", err)
-      console.log(err);
-      console.log("🚀 ~ file: carts.js ~ line 26 ~ CartController ~ allCartByUserId ~ err", err)
       next(err)
-      console.log("🚀 ~ file: carts.js ~ line 28 ~ CartController ~ allCartByUserId ~ err", err)
     }
   }
   static async removeAllCarts(req, res, next) {
@@ -90,11 +85,21 @@ class CartController {
         productId
       } = req.params
 
+      const findProduct = await Product.findByPk(+productId)
+      if (!findProduct) {
+        throw ({
+          code: 404,
+          message: "Product not found!",
+          name: "NOT FOUND"
+        })
+      }
+
       const newCart = await Cart.create({
         ProductId: +productId,
         UserId,
         isCheckout: false,
-        isSelect: false
+        isSelect: false,
+        quantity: 1
       })
 
       res.status(201).json(newCart)
@@ -120,7 +125,7 @@ class CartController {
       if (updateCartStatus[0] === 0) {
         throw ({
           name: 'checkout failed',
-          code: 417,
+          code: 404,
           message: 'No Coffee or Food you want checkout'
         })
       }

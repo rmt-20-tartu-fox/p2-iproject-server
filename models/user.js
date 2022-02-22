@@ -13,9 +13,12 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       User.belongsToMany(models.Product, {
-        through: 'Cart'
+        through: 'Carts',
+          as: 'productCart'
       })
-      // User.hasMany(models.Product, { foreignKey: 'AuthorId' })
+      User.hasMany(models.Product, {
+        foreignKey: 'AuthorId'
+      })
       User.hasMany(models.Cart)
     }
   }

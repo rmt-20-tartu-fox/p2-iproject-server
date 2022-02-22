@@ -61,7 +61,6 @@ class LoginCustomerController {
         role: user.role
       })
     } catch (err) {
-      console.log(err);
       next(err)
     }
   }
