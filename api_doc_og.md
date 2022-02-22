@@ -24,7 +24,6 @@ _Joke_
 ```
 - setup : string, required
 - punchline : string, required
-- type : sting, required
 ```
 
 _Meme_

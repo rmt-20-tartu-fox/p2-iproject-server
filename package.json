@@ -26,5 +26,9 @@
     "pg": "^8.7.3",
     "sequelize": "^6.16.2",
     "supertest": "^6.2.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15",
+    "sequelize-cli": "^6.4.1"
   }
 }
