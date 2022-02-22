@@ -47,7 +47,8 @@ module.exports = (sequelize, DataTypes) => {
         notNull: {msg: "CategoryId cannot be empty"}
       }
     },
-    imageUrl: DataTypes.TEXT
+    imageUrl: DataTypes.TEXT,
+    status: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'Product',

@@ -54,7 +54,8 @@ module.exports = (sequelize, DataTypes) => {
       validate: {
         notNull: {msg: "Password cannot be empty"}
       }
-    }
+    },
+    imageUrl: DataTypes.TEXT
   }, {
     hooks: {
       beforeCreate: user => {
