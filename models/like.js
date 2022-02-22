@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
       // UserUsers.belongsTo(models.Users, { as: 'Sibling', onDelete: 'CASCADE' });
       Like.belongsTo(models.User, { as: "User", onDelete: "CASCADE" });
       Like.belongsTo(models.User, { as: "OtherUser", onDelete: "CASCADE" });
-      Like.hasOne(models.match, { foreignKey: "LikeId" });
+      Like.hasOne(models.Match, { foreignKey: "LikeId" });
     }
   }
   Like.init(
