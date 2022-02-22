@@ -1,0 +1,32 @@
+[
+  {
+    "UserId": 1,
+    "age": 26,
+    "sex": "male",
+    "maxDistance": 100
+  },
+  {
+    "UserId": 2,
+    "age": 25,
+    "sex": "male",
+    "maxDistance": 200
+  },
+  {
+    "UserId": 3,
+    "age": 25,
+    "sex": "both",
+    "maxDistance": 150
+  },
+  {
+    "UserId": 4,
+    "age": 22,
+    "sex": "female",
+    "maxDistance": 150
+  },
+  {
+    "UserId": 5,
+    "age": 24,
+    "sex": "female",
+    "maxDistance": 200
+  }
+]
