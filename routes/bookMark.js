@@ -4,8 +4,8 @@ const authorization = require('../middleware/authorization')
 
 const BookMarkController = require("../controller/bookMarkController")
 
-router.post('/bookmark', BookMarkController.addBookMark)
-router.get('/bookmark', BookMarkController.getBookMark)
+router.post('/bookmarks', BookMarkController.addBookMark)
+router.get('/bookmarks', BookMarkController.getBookMark)
 router.delete('/bookmarks/:id', authorization, BookMarkController.cancelBookMark)
 
 module.exports = router;

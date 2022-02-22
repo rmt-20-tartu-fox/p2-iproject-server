@@ -5,6 +5,8 @@ const authorization = async (req, res, next) => {
     const { id } = req.currentUser;
     const user = await User.findByPk(id);
 
+    console.log(user)
+
     if (!user) {
       throw {
         code: 403,
