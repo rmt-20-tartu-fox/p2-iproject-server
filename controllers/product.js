@@ -41,11 +41,36 @@ const editProduct = async (req, res, next) => {
   }
 }
 
+const patchProduct = async (req, res, next) => {
+  try {
+    const {id} = req.params
+    const {status} = req.body
+    const find = await Product.findByPk(id)
+    if(!find) {
+      throw {name: "NotFound", message: `Product with id ${id} is not found`}
+    } else {
+      if(find.status == status) {
+        throw {name: "BadRequest", message: `Status for product with id ${id} is ${status} already`}
+      } else {
+        await Product.update({status}, {where: {id}})
+        res.status(201).json({message: `Status for product with id ${id} has been changed from '${find.status}' to '${status}'`})
+      }
+    }
+  } catch (error) {
+    next(error)
+  }
+}
+
 const removeProduct = async (req, res, next) => {
   try {
     const {id} = req.params
-    await Product.destroy({where: {id}})
-    res.status(201).json({message: `Product with id ${id} has been deleted`})
+    const find = await Product.findByPk(id)
+    if(!find) {
+      throw {name: "NotFound", message: `Product with id ${id} is not found`}
+    } else {
+      await Product.destroy({where: {id}})
+      res.status(201).json({message: `Product with id ${id} has been deleted`})
+    }
   } catch (error) {
     next(error)
   }
@@ -55,5 +80,6 @@ module.exports = {
   fetchProducts,
   addProduct,
   editProduct,
-  removeProduct
+  removeProduct,
+  patchProduct
 }
