@@ -8,6 +8,19 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
+      User.belongsToMany(models.Restaurant, {
+        through: models.Wishlist,
+        foreignKey: "UserId"
+      })
+      User.hasMany(models.Restaurant, {
+        foreignKey: "UserId"
+      })
+      User.hasMany(models.Review, {
+        foreignKey: "UserId"
+      })
+      User.hasMany(models.ReviewImage, {
+        foreignKey: "UserId"
+      })
     }
   }
   User.init(
@@ -41,8 +54,8 @@ module.exports = (sequelize, DataTypes) => {
             msg: "Email is Required",
           },
           isEmail: {
-            msg: "Invalid Email Format"
-          }
+            msg: "Invalid Email Format",
+          },
         },
       },
       password: {
