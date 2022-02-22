@@ -1,5 +1,6 @@
 "use strict";
 const { Model } = require("sequelize");
+const { hashPassword } = require("../helpers/bcrypt");
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     /**
@@ -9,12 +10,12 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      User.belongsToMany(models.Users, {
+      User.belongsToMany(models.User, {
         through: models.Like,
         as: "User",
         foreignKey: "UserId",
       });
-      User.belongsToMany(models.Users, {
+      User.belongsToMany(models.User, {
         through: models.Like,
         as: "OtherUser",
         foreignKey: "OtherUserId",
@@ -67,9 +68,10 @@ module.exports = (sequelize, DataTypes) => {
       },
       age: {
         type: DataTypes.INTEGER,
+        allowNull: false,
         validate: {
           min: {
-            args: 18,
+            args: [18],
             msg: "Only allows adults age 18 and above",
           },
         },
@@ -79,14 +81,7 @@ module.exports = (sequelize, DataTypes) => {
       sequelize,
       hooks: {
         beforeCreate(inst) {
-          const today = new Date();
-          const birthDate = new Date(inst.dateOfbirth);
-          let age = today.getFullYear() - birthDate.getFullYear();
-          const m = today.getMonth() - birthDate.getMonth();
-          if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
-            age--;
-          }
-          inst.age = age;
+          inst.password = hashPassword(inst.password);
         },
       },
       modelName: "User",
