@@ -69,6 +69,10 @@ module.exports = (sequelize, DataTypes) => {
           notNull: {
             msg: "Password is Required",
           },
+          len: {
+            args: [8, 24],
+            msg: "Password should be 8 to 24 characters long",
+          },
         },
       },
       role: DataTypes.STRING,

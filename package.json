@@ -18,10 +18,12 @@
   },
   "homepage": "https://github.com/agyadnkr/p2-iproject-server-1#readme",
   "dependencies": {
+    "axios": "^0.26.0",
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "dotenv": "^16.0.0",
     "express": "^4.17.2",
+    "google-auth-library": "^7.12.0",
     "imagekit": "^3.2.5",
     "jsonwebtoken": "^8.5.1",
     "multer": "^1.4.4",
