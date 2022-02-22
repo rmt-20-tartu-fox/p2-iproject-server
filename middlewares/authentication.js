@@ -7,7 +7,6 @@ const authentication = async (req, res, next) => {
     let payload = convToPayload(token);
 
     const user = await User.findByPk(payload.id);
-
     if (!user) {
       throw {
         code: 401,
@@ -16,8 +15,9 @@ const authentication = async (req, res, next) => {
       };
     }
 
-    req.dataOnLogin = {
+    req.userOnLogin = {
       id: user.id,
+      email: user.email,
     };
 
     next();

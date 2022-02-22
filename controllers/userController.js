@@ -57,6 +57,7 @@ const login = async (req, res, next) => {
 
     const payload = {
       id: user.id,
+      email: user.email,
     };
 
     const token = signToken(payload);
