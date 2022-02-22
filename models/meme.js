@@ -9,6 +9,12 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      Meme.belongsToMany(models.User, {
+        through: models.Like,
+        foreignKey: "MemeId",
+      });
+      Meme.belongsTo(models.User, { foreignKey: "UserId" });
+      Meme.belongsTo(models.Category, { foreignKey: "CategoryId" });
     }
   }
   Meme.init(
@@ -35,6 +41,14 @@ module.exports = (sequelize, DataTypes) => {
         validate: {
           notEmpty: { msg: "NSFW is required" },
           notNull: { msg: "NSFW is required" },
+        },
+      },
+      UserId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        validate: {
+          notEmpty: { msg: "UserId is required" },
+          notNull: { msg: "UserId is required" },
         },
       },
       CategoryId: {

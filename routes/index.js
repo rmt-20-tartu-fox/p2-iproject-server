@@ -5,13 +5,17 @@ const router = express.Router();
 const jokesRouter = require("./jokes");
 const memesRouter = require("./memes");
 const likesRouter = require("./likes");
+const { authentication } = require("../middlewares/authn");
+const { Controller } = require("../controllers");
 
 router.get("/", (req, res) => {
   res.send("masuk");
 });
 
-router.post("/register");
-router.post("/login");
+router.post("/register", Controller.register);
+router.post("/login", Controller.login);
+
+router.use(authentication);
 
 router.use("/jokes", jokesRouter);
 router.use("/memes", memesRouter);
