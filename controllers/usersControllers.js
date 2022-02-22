@@ -4,10 +4,10 @@ const { User, Profile, Geo } = require("../models/index");
 class Controller {
   static async getAllUsers(req, res, next) {
     try {
-      const { age, sex, distance } = req.query;
+      const { age, sex, maxDistance } = req.query;
       const { id } = req.currentUser;
       // get geo here
-      const geo = await User.findByOne({
+      const geo = await Geo.findOne({
         where: {
           UserId: id,
         },
@@ -36,20 +36,24 @@ class Controller {
         paramQuery.include[0].where = { sex };
       }
       let users = await User.findAll(paramQuery);
-      // calculate distance
+      let distances = [];
       users.forEach((el) => {
-        el.distance = getDistanceFromLatLonInKm(geo.longitude, geo.latitude, el.Geo.latitude, el.Geo.longitude);
+        const calculation = getDistanceFromLatLonInKm(geo.latitude, geo.longitude, el.Geo.latitude, el.Geo.longitude);
+        distances.push({
+          id: el.id,
+          distance: Math.ceil(calculation),
+        });
       });
-      users.filter((el) => {
-        el.distance > distance;
+
+      if (maxDistance) {
+        users.filter((el) => {
+          el.distance <= maxDistance;
+        });
+      }
+      res.status(200).json({
+        dist: distances,
+        rows: users,
       });
-      res.status(200).json(users);
-    } catch (error) {
-      next(error);
-    }
-  }
-  static async getOneUser(req, res, next) {
-    try {
     } catch (error) {
       next(error);
     }
