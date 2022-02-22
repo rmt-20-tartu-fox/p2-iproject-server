@@ -62,7 +62,9 @@ class Controller {
   }
   static async postBalance(req, res, next) {
     try {
+      console.log(123);
       const { title, type } = req.body
+      console.log(req.body);
       const UserId = req.loginUser.id
       if (!title) {
         throw ({ code: 400, message: 'title is required' })
@@ -90,8 +92,14 @@ class Controller {
 
   static async postHistory(req, res, next) {
     try {
-      const { BalanceId, value, attachment } = req.body
+      const { BalanceId, value } = req.body
       const UserId = req.loginUser.id
+      let image = ''
+
+      if (req.file) {
+        image = req.file.path
+        image = image.replace('/upload', '/upload/w_300')
+      }
 
       const balance = await Balance.findByPk(BalanceId)
       if (!balance) {
@@ -100,7 +108,7 @@ class Controller {
       if (balance.UserId !== UserId) {
         throw ({ code: 403, message: 'Not Authorized' })
       }
-      const result = await History.create({ BalanceId, value, attachment, UserId })
+      const result = await History.create({ BalanceId, value, UserId, attachment: image })
 
       res.status(201).json(result)
     } catch (err) {
