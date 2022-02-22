@@ -6,7 +6,7 @@ const port = process.env.PORT | 3000
 const {errorHandler} = require('./middlewares/errorHandler')
 const {register, login, fetchUsers} = require('./controllers/user')
 const { addProduct, fetchProducts } = require('./controllers/product')
-const { fetchCategories, addCategory } = require('./controllers/category')
+const { fetchCategories, addCategory, editCategory, removeCategory } = require('./controllers/category')
 app.use(cors())
 app.use(express.urlencoded({extended:false}))
 app.use(express.json())
@@ -19,6 +19,8 @@ app.get('/products', fetchProducts)
 app.post('/products', addProduct)
 app.get('/categories', fetchCategories)
 app.post('/categories', addCategory)
+app.put('/categories/:id', editCategory)
+app.delete('/categories/:id', removeCategory)
 
 
 app.use(errorHandler)
