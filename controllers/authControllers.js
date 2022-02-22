@@ -1,6 +1,7 @@
 const { comparePassword } = require("../helpers/bcrypt");
 const { generateToken } = require("../helpers/jwt");
 const { User } = require("../models/index");
+const geoController = require("./geosControllers");
 
 class Controller {
   static async register(req, res, next) {
@@ -19,6 +20,7 @@ class Controller {
         dateOfBirth,
         age,
       });
+      geoController.createGeo(newUser.id, next);
       res.status(201).json({ id: newUser.id, email: newUser.email });
     } catch (error) {
       next(error);
@@ -40,6 +42,7 @@ class Controller {
         email: user.email,
       });
       // postgeo
+      geoController.updateGeo(user.id, next);
       res.status(200).json({ access_token: token });
     } catch (error) {
       next(error);

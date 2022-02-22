@@ -11,7 +11,7 @@ router.get("/:id");
 // authorization
 
 // user geos
-router.post("/geos");
+// router.post("/geos");
 // router.get("/geos");
 // router.put("/geos");
 
