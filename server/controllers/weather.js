@@ -1,5 +1,3 @@
-const API_KEY = "5bb0bc5b6271260f671527a214f7069d";
-
 class WeatherController {
   static async getWeather(request, response, next) {
     navigator.geolocation.getCurrentPosition((success) => {
