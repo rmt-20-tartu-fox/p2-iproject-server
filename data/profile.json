@@ -1,0 +1,22 @@
+[
+  {
+    "UserId": 1,
+    "sex": "female"
+  },
+  {
+    "UserId": 2,
+    "sex": "male"
+  },
+  {
+    "UserId": 3,
+    "sex": "male"
+  },
+  {
+    "UserId": 4,
+    "sex": "male"
+  },
+  {
+    "UserId": 5,
+    "sex": "female"
+  }
+]
