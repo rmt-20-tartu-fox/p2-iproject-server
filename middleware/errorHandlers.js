@@ -9,7 +9,10 @@ function errorHandler(err, req, res, next) {
     msg = err.errors[0].message;
   } else if (err.message === "INVALID_EMAIL_OR_PASSWORD") {
     code = 401;
-    msg = "invalid email or password";
+    msg = "Invalid email or password";
+  } else if (err.message === "INVALID_USER_OR_TOKEN" || err.name === "JsonWebTokenError") {
+    code = 401;
+    msg = "Invalid user or token";
   }
   console.log("here==============", err);
   res.status(code).json({ message: msg });
