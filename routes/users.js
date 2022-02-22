@@ -1,24 +1,20 @@
 const express = require("express");
 const userController = require("../controllers/usersControllers");
+const authorization = require("../middleware/authz");
 const router = express.Router();
 
 // get all users
 router.get("/", userController.getAllUsers);
 
 // get only one user
-router.get("/:id");
+// router.get("/:id");
 
 // authorization
 
-// user geos
-// router.post("/geos");
-// router.get("/geos");
-// router.put("/geos");
-
 // user profiles
-router.post("/profiles");
-// router.get("/profiles");
-// router.put("/profiles");
+router.post("/:id/profiles", authorization);
+router.get("/:id/profiles");
+router.put("/:id/profiles", authorization);
 
 // user likes
 router.post("/likes");
