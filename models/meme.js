@@ -19,6 +19,12 @@ module.exports = (sequelize, DataTypes) => {
   }
   Meme.init(
     {
+      id: {
+        allowNull: false,
+        autoIncrement: true,
+        primaryKey: true,
+        type: DataTypes.INTEGER,
+      },
       title: {
         type: DataTypes.STRING,
         allowNull: false,
