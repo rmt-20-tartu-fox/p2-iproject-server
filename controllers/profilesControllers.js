@@ -1,9 +1,18 @@
-const { User, Profile } = require("../models/index");
+const getDistanceFromLatLonInKm = require("../helpers/calculateDistance");
+const { User, Profile, Geo } = require("../models/index");
 
 class Controller {
   static async readProfiles(req, res, next) {
     try {
-      const UserId = req.currentUser.id;
+      const UserId = req.params.id;
+      const { id } = req.currentUser;
+      // get geo here
+      const geo = await Geo.findOne({
+        where: {
+          UserId: id,
+        },
+        attributes: { exclude: ["createdAt", "updatedAt"] },
+      });
       const user = await User.findOne({
         where: { id: UserId },
         attributes: { exclude: ["password", "createdAt", "updatedAt"] },
@@ -12,12 +21,17 @@ class Controller {
             model: Profile,
             attributes: { exclude: ["createdAt", "updatedAt"] },
           },
+          {
+            model: Geo,
+            attributes: { exclude: ["createdAt", "updatedAt"] },
+          },
         ],
       });
       if (!user) {
         throw new Error("USER_NOT_FOUND");
       }
-      res.status(200).json(user);
+      const calculation = getDistanceFromLatLonInKm(geo.latitude, geo.longitude, user.Geo.latitude, user.Geo.longitude);
+      res.status(200).json({ distance: Math.ceil(calculation), user });
     } catch (error) {
       next(error);
     }
@@ -61,7 +75,7 @@ class Controller {
         },
         { where: { UserId } }
       );
-      res.status(201).json({ message: "profile has been updated" });
+      res.status(201).json({ message: `user profile with UserId ${profile.UserId} has been updated` });
     } catch (error) {
       next(error);
     }

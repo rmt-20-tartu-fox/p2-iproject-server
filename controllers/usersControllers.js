@@ -1,6 +1,6 @@
 const { Op } = require("sequelize");
 const getDistanceFromLatLonInKm = require("../helpers/calculateDistance");
-const { User, Profile, Geo } = require("../models/index");
+const { User, Profile, Geo, Like } = require("../models/index");
 
 class Controller {
   static async getAllUsers(req, res, next) {
@@ -52,6 +52,9 @@ class Controller {
       if (maxDistance) {
         users.filter((el) => {
           el.distance <= maxDistance;
+        });
+        distance.filter((el) => {
+          el <= maxDistance;
         });
       }
       res.status(200).json({

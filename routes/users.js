@@ -1,7 +1,8 @@
 const express = require("express");
 const userController = require("../controllers/usersControllers");
 const profileController = require("../controllers/profilesControllers");
-const likeControler = require("../controllers/likesControllers");
+const likeController = require("../controllers/likesControllers");
+const matchController = require("../controllers/matchesControllers");
 const authorization = require("../middleware/authz");
 const upload = require("../middleware/upload");
 
@@ -20,9 +21,13 @@ router.get("/:id/profiles", profileController.readProfiles);
 router.put("/:id/profiles", authorization, profileController.updateProfiles);
 
 // user likes
-router.post("/:id/likes", likeControler.createLikes);
+router.post("/:id/likes", likeController.createLikes);
+
+// user match
+router.get("/matches", matchController.viewMatches);
 
 // user conversation
 router.post("/matches/:id/conversations");
+router.get("/matches/:id/conversations");
 
 module.exports = router;
