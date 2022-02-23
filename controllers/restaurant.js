@@ -121,6 +121,10 @@ class RestaurantController {
         group: ["Restaurant.id"],
       });
 
+      if (!result) {
+        throw { name: "NOT_FOUND" };
+      }
+
       res.status(200).json(result);
     } catch (error) {
       next(error);

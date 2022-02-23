@@ -1,4 +1,4 @@
-const { Restaurant, User } = require("../models");
+const { Restaurant } = require("../models");
 
 const restaurantAuthorization = async (req, res, next) => {
   try {
@@ -6,6 +6,10 @@ const restaurantAuthorization = async (req, res, next) => {
     const { id: restaurantId } = req.params;
 
     const result = await Restaurant.findByPk(restaurantId);
+
+    if (!result) {
+      throw { name: "NOT_FOUND" }
+    }
 
     if (id !== result.UserId) {
       throw { name: "FORBIDDEN" };
