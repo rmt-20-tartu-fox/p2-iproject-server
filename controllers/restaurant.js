@@ -58,10 +58,57 @@ class RestaurantController {
     try {
       const result = await Restaurant.findAll({
         attributes: {
-          exclude: ["createdAt", "updatedAt"],
+          exclude: [
+            "createdAt",
+            "updatedAt",
+            "Review",
+            "Rating",
+            "ratingCount",
+          ],
           include: [
             [Sequelize.fn("AVG", Sequelize.col("Reviews.rating")), "avgRating"],
-            [Sequelize.fn("COUNT", Sequelize.col("Reviews.review")), "reviewCount"],
+            [
+              Sequelize.fn("COUNT", Sequelize.col("Reviews.review")),
+              "reviewCount",
+            ],
+          ],
+        },
+        include: [
+          {
+            model: Review,
+            attributes: [],
+          },
+        ],
+        raw: true,
+        group: ["Restaurant.id"],
+      });
+
+      res.status(200).json(result);
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  static async getOne(req, res, next) {
+    try {
+      const result = await Restaurant.findOne({
+        where: {
+          id: req.params.id,
+        },
+        attributes: {
+          exclude: [
+            "createdAt",
+            "updatedAt",
+            "review",
+            "rating",
+            "ratingCount",
+          ],
+          include: [
+            [Sequelize.fn("AVG", Sequelize.col("Reviews.rating")), "avgRating"],
+            [
+              Sequelize.fn("COUNT", Sequelize.col("Reviews.review")),
+              "reviewCount",
+            ],
           ],
         },
         include: [

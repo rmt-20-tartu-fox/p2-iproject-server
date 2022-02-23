@@ -13,7 +13,7 @@ indexRouter.post("/register", UserController.register);
 indexRouter.post("/login-google", UserController.loginGoogle);
 
 indexRouter.get("/restaurants", RestaurantController.getAll);
-indexRouter.get("/restaurants/:id");
+indexRouter.get("/restaurants/:id", RestaurantController.getOne);
 
 indexRouter.get("/reviews/:restaurantId");
 
