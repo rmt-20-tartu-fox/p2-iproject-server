@@ -1,5 +1,6 @@
 const express = require("express");
 const userController = require("../controllers/usersControllers");
+const profileController = require("../controllers/profilesControllers");
 const authorization = require("../middleware/authz");
 const router = express.Router();
 
@@ -12,9 +13,9 @@ router.get("/", userController.getAllUsers);
 // authorization
 
 // user profiles
-router.post("/:id/profiles", authorization);
-router.get("/:id/profiles");
-router.put("/:id/profiles", authorization);
+router.post("/:id/profiles", authorization, profileController.createProfiles);
+router.get("/:id/profiles", profileController.readProfiles);
+router.put("/:id/profiles", authorization, profileController.updateProfiles);
 
 // user likes
 router.post("/likes");

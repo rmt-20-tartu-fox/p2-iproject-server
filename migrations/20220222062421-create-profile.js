@@ -11,6 +11,10 @@ module.exports = {
       photos: {
         type: Sequelize.STRING,
       },
+      name: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
       education: {
         type: Sequelize.STRING,
       },

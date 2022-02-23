@@ -1,22 +1,27 @@
 [
   {
     "UserId": 1,
-    "sex": "female"
+    "sex": "female",
+    "name": "Maria"
   },
   {
     "UserId": 2,
-    "sex": "male"
+    "sex": "male",
+    "name": "Mario"
   },
   {
     "UserId": 3,
-    "sex": "male"
+    "sex": "male",
+    "name": "David"
   },
   {
     "UserId": 4,
-    "sex": "male"
+    "sex": "male",
+    "name": "Yoga"
   },
   {
     "UserId": 5,
-    "sex": "female"
+    "sex": "female",
+    "name": "Marta"
   }
 ]
