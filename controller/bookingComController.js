@@ -5,11 +5,6 @@ class BookingAPI {
     try {
       const { longitude, latitude, checkin, checkout } = req.body;
 
-      if (!longitude) longitude = "-7.0849";
-      if (!latitude) latitude = "107.4461";
-
-      console.log(longitude, latitude, checkin, checkout, '<<<< setelah REQ BODY')
-
       let options = {
         method: "GET",
         url: "https://booking-com.p.rapidapi.com/v1/hotels/search-by-coordinates",

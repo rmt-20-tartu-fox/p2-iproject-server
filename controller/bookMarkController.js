@@ -4,12 +4,13 @@ class BookMarkController {
   static async addBookMark(req, res, next) {
     try {
       const { id } = req.currentUser;
-      const { hotel_id, room_id } = req.body;
+      const { hotel_id, room_id, data } = req.body;
 
       const bookmark = await BookMark.create({
         hotel_id,
         room_id,
         UserId: id,
+        data
       });
 
       res.status(200).json({ message: "Success add to bookmark." });
@@ -28,7 +29,25 @@ class BookMarkController {
         attributes: { exclude: ["createdAt", "updateAt"] },
       });
 
-      res.status(200).json(myBookMark);
+      let hotel = [];
+      myBookMark.forEach(el => {
+        let tampung = []
+        el.data.block.forEach(elm => {
+          if (elm.room_id == el.room_id) {
+            tampung.push(elm)
+          }
+        })
+
+        for (const key in el.data.rooms) {
+          if (key == el.room_id) {
+            tampung.push(el.data.rooms[key])
+          }
+        }
+        hotel.push(tampung)
+      });
+      myBookMark.data = hotel
+
+      res.status(200).json(myBookMark.data);
     } catch (err) {
       next(err);
     }

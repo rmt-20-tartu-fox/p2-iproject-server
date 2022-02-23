@@ -36,6 +36,18 @@ module.exports = (sequelize, DataTypes) => {
       validate: {
         notEmpty: "User Id is required."
       }
+    },
+    data: {
+      type: DataTypes.TEXT,
+      validate: {
+        notEmpty: "User Id is required."
+      },
+      get() {
+        return JSON.parse(this.getDataValue("data"))
+      },
+      set(value) {
+        return this.setDataValue("data", JSON.stringify(value))
+      }
     }
   }, {
     sequelize,
