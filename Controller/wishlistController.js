@@ -76,7 +76,7 @@ class UserRecipeWishList {
       const UserId = req.loginUser.id;
       // console.log(UserId, "<><><><>");
       const { id } = req.params;
-      // console.log(req.params, "<><><><><><><>");
+      console.log(req.params, "<><><><><><><>");
 
       const deleteWishList = await UserRecipe.destroy({
         where: { id },
