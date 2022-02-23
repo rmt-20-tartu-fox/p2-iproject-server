@@ -16,7 +16,7 @@ const errorHandler = (err, req, res, next) => {
   } else if (err.name === "CustomError") {
     res
       .status(400)
-      .json({ message: "You have already add this product to your wishlist" });
+      .json({ message: "You have already add this recipe to your wishlist" });
   } else {
     res.status(500).json({ message: "Internal Server Error" });
   }

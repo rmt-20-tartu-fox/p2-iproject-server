@@ -7,7 +7,7 @@ const cors = require("cors");
 const app = express();
 const PORT = process.env.PORT || 3000;
 const errorHandler = require("./midlewares/errorHandler");
-const { sendEmailByTime } = require("./helpers/send_email");
+const { sendEmailByTime, findEmail } = require("./helpers/send_email");
 
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
@@ -19,7 +19,7 @@ app.use("/", router);
 
 app.use(errorHandler);
 
-// sendEmailByTime();
+sendEmailByTime();
 
 app.listen(PORT, () => {
   console.log(`This server is Running at port ${PORT}`);
