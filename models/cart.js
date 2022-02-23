@@ -37,6 +37,27 @@ module.exports = (sequelize, DataTypes) => {
       validate: {
         notNull: {msg: "CustomerId cannot be empty"}
       }
+    },
+    orderId: {
+      allowNull: false,
+      type: DataTypes.STRING,
+      validate: {
+        notNull: {msg: "order id cannot be empty"}
+      }
+    },
+    total: {
+      allowNull: false,
+      type: DataTypes.STRING,
+      validate: {
+        notNull: {msg: "total cannot be empty"}
+      }
+    },
+    status: {
+      allowNull: false,
+      type: DataTypes.STRING,
+      validate: {
+        notNull: {msg: "status cannot be empty"}
+      }
     }
   }, {
     sequelize,
