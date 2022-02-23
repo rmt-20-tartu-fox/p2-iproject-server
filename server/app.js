@@ -1,29 +1,32 @@
 const cors = require("cors");
 const express = require("express");
 const app = express();
+
+const cron = require("node-cron");
+
 const FileController = require("./controllers/file");
 const UserController = require("./controllers/user");
 const PetController = require("./controllers/pet");
-const WeatherController = require("./controllers/weather");
 const errorHandler = require("./middleware/errorHandler");
-const authentication = require("./middleware/authentication")
-const { User } = require("./models");
+const authentication = require("./middleware/authentication");
 
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+cron.schedule("* * * * *", () => {
+  console.log(`JALAN SETIAP MENIT`);
+});
 
 app.post("/register", UserController.register);
 app.post("/login", UserController.login);
 app.post("/upload", FileController.upload);
-app.get("/weather", WeatherController.getWeather)
 
-app.use(authentication)
+app.use(authentication);
 
-app.get("/pet", PetController.checkPet)
-app.post("/pet", PetController.createPet)
-app.patch("/pet", PetController.feedPet)
+app.get("/pet", PetController.checkPet);
+app.post("/pet", PetController.createPet);
+app.patch("/pet", PetController.feedPet);
 
 app.use(errorHandler);
 

@@ -13,7 +13,7 @@ class FileController {
 
       // Creates a client
       const client = new vision.ImageAnnotatorClient({
-        keyFilename: "VisionAIAPIKey.json",
+        keyFilename: "pibuyo-4a793621e75b.json",
       });
 
       // Performs label detection on the image file
