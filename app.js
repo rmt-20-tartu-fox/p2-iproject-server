@@ -1,5 +1,7 @@
 require("dotenv").config();
 const express = require("express");
+const { createServer } = require("http"); // socket io
+const { Server } = require("socket.io");
 const app = express();
 const cors = require("cors");
 const port = process.env.PORT || 3000;
@@ -12,6 +14,13 @@ const geopifyAPI = process.env.GEOPIFYAPI;
 let apiMedicSecretKey = "Rs35Lba2M8Kkw4Z7W";
 enc();
 
+const httpServer = createServer(app); //* Socket
+const io = new Server(httpServer, {
+  cors: {
+    origin: "*",
+  },
+});
+
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(cors());
@@ -22,6 +31,23 @@ let latitude;
 
 //? Token for API Medic
 let token;
+
+//? variabel untuk socket.io
+let chats = [];
+
+//* Socket
+io.on("connection", (socket) => {
+  console.log("A user connected", socket.id);
+
+  socket.on("disconnect", () => {
+    console.log("A user disconnected");
+  });
+
+  socket.on("sendMessageToServer", (newMsg) => {
+    chats = [...chats, newMsg];
+    socket.broadcast.emit("sendToClient", newMsg);
+  });
+});
 
 //* Get token
 app.post("/loginToken", (req, res, next) => {
@@ -137,8 +163,8 @@ app.post("/diagnosis", (req, res, next) => {
       res.status(200).json(resp.data);
     })
     .catch((err) => {
-      console.log(err);
-      res.send(err);
+      // console.log(err);
+      res.send(err.response.data);
     });
 
   //* Get diagnose
@@ -170,7 +196,7 @@ app.post("/coordinate", (req, res, next) => {
       res.status(200).json(resp.data);
     })
     .catch((err) => {
-      console.log(err);
+      // console.log(err);
       res.send(err);
     });
 });
@@ -213,6 +239,10 @@ app.post("/nearby", (req, res, next) => {
   //   });
 });
 
-app.listen(port, () => {
-  console.log("Server runs on port", port);
+// app.listen(port, () => {
+//   console.log("Server runs on port", port);
+// });
+
+httpServer.listen(port, () => {
+  console.log("server runs on port", port);
 });
