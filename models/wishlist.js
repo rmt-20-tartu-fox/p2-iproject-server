@@ -18,6 +18,12 @@ module.exports = (sequelize, DataTypes) => {
   }
   Wishlist.init(
     {
+      id: {
+        type: DataTypes.INTEGER,
+        primaryKey: true,
+        allowNull: false,
+        autoIncrement: true
+      },
       UserId: DataTypes.INTEGER,
       RestaurantId: DataTypes.INTEGER,
     },

@@ -14,7 +14,7 @@ class WishlistController {
             model: Restaurant,
             through: {
               model: Wishlist,
-              attributes: [],
+              attributes: ["id"],
             },
             attributes: {
               exclude: [
@@ -57,7 +57,19 @@ class WishlistController {
   }
 
   static async delete(req, res, next) {
-    // const {  }
+    try {
+      const { id } = req.params;
+
+      await Wishlist.destroy({
+        where: {
+          id
+        }
+      });
+
+      res.status(200).json({ message: "You have remove this restaurant from your wishlist" })
+    } catch (error) {
+      next(error)
+    }
   }
 }
 
