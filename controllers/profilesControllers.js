@@ -40,7 +40,7 @@ class Controller {
   static async createProfiles(req, res, next) {
     try {
       const UserId = req.currentUser.id;
-      const baseUrl = "http://localhost:3000/";
+      const baseUrl = "https://ridhasidi-wolfy.herokuapp.com/";
       const photo = baseUrl + req.file.path.replace("\\", "/");
       const { name, education, job, description, sex, gender } = req.body;
       const newProfile = await Profile.create({
