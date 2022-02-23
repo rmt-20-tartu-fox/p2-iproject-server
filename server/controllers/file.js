@@ -26,7 +26,6 @@ class FileController {
       console.log("Labels:");
       labels.forEach((label) => console.log(label.description));
       const labelsData = labels.map((label) => label.description);
-      console.log("SEBELOM RESPONSE UPLOAD");
       response.status(200).json({data: labelsData})
     } catch (err) {
       if (err.code == "LIMIT_FILE_SIZE") {

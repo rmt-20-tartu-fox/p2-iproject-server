@@ -26,8 +26,6 @@ class PetController {
   static async checkPet(request, response, next) {
     try {
       // check OwnerID from localStorage
-      console.log(request.userData, 66666666666666);
-
       const OwnerID = request.userData.id;
 
       const data = await Pet.findOne({
@@ -38,7 +36,7 @@ class PetController {
       if (!data || data.length === 0) {
         response.status(200).json({ status: 0 });
       } else {
-        response.status(200).json({ status: 1 });
+        response.status(200).json(data);
       }
     } catch (error) {
       next(error);
@@ -46,7 +44,7 @@ class PetController {
   }
   static async feedPet(request, response, next) {
     try {
-      const labelsData = request.body.data.data
+      const labelsData = request.body.data.data;
       const OwnerID = request.userData.id;
       const correctlyFedResponse = await Pet.increment(
         {
@@ -55,18 +53,20 @@ class PetController {
         {
           where: {
             OwnerID: OwnerID,
-            [Op.or]: [
-              { craving: { [Op.iLike]: `%${labelsData[0]}%` } },
-              { craving: { [Op.iLike]: `%${labelsData[1]}%` } },
-              { craving: { [Op.iLike]: `%${labelsData[2]}%` } },
-            ],
+            craving: { [Op.iLike]: `%${labelsData[0]}%` },
           },
         }
       );
-      if (!correctlyFedResponse) {
-        response.status(200).json({ message: "Your pet doesn't like the food 😔" });
+      if (!correctlyFedResponse[0][0][0]) {
+        throw {
+          code: 500,
+          name: "Disliked food",
+          message: "Your pet doesn't like the food 😔",
+        };
       } else {
-        response.status(200).json({ message: "Your pet really like the food! 😍" });
+        response
+          .status(200)
+          .json({ message: "Your pet really like the food! 😍" });
       }
     } catch (error) {
       next(error);

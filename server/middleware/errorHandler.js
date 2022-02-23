@@ -3,6 +3,9 @@ const errorHandler = (error, request, response, next) => {
   console.log(error); 
   console.log("🦆🦆🦆🦆🦆🦆🦆🦆🦆🦆🦆🦆🦆🦆🦆🦆");
   switch (error.name) {
+    case "Disliked food":
+      response.status(error.code).json({message: error.message})
+      break;
     case "Unauthorized":
       response.status(error.code).json({message: error.message})
       break;
