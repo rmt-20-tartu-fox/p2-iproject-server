@@ -2,26 +2,31 @@
   {
     "UserId": 1,
     "sex": "female",
-    "name": "Maria"
+    "name": "Maria",
+    "photos": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.dailysia.com%2Fbiodata-profil-dan-fakta-hwasa-mamamoo%2F&psig=AOvVaw1rxudZ4DbaPEI1W3EsD77m&ust=1645741920143000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCKDCpcrwlvYCFQAAAAAdAAAAABAD"
   },
   {
     "UserId": 2,
     "sex": "male",
-    "name": "Mario"
+    "name": "Mario",
+    "photos": "https://cdn0-production-images-kly.akamaized.net/-CdIvw2amdcRU6DulGBOdv0f_F0=/640x640/smart/filters:quality(75):strip_icc():format(jpeg)/kly-media-production/medias/3239383/original/049235300_1600233189-5.jpg"
   },
   {
     "UserId": 3,
     "sex": "male",
-    "name": "David"
+    "name": "David",
+    "photos": "https://celebheightage.com/wp-content/uploads/2021/06/Damiano-David.jpg"
   },
   {
     "UserId": 4,
     "sex": "male",
-    "name": "Yoga"
+    "name": "Yoga",
+    "photos": "https://assets.pikiran-rakyat.com/crop/0x0:0x0/x/photo/2021/05/17/2908058572.png"
   },
   {
     "UserId": 5,
     "sex": "female",
-    "name": "Marta"
+    "name": "Marta",
+    "photos": "https://cdn.vox-cdn.com/thumbor/yjtuGJcnOhJ1nQYJeka6eT6uxNQ=/0x0:4000x2662/1200x800/filters:focal(1680x1011:2320x1651)/cdn.vox-cdn.com/uploads/chorus_image/image/68976613/1304326520.0.jpg"
   }
 ]

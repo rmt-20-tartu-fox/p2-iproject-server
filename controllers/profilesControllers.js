@@ -3,10 +3,9 @@ const { User, Profile } = require("../models/index");
 class Controller {
   static async readProfiles(req, res, next) {
     try {
-      const UserId = req.params.id;
+      const UserId = req.currentUser.id;
       const user = await User.findOne({
         where: { id: UserId },
-
         attributes: { exclude: ["password", "createdAt", "updatedAt"] },
         include: [
           {
@@ -27,10 +26,12 @@ class Controller {
   static async createProfiles(req, res, next) {
     try {
       const UserId = req.currentUser.id;
-      const { name, photos, education, job, description, sex, gender } = req.body;
+      const baseUrl = "http://localhost:3000/";
+      const photo = baseUrl + req.file.path.replace("\\", "/");
+      const { name, education, job, description, sex, gender } = req.body;
       const newProfile = await Profile.create({
         name,
-        photos,
+        photos: photo,
         education,
         job,
         description,

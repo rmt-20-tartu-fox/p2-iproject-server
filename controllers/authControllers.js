@@ -43,7 +43,10 @@ class Controller {
       });
       // postgeo
       geoController.updateGeo(user.id, next);
-      res.status(200).json({ access_token: token });
+      res.status(200).json({
+        id: user.id,
+        access_token: token,
+      });
     } catch (error) {
       next(error);
     }
