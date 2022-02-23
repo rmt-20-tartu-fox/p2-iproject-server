@@ -98,7 +98,7 @@ class UserController {
 
     // setup email data with unicode symbols
     let mailOptions = {
-      from: '"Nodemailer Contact" <hactivnime@gmail.com>', // sender address
+      from: '"HactiveNime" <hactivnime@gmail.com>', // sender address
       to: `${email}`, // list of receivers
       subject: 'Node Contact Request', // Subject line
       text: 'Hello world?', // plain text body
