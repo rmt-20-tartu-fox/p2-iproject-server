@@ -19,7 +19,7 @@ class RestaurantController {
       const { id: UserId } = req.user;
 
       const result = await Restaurant.create({
-        UserId: req.user.id,
+        UserId,
         name,
         address,
         lat,

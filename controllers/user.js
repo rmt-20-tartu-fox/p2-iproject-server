@@ -8,6 +8,16 @@ const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
 const { OAuth2Client } = require("google-auth-library");
 const client = new OAuth2Client(GOOGLE_CLIENT_ID);
 
+const ImageKit = require("imagekit");
+const publicKey = process.env.IMAGEKIT_PUBLIC;
+const privateKey = process.env.IMAGEKIT_PRIVATE;
+
+let imagekit = new ImageKit({
+  publicKey,
+  privateKey,
+  urlEndpoint: "https://ik.imagekit.io/iqpgx3omg7kg",
+});
+
 class UserController {
   static async register(req, res, next) {
     try {
@@ -120,6 +130,58 @@ class UserController {
         email: user.email,
         role: user.role,
       });
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  static async edit(req, res, next) {
+    try {
+      const { username, email, password, passwordBefore } = req.body;
+
+      const findUser = await User.findByPk(req.user.id);
+
+      if (!findUser) {
+        throw { name: "USER_NOT_FOUND" };
+      }
+
+      if (!comparePassword(passwordBefore, findUser.password)) {
+        throw { name: "PASSWORD_NOT_MATCH" };
+      }
+
+      await User.update(
+        {
+          username,
+          email,
+          password,
+        },
+        {
+          where: {
+            id: req.user.id,
+          },
+        }
+      );
+
+      const image = await imagekit.upload({
+        file: req.file.buffer,
+        fileName: req.file.originalName,
+        useUniqueFileName: true,
+        folder: "/profile",
+      });
+
+      const updateImage = await User.update(
+        {
+          imgUrl: image.url,
+        },
+        {
+          where: {
+            id: req.user.id,
+          },
+          returning: true,
+        }
+      );
+
+      res.status(200).json(updateImage[1]);
     } catch (error) {
       next(error);
     }
