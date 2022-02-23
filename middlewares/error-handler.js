@@ -22,23 +22,23 @@ const errorHandler = (err, req, res, next) => {
       status = 401;
       message = "Invalid token";
       break;
-    case `FORBIDDEN`:
+    case "FORBIDDEN":
       status = 403;
       message = "You are not authorized";
       break;
-    case `NOT_FOUND`:
+    case "NOT_FOUND":
       status = 404;
       message = "Data not found";
       break;
-    case `INVALID_USER`:
+    case "INVALID_USER":
       status = 400;
       message = "Email/Username is required";
       break;
-    case `INVALID_PASSWORD`:
+    case "INVALID_PASSWORD":
       status = 400;
       message = "password is required";
       break;
-    case `INVALID_USER`:
+    case "INVALID_USER":
       status = 401;
       message = "Invalid email/password";
       break;
