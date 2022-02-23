@@ -1,22 +1,35 @@
-const UserController = require('../controllers/user');
+const RestaurantController = require("../controllers/restaurant");
+const ReviewController = require("../controllers/review");
+const UserController = require("../controllers/user");
+const authentication = require("../middlewares/authentication");
+const ownerAuthorization = require("../middlewares/owner-authorization");
+const restaurantAuthorization = require("../middlewares/restaurant-authorization");
+const uploadSingle = require("../middlewares/upload-single");
+const indexRouter = require("express").Router();
 
-const indexRouter = require('express').Router();
+indexRouter.post("/login", UserController.login);
+indexRouter.post("/register", UserController.register);
+indexRouter.post("/login-google", UserController.loginGoogle);
 
-indexRouter.post("/login", UserController.login)
-indexRouter.post("/register", UserController.register)
-indexRouter.post("/login-google", UserController.loginGoogle)
+indexRouter.get("/restaurants", RestaurantController.getAll);
+indexRouter.get("/restaurants/:id", RestaurantController.getOne);
 
-indexRouter.get("/restaurants")
-indexRouter.post("/restaurants")
-indexRouter.put("/restaurants")
-indexRouter.get("/restaurants/:id")
+indexRouter.get("/reviews/:restaurantId", ReviewController.getAll);
 
-indexRouter.post("/reviews/:restaurantId")
-indexRouter.get("/reviews/:restaurantId")
-indexRouter.delete("/reviews/:id")
+indexRouter.use(authentication);
 
-indexRouter.post("/images/profile/:id")
-indexRouter.post("/images/review/:id")
-indexRouter.post("/images/restaurant/:id")
+indexRouter.post("/restaurants", ownerAuthorization, uploadSingle, RestaurantController.add);
+indexRouter.put(
+  "/restaurants/:id",
+  ownerAuthorization,
+  restaurantAuthorization
+);
 
-module.exports = indexRouter
+indexRouter.post("/images/profile/:id");
+indexRouter.post("/images/review/:id");
+indexRouter.post("/images/restaurant/:id");
+
+indexRouter.delete("/reviews/:id");
+indexRouter.post("/reviews/:restaurantId");
+
+module.exports = indexRouter;

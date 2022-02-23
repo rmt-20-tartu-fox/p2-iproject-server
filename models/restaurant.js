@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: "RestaurantId",
       });
       Restaurant.belongsTo(models.User, {
-        foreignKey: "RestaurantId",
+        foreignKey: "UserId",
       });
       Restaurant.hasMany(models.Review, {
         foreignKey: "RestaurantId",
@@ -90,15 +90,6 @@ module.exports = (sequelize, DataTypes) => {
       },
       imgUrl: {
         type: DataTypes.STRING,
-        allowNull: false,
-        validate: {
-          notEmpty: {
-            msg: "Image URL is Required",
-          },
-          notNull: {
-            msg: "Image URL is Required",
-          },
-        },
       },
       mapsUrl: {
         type: DataTypes.STRING,
@@ -112,9 +103,30 @@ module.exports = (sequelize, DataTypes) => {
           },
         },
       },
-      Review: DataTypes.INTEGER,
-      Rating: DataTypes.INTEGER,
-      ratingCount: DataTypes.INTEGER,
+      description: {
+        type: DataTypes.TEXT,
+        allowNull: false,
+        validate: {
+          notEmpty: {
+            msg: "Description is Required",
+          },
+          notNull: {
+            msg: "Description is Required",
+          },
+        },
+      },
+      Review: {
+        type: DataTypes.INTEGER,
+        defaultValue: 0,
+      },
+      Rating: {
+        type: DataTypes.INTEGER,
+        defaultValue: 0,
+      },
+      ratingCount: {
+        type: DataTypes.INTEGER,
+        defaultValue: 0,
+      },
     },
     {
       sequelize,

@@ -111,11 +111,11 @@ class UserController {
         },
       });
 
-      const token = createToken({
+      const accessToken = createToken({
         id: user.id,
       });
       res.status(200).json({
-        access_token: token,
+        access_token: accessToken,
         username: user.username,
         email: user.email,
         role: user.role,

@@ -75,9 +75,24 @@ module.exports = (sequelize, DataTypes) => {
           },
         },
       },
-      role: DataTypes.STRING,
-      imgUrl: {
+      role: {
         type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          notEmpty: {
+            msg: "Role is Required",
+          },
+          notNull: {
+            msg: "Role is Required",
+          },
+          isIn: {
+            args: [["Customer", "Owner"]],
+            msg: "Role must be Customer or Owner"
+          },
+        },
+      },
+      imgUrl: {
+        type: DataTypes.TEXT,
         allowNull: false,
         validate: {
           notEmpty: {
