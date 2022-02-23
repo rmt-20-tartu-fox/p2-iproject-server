@@ -142,18 +142,18 @@ app.post("/diagnosis", (req, res, next) => {
   var computedHashString = computedHash.toString(CryptoJS.enc.Base64);
 
   //! Dummy data
-  const config = {
-    headers: {
-      Authorization: `Bearer jubelsinaga13@gmail.com:${computedHashString}`,
-    },
-  };
-
-  //? Real data
   // const config = {
   //   headers: {
-  //     Authorization: `Bearer ${process.env.API_MEDIC_USER}:${computedHashString}`,
+  //     Authorization: `Bearer jubelsinaga13@gmail.com:${computedHashString}`,
   //   },
   // };
+
+  //? Real data
+  const config = {
+    headers: {
+      Authorization: `Bearer ${process.env.API_MEDIC_USER}:${computedHashString}`,
+    },
+  };
 
   axios
     .post(uri, {}, config)
@@ -163,10 +163,10 @@ app.post("/diagnosis", (req, res, next) => {
       const { symptoms, gender, yearOfBirth } = req.body;
 
       //! Dummy data
-      let url = `https://sandbox-healthservice.priaid.ch/diagnosis?symptoms=[${symptoms}]&gender=${gender}&year_of_birth=${yearOfBirth}&token=${token}&language=${language}`;
+      // let url = `https://sandbox-healthservice.priaid.ch/diagnosis?symptoms=[${symptoms}]&gender=${gender}&year_of_birth=${yearOfBirth}&token=${token}&language=${language}`;
 
       //? Real data
-      // let url = `https://healthservice.priaid.ch/diagnosis?symptoms=[${symptoms}]&gender=${gender}&year_of_birth=${yearOfBirth}&token=${token}&language=${language}`;
+      let url = `https://healthservice.priaid.ch/diagnosis?symptoms=[${symptoms}]&gender=${gender}&year_of_birth=${yearOfBirth}&token=${token}&language=${language}`;
 
       return axios.get(url);
     })
