@@ -26,7 +26,7 @@ class UserRecipeWishList {
       const recipeResult = await axios.get(
         `https://api.edamam.com/api/recipes/v2/${RecipeId}?type=public&app_id=37739ed6&app_key=2d43044520cc6293d202b58fb76aa198&field=uri&field=label&field=image&field=ingredientLines&field=calories`
       );
-      console.log(recipeResult.data);
+      // console.log(recipeResult.data);
       const createWishList = await UserRecipe.create({
         UserId,
         RecipeId: RecipeId,
