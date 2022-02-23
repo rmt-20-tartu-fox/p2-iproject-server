@@ -18,6 +18,19 @@ module.exports = {
         onUpdate: "cascade",
         onDelete: "cascade",
       },
+      BookId: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        references: {
+          model: "Books",
+          key: "id",
+        },
+        onUpdate: "cascade",
+        onDelete: "cascade",
+      },
+      order_id: {
+        type: Sequelize.STRING,
+      },
       status: {
         defaultValue: "Uncompleted",
         type: Sequelize.STRING,

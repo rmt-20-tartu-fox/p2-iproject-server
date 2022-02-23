@@ -8,8 +8,8 @@ const getSnapToken = async (req, res, next) => {
     serverKey: process.env.SERVER_KEY,
   });
   try {
-    // console.log(">>>>");
-    let { price, first_name, last_name, email, quantity, itemName } = req.body;
+    let email = req.userLogin.email;
+    let { price, first_name, last_name, quantity, itemName } = req.body;
     let parameter = {
       transaction_details: {
         order_id: `${Math.floor(Date.now() / 10)}`,
@@ -39,21 +39,20 @@ const getSnapToken = async (req, res, next) => {
     const result = await snap.createTransaction(parameter);
     res.status(200).json(result);
   } catch (error) {
-    // console.log(error.messages);
     next(error);
   }
 };
 
 const transaction = async (req, res, next) => {
   try {
-    let { order_id, transaction_status } = req.query;
-
+    let { BookId, order_id, transaction_status } = req.body;
     let newStatus = await Transaction.create({
       status: transaction_status,
       order_id: order_id,
       UserId: req.userLogin.id,
+      BookId: BookId,
     });
-    res.status(200).json(newStatus);
+    res.status(201).json(newStatus);
   } catch (error) {
     next(error);
   }

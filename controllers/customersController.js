@@ -94,9 +94,23 @@ const getBooks = async (req, res, next) => {
   }
 };
 
+const getDetailBook = async (req, res, next) => {
+  try {
+    let { id } = req.params;
+    let book = await Book.findByPk(+id);
+    if (!book) {
+      throw new Error("BOOK_NOT_FOUND");
+    }
+    res.status(200).json(book);
+  } catch (error) {
+    next(error);
+  }
+};
+
 module.exports = {
   registerCustomer,
   loginCustomer,
   addBooksToDB,
   getBooks,
+  getDetailBook,
 };

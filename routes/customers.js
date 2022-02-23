@@ -4,6 +4,7 @@ const {
   loginCustomer,
   addBooksToDB,
   getBooks,
+  getDetailBook,
 } = require("../controllers/customersController");
 const {
   getSnapToken,
@@ -15,10 +16,14 @@ router.post("/register", registerCustomer);
 router.post("/login", loginCustomer);
 
 router.get("/books", getBooks);
+
 router.use(authentication);
+
+router.get("/books/:id", getDetailBook);
 router.post("/books", addBooksToDB);
 
-router.post("/transactions", getSnapToken);
-router.patch("/transactions", transaction);
+router.post("/payment", getSnapToken);
+
+router.post("/transactions", transaction);
 // router.get("/mycarts");
 module.exports = router;
