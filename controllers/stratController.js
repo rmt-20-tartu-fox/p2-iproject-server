@@ -58,6 +58,7 @@ class Controller{
       // }
       if (!MapId){
         res.status(400).json({message: "Choose A Map"})
+        return 
       }
       if (Op1Id === Op2Id || Op1Id === Op3Id || Op1Id === Op4Id || Op1Id === Op5Id){
         res.status(400).json({message: "Choose Another Operator"})
@@ -207,7 +208,7 @@ class Controller{
   static async deleteMyStrat(req, res, next){
     let {id, email, username, role} = req.loggedUser
     let {stratId} = req.params
-
+    console.log(req.params, "<<<<<<<<<<<<<<<<<<<<<,")
     try {
       let deletedStrat = Strat.destroy({
         where: {

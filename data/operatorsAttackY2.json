@@ -1,0 +1,47 @@
+[
+  {
+    "name": "Buck",
+    "iconUrl": "https://staticctf.akamaized.net/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/2oZZBEZzVLFpRY7Mp85MWq/f62287872dd61b4e0697a93d703b2beb/Y1S1_BADGE_Buck_L.png",
+    "imageUrl": "https://staticctf.akamaized.net/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/3YDi0a5YWFRwNzMoAjZstI/f2ebc37bde447faa664bcf160c63042d/R6-operator-buck.png",
+    "ability": "Skeleton Key",
+    "quote": "Follow me. I know a shortcut.",
+    "content": "Under-barrel mounted 12 gauge shotgun with four round capacity, used in tandem with an assault rifle. The Skeleton Key allows the operator to alternate between their standard issue assault rifle and a breaching shotgun with ease and efficiency.",
+    "videoUrl": "https://www.youtube.com/embed/h_rf8K13gow"
+  },
+  {
+    "name": "Blackbeard",
+    "iconUrl": "https://staticctf.akamaized.net/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/4BTbmcs1EtoUbnpk5Am22Y/b7bd4d0708245c78b98455505c0d51a8/Y1S2_BADGE_Blackbeard_L.png",
+    "imageUrl": "https://staticctf.akamaized.net/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/1FtCiVm4q4DsQNsLoT5nV0/2028bded87ef2fe2b255332f4245c525/R6-operator-blackbeard.png",
+    "ability": "Rifle Shield",
+    "quote": "I`m a diver. We`re used to seeing threats through a layer of tempered glass.",
+    "content": "Multiple layers of transparent polycarbonate and thermoplastic armor, coated with a spall shield and backed with ultra-light weight laminated glass. Protects the user against blunt impact and artillery fire.",
+    "videoUrl": "https://www.youtube.com/embed/cqHxebcvgDE"
+  },
+  {
+    "name": "Capitao",
+    "iconUrl": "https://staticctf.akamaized.net/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/73R4IrWJyn0xdkJ0fjOODA/fc70d200a7530dccae2847ab7962e394/Y1S3_BADGE_Capitao_L.png",
+    "imageUrl": "https://staticctf.akamaized.net/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/5OxEmlChYi0U3d4URLaC4C/e348f7b3b77d2d8dec65ec6afbe171f9/R6-operator-capitao.png",
+    "ability": "Tactical Crossbow",
+    "quote": "Focusing only on the bad things in life will keep you from seeing the many opportunities to do good.",
+    "content": "Use a glass bolt to deliver a swift and silent assault against hostiles without alerting them to your position. The glass cartridge breaks on impact releasing a gas that ignites the oxygen in the surrounding area. Deliver swift and agile assaults without alerting your opponents of your position.",
+    "videoUrl": "https://www.youtube.com/embed/lqsL4QpKXeM"
+  },
+  {
+    "name": "Hibana",
+    "iconUrl": "https://staticctf.akamaized.net/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/1TSA4pMR58vgfrEai69REl/f82b1eba6694b4aa77259d3d0fe8cc08/Y1S4_BADGE_Hibana_L.png",
+    "imageUrl": "https://staticctf.akamaized.net/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/4a3bXHSd7wz9vRZzRC8Kzq/98dac79c29394be7f5ff4d363fce5140/R6-operator-hibana.png",
+    "ability": "X-KAIROS",
+    "quote": "Kyūdō is meditation in action. Explosions are part of that action.",
+    "content": "The X-KAIROS - a 40 mm caliber launcher - fires explosive pellets that can be detonated simultaneously from a distance. Deliver innovative assaults by creating lines of sights, or new pathways!",
+    "videoUrl": "https://www.youtube.com/embed/12hNVzz4CYY"
+  },
+  {
+    "name": "Jackal",
+    "iconUrl": "https://staticctf.akamaized.net/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/28k7LKWK70lxib7CimPJaZ/f34b2065811df8f0339838922f8c94b1/Y2S1_BADGE_Jackal_L.png",
+    "imageUrl": "https://staticctf.akamaized.net/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/2YoFmkuQL4r8odEWB7K60w/b5fd30cf9c7f407753bd921dfe6a1d28/R6-operator-jackal.png",
+    "ability": "EYENOX MODEL III",
+    "quote": "You can`t escape me, but that doesn`t mean you won`t try.",
+    "content": "Eyenox Model III was created to offer a mobile tracking device able to both identify and trail a person`s footprints in real-time. Equipped with advanced computer vision, the Eyenox detects invisible details relating to footfall and weight distribution so that you can identify and stalk your target.",
+    "videoUrl": "https://www.youtube.com/embed/TuNPJIVR9AM"
+  }
+]
