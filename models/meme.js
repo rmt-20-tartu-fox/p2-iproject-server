@@ -15,6 +15,7 @@ module.exports = (sequelize, DataTypes) => {
       });
       Meme.belongsTo(models.User, { foreignKey: "UserId" });
       Meme.belongsTo(models.Category, { foreignKey: "CategoryId" });
+      Meme.hasMany(models.Like, { foreignKey: "MemeId" });
     }
   }
   Meme.init(

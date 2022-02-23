@@ -8,10 +8,14 @@ class LikeController {
         where: {
           UserId: id,
         },
+        include: {
+          model: Meme,
+        },
       });
 
       res.status(200).json(likes);
     } catch (err) {
+      console.log(err);
       next(err);
     }
   };

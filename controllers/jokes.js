@@ -6,7 +6,7 @@ class JokeController {
     try {
       await axios
         .get(
-          "https://us-central1-dadsofunny.cloudfunctions.net/DadJokes//random/jokes/10"
+          "https://us-central1-dadsofunny.cloudfunctions.net/DadJokes//random/jokes/1"
         )
         .then((resp) => {
           res.status(200).json(resp.data);

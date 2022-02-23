@@ -9,10 +9,17 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      Like.belongsTo(models.Meme, { foreignKey: "MemeId" });
     }
   }
   Like.init(
     {
+      id: {
+        allowNull: false,
+        autoIncrement: true,
+        primaryKey: true,
+        type: DataTypes.INTEGER,
+      },
       UserId: {
         type: DataTypes.INTEGER,
         allowNull: false,

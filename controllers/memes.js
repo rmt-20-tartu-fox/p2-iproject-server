@@ -5,10 +5,11 @@ const { upload } = require("../middlewares/multer");
 class MemeController {
   static getMemesAPI = async (req, res, next) => {
     try {
-      await axios
-        .get("http://api-1cak.herokuapp.com/random", {})
+      axios
+        .get("https://meme-api.herokuapp.com/gimme/6", {})
         .then((resp) => {
-          res.status(200).json(resp.data);
+          console.log(resp);
+          res.status(200).json(resp.data.memes);
         })
         .catch((err) => {
           next(err);
@@ -20,7 +21,15 @@ class MemeController {
 
   static getMemes = async (req, res, next) => {
     try {
-      let memes = await Meme.findAll();
+      const { CategoryId } = req.query;
+
+      let where = {};
+
+      CategoryId ? (where.CategoryId = CategoryId) : {};
+
+      let memes = await Meme.findAll({
+        where: where,
+      });
 
       res.status(200).json(memes);
     } catch (err) {
@@ -48,8 +57,11 @@ class MemeController {
     try {
       await upload(req, res, async (err) => {
         if (err) {
+          console.log("masuk error upload <<<<<<<<< ");
           next(err);
         } else {
+          console.log(req.body, "<<<<<<<< req");
+
           if (!req.file) {
             throw {
               name: "notFound",
@@ -60,7 +72,9 @@ class MemeController {
           const { id } = req.loggedUser;
 
           const { title, nsfw, CategoryId } = req.body;
-          const image = req.file.path;
+          let path = req.file.path;
+
+          let image = path.slice(7);
 
           const meme = await Meme.create({
             title,

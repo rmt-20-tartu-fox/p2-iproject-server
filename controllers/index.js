@@ -60,7 +60,7 @@ class Controller {
       };
       const access_token = payloadToToken(payload);
 
-      res.status(200).json({ access_token });
+      res.status(200).json({ access_token, username: user.username });
     } catch (err) {
       console.log(err);
       next(err);

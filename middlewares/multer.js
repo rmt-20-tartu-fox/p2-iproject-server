@@ -2,7 +2,8 @@ const multer = require("multer");
 
 const fileStorage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, "memes");
+    console.log("masuk destination <<<<<<");
+    cb(null, "public/memes");
   },
   filename: (req, file, cb) => {
     console.log(file, "<<<<< file");
