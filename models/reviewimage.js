@@ -24,7 +24,8 @@ module.exports = (sequelize, DataTypes) => {
   ReviewImage.init({
     UserId: DataTypes.INTEGER,
     RestaurantId: DataTypes.INTEGER,
-    ReviewId: DataTypes.INTEGER
+    ReviewId: DataTypes.INTEGER,
+    imgUrl: DataTypes.TEXT
   }, {
     sequelize,
     modelName: 'ReviewImage',

@@ -1,11 +1,10 @@
 const RestaurantController = require("../controllers/restaurant");
+const ReviewController = require("../controllers/review");
 const UserController = require("../controllers/user");
 const authentication = require("../middlewares/authentication");
 const ownerAuthorization = require("../middlewares/owner-authorization");
 const restaurantAuthorization = require("../middlewares/restaurant-authorization");
-
 const uploadSingle = require("../middlewares/upload-single");
-
 const indexRouter = require("express").Router();
 
 indexRouter.post("/login", UserController.login);
@@ -15,7 +14,7 @@ indexRouter.post("/login-google", UserController.loginGoogle);
 indexRouter.get("/restaurants", RestaurantController.getAll);
 indexRouter.get("/restaurants/:id", RestaurantController.getOne);
 
-indexRouter.get("/reviews/:restaurantId");
+indexRouter.get("/reviews/:restaurantId", ReviewController.getAll);
 
 indexRouter.use(authentication);
 
