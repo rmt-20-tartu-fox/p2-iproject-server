@@ -23,6 +23,7 @@ app.get("/books/search", BooksController.getBookByTitle)
 app.use(authentication)
 app.post("/bookmarks", BookmarkController.postBookmark)
 app.get("/bookmarks", BookmarkController.getBookmark)
+app.delete("/bookmarks/:bookmarkId", BookmarkController.deleteBookmark)
 app.use(errorHandler)
 
 app.listen(PORT, _=>{
