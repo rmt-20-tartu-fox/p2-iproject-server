@@ -5,7 +5,7 @@ class deckController {
   static addToDeck = async (req, res, next) => {
     try {
       const { cardId } = req.params;
-      const { DeckName } = req.body;
+
 
       const userId = req.loginUser.id;
       const card = await axios.get(`https://db.ygoprodeck.com/api/v7/cardinfo.php?num=10&offset=0&id=${cardId}`);
@@ -20,7 +20,7 @@ class deckController {
       const CardName = card.data.data[0].name;
       const CardType = card.data.data[0].type;
       const CardImageUrl = card.data.data[0].card_images[0].image_url;
-      const deck = await Deck.create({ DeckName, UserId: userId, CardId, CardName, CardType, CardImageUrl });
+      const deck = await Deck.create({ UserId: userId, CardId, CardName, CardType, CardImageUrl });
       res.status(201).json(deck);
     } catch (err) {
       console.log(err);
@@ -51,7 +51,7 @@ class deckController {
     try {
       const { deckName } = req.params;
       const userId = req.loginUser.id;
-      const deck = await Deck.findAll({ where: { UserId: userId, DeckName: deckName } });
+      const deck = await Deck.findAll({ where: { UserId: userId } });
       res.status(200).json(deck);
     } catch (err) {
       next(err);
