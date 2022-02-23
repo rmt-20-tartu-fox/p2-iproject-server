@@ -1,70 +1,73 @@
-'use strict';
+"use strict";
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('Restaurants', {
+    await queryInterface.createTable("Restaurants", {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       UserId: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
           model: {
-            tableName: "Users"
+            tableName: "Users",
           },
-          key: "id"
+          key: "id",
         },
         onUpdate: "CASCADE",
-        onDelete: "CASCADE"
+        onDelete: "CASCADE",
       },
       name: {
         type: Sequelize.STRING,
         unique: true,
-        allowNull: false
+        allowNull: false,
       },
       address: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: false,
+      },
+      description: {
+        type: Sequelize.TEXT,
+        allowNull: false,
       },
       lat: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: false,
       },
       lng: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: false,
       },
       imgUrl: {
         type: Sequelize.STRING,
-        allowNull: false
       },
       mapsUrl: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: false,
       },
       Review: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       Rating: {
-        type: Sequelize.FLOAT
+        type: Sequelize.FLOAT,
       },
       ratingCount: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
-      }
+        type: Sequelize.DATE,
+      },
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('Restaurants');
-  }
+    await queryInterface.dropTable("Restaurants");
+  },
 };

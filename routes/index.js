@@ -1,3 +1,4 @@
+const RestaurantController = require("../controllers/restaurant");
 const UserController = require("../controllers/user");
 const authentication = require("../middlewares/authentication");
 const ownerAuthorization = require("../middlewares/owner-authorization");
@@ -18,7 +19,7 @@ indexRouter.get("/reviews/:restaurantId");
 
 indexRouter.use(authentication);
 
-indexRouter.post("/restaurants", ownerAuthorization, uploadSingle, );
+indexRouter.post("/restaurants", ownerAuthorization, uploadSingle, RestaurantController.add);
 indexRouter.put(
   "/restaurants/:id",
   ownerAuthorization,

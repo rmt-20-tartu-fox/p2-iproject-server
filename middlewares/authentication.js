@@ -9,7 +9,7 @@ const authentication = async (req, res, next) => {
       throw { name: "AUTHENTICATION_FAILED" };
     }
 
-    const { id } = verifyToken(access_token);
+    const { id } = verifyToken(token);
     const findUser = await User.findByPk(id);
 
     if (!findUser) {
