@@ -87,7 +87,7 @@ app.post("/login", async (req, res, next) => {
           };
 
           let token = jwt.sign(payload, secret);
-          res.status(200).json({ access_token: token });
+          res.status(200).json({ user: foundUser.email, access_token: token });
         } else {
           res.status(401).json({ message: "Invalid email/password" });
         }
@@ -217,7 +217,7 @@ app.post("/diagnosis", (req, res, next) => {
     })
     .catch((err) => {
       // console.log(err);
-      res.send(err.response.data);
+      res.status(500).json({ message: err.response.data });
     });
 
   //* Get diagnose
