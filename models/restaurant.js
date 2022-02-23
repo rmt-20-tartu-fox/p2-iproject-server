@@ -112,9 +112,18 @@ module.exports = (sequelize, DataTypes) => {
           },
         },
       },
-      Review: DataTypes.INTEGER,
-      Rating: DataTypes.INTEGER,
-      ratingCount: DataTypes.INTEGER,
+      Review: {
+        type: DataTypes.INTEGER,
+        defaultValue: 0,
+      },
+      Rating: {
+        type: DataTypes.INTEGER,
+        defaultValue: 0,
+      },
+      ratingCount: {
+        type: DataTypes.INTEGER,
+        defaultValue: 0,
+      },
     },
     {
       sequelize,

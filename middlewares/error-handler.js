@@ -22,9 +22,9 @@ const errorHandler = (err, req, res, next) => {
       status = 401;
       message = "Invalid token";
       break;
-    case "FORBIDDEN":
+    case "FORBIDDEN_NOT_CUSTOMER":
       status = 403;
-      message = "You are not authorized";
+      message = "You Are Not Customer";
       break;
     case "FORBIDDEN_NOT_OWNER":
       status = 403;
