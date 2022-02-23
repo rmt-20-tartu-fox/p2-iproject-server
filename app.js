@@ -13,6 +13,10 @@ const mapboxAccessToken = process.env.MAPBOXTOKEN;
 const geopifyAPI = process.env.GEOPIFYAPI;
 let apiMedicSecretKey = "Rs35Lba2M8Kkw4Z7W";
 enc();
+const jwt = require("jsonwebtoken");
+const bcrypt = require("bcryptjs");
+const secret = process.env.SECRET;
+const { User } = require("./models");
 
 const httpServer = createServer(app); //* Socket
 const io = new Server(httpServer, {
@@ -47,6 +51,55 @@ io.on("connection", (socket) => {
     chats = [...chats, newMsg];
     socket.broadcast.emit("sendToClient", newMsg);
   });
+});
+
+//* Register user
+app.post("/register", async (req, res, next) => {
+  try {
+    const { email, password } = req.body;
+    let user = await User.create({ email, password });
+    res.status(201).json({ id: user.id, email: user.email });
+  } catch (err) {
+    if (err.errors) {
+      res.status(400).json({ message: err.errors[0].message });
+    } else {
+      res.status(500).json({ message: "Internal server error" });
+    }
+  }
+});
+
+//* Login
+app.post("/login", async (req, res, next) => {
+  try {
+    const { email, password } = req.body;
+    if (!email || !password) {
+      res.status(400).json({ message: "Email or password must be inputted" });
+    } else {
+      let foundUser = await User.findOne({ where: { email } });
+      if (!foundUser) {
+        res.status(401).json({ message: "Invalid email/password" });
+      } else {
+        let isPass = bcrypt.compareSync(password, foundUser.password);
+        if (isPass) {
+          let payload = {
+            id: foundUser.id,
+            email: foundUser.email,
+          };
+
+          let token = jwt.sign(payload, secret);
+          res.status(200).json({ access_token: token });
+        } else {
+          res.status(401).json({ message: "Invalid email/password" });
+        }
+      }
+    }
+  } catch (err) {
+    if (err.errors) {
+      res.status(400).json({ message: err.errors[0].message });
+    } else {
+      res.status(500).json({ message: "Internal server error" });
+    }
+  }
 });
 
 //* Get token
