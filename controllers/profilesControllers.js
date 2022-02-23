@@ -7,7 +7,7 @@ class Controller {
       const user = await User.findOne({
         where: { id: UserId },
 
-        attributes: { exclude: ["createdAt", "updatedAt"] },
+        attributes: { exclude: ["password", "createdAt", "updatedAt"] },
         include: [
           {
             model: Profile,
