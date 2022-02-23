@@ -7,34 +7,45 @@ class ReviewController {
 
       const result = await Review.findAll({
         where: {
-          RestaurantId
+          RestaurantId,
         },
         attributes: {
-          exclude: ["createdAt", "updatedAt"]
+          exclude: ["createdAt", "updatedAt"],
         },
-        include: [{
-          model: User,
-          attributes: {
-            exclude: ["createdAt", "updatedAt"]
-          },
-          include: [{
-            model: ReviewImage,
+        include: [
+          {
+            model: User,
             attributes: {
-              include: ["imgUrl"]
-            }
-          }]
-        }]
-      })
+              exclude: ["createdAt", "updatedAt"],
+            },
+            include: [
+              {
+                model: ReviewImage,
+                attributes: {
+                  include: ["imgUrl"],
+                },
+              },
+            ],
+          },
+        ],
+      });
 
-      res.status(200).json(result)
+      res.status(200).json(result);
     } catch (error) {
-      next(error)
+      next(error);
     }
   }
 
   static async delete(req, res, next) {
-    
+    try {
+      const { id } = req.params;
+      await Review.destroy(id);
+
+      res.status(200).json({ message: "This review has been deleted" })
+    } catch (error) {
+      next(error)
+    }
   }
 }
 
-module.exports = ReviewController
+module.exports = ReviewController;
