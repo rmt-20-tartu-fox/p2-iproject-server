@@ -4,15 +4,32 @@ class CityController {
   static async fetchCity(req, res, next) {
     try {
       let { page } = req.query
-      if (!page) page = 1
+      // page = 1
+      if (!page) {
+        page = 1
+      }
       const city = await City.findAndCountAll({
         attributes: { exclude: ["createdAt", "updatedAt"] },
         limit: 1,
         offset: page - 1
       });
-
+      
       city.page = page
       city.total_page = city.count
+
+      res.status(200).json(city)
+    } catch (err) {
+      next(err);
+    }
+  }
+
+  static async fetchAllCity(req, res, next) {
+    try {
+      
+      const city = await City.findAll({
+        attributes: { exclude: ["createdAt", "updatedAt"] },
+        order: [['name', 'ASC']]
+      });
 
       res.status(200).json(city)
     } catch (err) {

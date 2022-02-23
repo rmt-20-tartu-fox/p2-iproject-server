@@ -3,6 +3,6 @@ const router = express.Router();
 
 const WeatherAPI = require('../controller/weatherAPIController.js')
 
-router.get('/weathers', WeatherAPI.getWeather)
+router.post('/weathers', WeatherAPI.getWeather)
 
 module.exports = router;

@@ -1,95 +1,103 @@
-const axios = require('axios').default
+const axios = require("axios").default;
 
 class BookingAPI {
-  static async getHotel(req, res ,next) {
+  static async getHotel(req, res, next) {
     try {
-      const { longitude, latitude } = req.body
+      const { longitude, latitude, checkin, checkout } = req.body;
+
+      if (!longitude) longitude = "-7.0849";
+      if (!latitude) latitude = "107.4461";
+
+      console.log(longitude, latitude, checkin, checkout, '<<<< setelah REQ BODY')
+
       let options = {
-        method: 'GET',
-        url: 'https://booking-com.p.rapidapi.com/v1/hotels/search-by-coordinates',
+        method: "GET",
+        url: "https://booking-com.p.rapidapi.com/v1/hotels/search-by-coordinates",
         params: {
-          checkin_date: '2022-08-05', 
-          order_by: 'popularity',
-          units: 'metric',
+          checkin_date: checkin,
+          order_by: "popularity",
+          units: "metric",
           longitude: longitude,
-          adults_number: '2',
+          adults_number: "2",
           latitude: latitude,
-          room_number: '1',
-          locale: 'en-gb',
-          filter_by_currency: 'IDR',
-          checkout_date: '2022-08-06',
-          children_number: '2',
-          children_ages: '5,0',
-          page_number: '0',
-          categories_filter_ids: 'class::2,class::4,free_cancellation::1',
-          include_adjacency: 'true'
+          room_number: "1",
+          locale: "en-gb",
+          filter_by_currency: "IDR",
+          checkout_date: checkout,
+          children_number: "2",
+          children_ages: "5,0",
+          page_number: "0",
+          categories_filter_ids: "class::2,class::4,free_cancellation::1",
+          include_adjacency: "true",
         },
         headers: {
-          'x-rapidapi-host': 'booking-com.p.rapidapi.com',
-          'x-rapidapi-key': 'b2d6979e45msh4535f2eb6faae6ep1bd4acjsneebd13a671c8'
-        }
+          "x-rapidapi-host": "booking-com.p.rapidapi.com",
+          "x-rapidapi-key":
+            "b2d6979e45msh4535f2eb6faae6ep1bd4acjsneebd13a671c8",
+        },
       };
-      
-      const { data } = await axios.request(options)
 
-      res.status(200).json(data)
+      const { data } = await axios.request(options);
+
+      res.status(200).json(data);
     } catch (err) {
-      next(err)
+      next(err);
     }
   }
 
   static async roomDetailHotel(req, res, next) {
     try {
-      const { hotel_id } = req.query
+      const { hotel_id } = req.body;
 
       let options = {
-        method: 'GET',
-        url: 'https://booking-com.p.rapidapi.com/v1/hotels/room-list',
+        method: "GET",
+        url: "https://booking-com.p.rapidapi.com/v1/hotels/room-list",
         params: {
-          currency: 'IDR',
-          adults_number_by_rooms: '2,1',
-          checkin_date: '2022-08-05',
+          currency: "IDR",
+          adults_number_by_rooms: "2,1",
+          checkin_date: "2022-08-05",
           hotel_id,
-          units: 'metric',
-          checkout_date: '2022-08-06',
-          locale: 'id',
-          children_number_by_rooms: '2,1',
-          children_ages: '5,0,9'
+          units: "metric",
+          checkout_date: "2022-08-06",
+          locale: "id",
+          children_number_by_rooms: "2,1",
+          children_ages: "5,0,9",
         },
         headers: {
-          'x-rapidapi-host': 'booking-com.p.rapidapi.com',
-          'x-rapidapi-key': 'b2d6979e45msh4535f2eb6faae6ep1bd4acjsneebd13a671c8'
-        }
+          "x-rapidapi-host": "booking-com.p.rapidapi.com",
+          "x-rapidapi-key":
+            "b2d6979e45msh4535f2eb6faae6ep1bd4acjsneebd13a671c8",
+        },
       };
-      
-      const {data} = await axios.request(options)
-      res.status(200).json(data)
+
+      const { data } = await axios.request(options);
+      res.status(200).json(data);
     } catch (err) {
-      next(err)
+      next(err);
     }
   }
 
   static async searchLocation(req, res, next) {
     try {
-      const { search } = req.query
+      const { search } = req.query;
 
       var options = {
-        method: 'GET',
-        url: 'https://booking-com.p.rapidapi.com/v1/hotels/locations',
-        params: {locale: 'id', name: search},
+        method: "GET",
+        url: "https://booking-com.p.rapidapi.com/v1/hotels/locations",
+        params: { locale: "id", name: search },
         headers: {
-          'x-rapidapi-host': 'booking-com.p.rapidapi.com',
-          'x-rapidapi-key': 'b2d6979e45msh4535f2eb6faae6ep1bd4acjsneebd13a671c8'
-        }
+          "x-rapidapi-host": "booking-com.p.rapidapi.com",
+          "x-rapidapi-key":
+            "b2d6979e45msh4535f2eb6faae6ep1bd4acjsneebd13a671c8",
+        },
       };
-      
-      const {data} = await axios.request(options)
-      res.status(200).json(data)
+
+      const { data } = await axios.request(options);
+      res.status(200).json(data);
     } catch (err) {
-      next(err)
+      next(err);
     }
   }
-
 }
 
-module.exports = BookingAPI
+module.exports = BookingAPI;

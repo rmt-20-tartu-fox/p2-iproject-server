@@ -4,7 +4,7 @@ class BookMarkController {
   static async addBookMark(req, res, next) {
     try {
       const { id } = req.currentUser;
-      const { hotel_id, room_id } = req.query;
+      const { hotel_id, room_id } = req.body;
 
       const bookmark = await BookMark.create({
         hotel_id,

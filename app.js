@@ -11,6 +11,8 @@ const cors = require('cors')
 const app = express();
 
 app.use(cors())
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 const httpServer = createServer(app)
 
 const io = new Server(httpServer, {
@@ -61,10 +63,8 @@ const port = process.env.PORT || 3000;
 const errorHandler = require("./middleware/errorHandler");
 
 const router = require("./routes");
-const { addBookMark } = require("./controller/bookMarkController");
 
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+
 
 app.use("/", router);
 

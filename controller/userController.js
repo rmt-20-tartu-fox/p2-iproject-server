@@ -4,7 +4,6 @@ const Helper = require("../helper/helper");
 const JWT = require("../helper/jwt");
 const { OAuth2Client } = require("google-auth-library");
 const CLIENT_ID = process.env.CLIENT_ID;
-const { Node_Mailer } = require("../helper/nodemailer");
 
 class UserController {
   static async registerUser(req, res, next) {
@@ -17,7 +16,7 @@ class UserController {
         password
       });
 
-      res.status(200).json({ id: user.id, email: user.email });
+      res.status(200).json({ id: user.id, name: user.name, email: user.email });
     } catch (err) {
       next(err);
     }
@@ -53,6 +52,7 @@ class UserController {
       res.status(200).json({
         id: user.id,
         email: user.email,
+        name: user.name,
         access_token,
       });
     } catch (err) {
