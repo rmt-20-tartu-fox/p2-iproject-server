@@ -7,6 +7,7 @@ const UserController = require('./controller/userController')
 const Controller = require('./controller/mangaController')
 const { verifyToken } = require('./helpers/jwt')
 const { User, MyFavorite} = require('./models/index')
+const midTrans = require('./controller/midtransController')
 
 app.use(cors())
 app.use(express.urlencoded({extended:false}))
@@ -15,8 +16,11 @@ app.use(express.json())
 app.get('/', (req, res) => {
   res.send('Hello World!')
 })
+
 app.post('/register', UserController.register)
 app.post('/login', UserController.login)
+
+app.post('/email', UserController.sendEmail)
 
 app.get('/mangas', Controller.getManga)
 app.get('/animes', Controller.getAnime)
@@ -56,7 +60,7 @@ app.use (
     }
   }
 )
-
+app.post('/midtrans', midTrans)
 app.get('/myfavoritesmangas', Controller.myFavoritesManga)
 app.get('/myfavoritesanimes', Controller.myFavoritesAnime)
 app.post('/mangafavorites/:mangaId', Controller.addFavoriteManga)
