@@ -1,3 +1,4 @@
+const { Op } = require("sequelize");
 const getDistanceFromLatLonInKm = require("../helpers/calculateDistance");
 const { User, Profile, Geo } = require("../models/index");
 
@@ -15,6 +16,9 @@ class Controller {
       });
 
       let paramQuery = {
+        where: {
+          id: { [Op.ne]: id },
+        },
         attributes: {
           exclude: ["dateOfBirth", "password", "createdAt", "updatedAt"],
         },

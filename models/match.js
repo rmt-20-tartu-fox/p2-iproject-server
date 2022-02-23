@@ -33,7 +33,18 @@ module.exports = (sequelize, DataTypes) => {
         onDelete: "CASCADE",
         onUpdate: "CASCADE",
       },
-      OtherLikeId: DataTypes.INTEGER,
+      OtherLikeId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        validate: {
+          notNull: {
+            msg: "OtherLikeId is required",
+          },
+          notEmpty: {
+            msg: "OtherLikeId is required",
+          },
+        },
+      },
     },
     {
       sequelize,
