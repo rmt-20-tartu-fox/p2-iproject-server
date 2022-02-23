@@ -4,6 +4,7 @@ const { signToken } = require("../helpers/jwt");
 const librivox = require("../apis/librivox");
 const serpapi = require("../apis/serpapi");
 const { default: axios } = require("axios");
+const { sequelize } = require("../models");
 
 const registerCustomer = async (req, res, next) => {
   try {
@@ -35,13 +36,10 @@ const loginCustomer = async (req, res, next) => {
 
 const addBooksToDB = async (req, res, next) => {
   try {
-    let resp = await librivox.get(`/?limit=10&offset=20&format=json`);
-    // let image = await axios.get(
-    //   `https://serpapi.com/search.json?q=${resp.data.books[0].title}&tbm=isch&ijn=0&api_key=${process.env.API_KEY_SERPAPI}`
-    // );
-    // resp.data.books.forEach((e) => {
-    //   e.imageUrl = image.data.images_results[0].original;
-    // });
+    let { offset } = req.body;
+    let resp = await librivox.get(
+      `/?limit=10&offset=${offset * 10}&format=json`
+    );
     let books = await Book.findAll();
     let sameBook = [];
     resp.data.books.forEach((e) => {
@@ -51,12 +49,11 @@ const addBooksToDB = async (req, res, next) => {
         }
       });
     });
-    console.log(sameBook.length);
     if (sameBook.length == 0) {
       resp.data.books.forEach((e, i) => {
         serpapi
           .get(
-            `/search.json?q=${resp.data.books[i].title}&tbm=isch&ijn=0&api_key=${process.env.API_KEY_SERPAPI}`
+            `/search.json?q=${resp.data.books[i].title}BookCover&tbm=isch&ijn=0&api_key=${process.env.API_KEY_SERPAPI2}`
           )
           .then((resp) => {
             Book.create({
@@ -74,7 +71,7 @@ const addBooksToDB = async (req, res, next) => {
       });
     }
 
-    res.status(200).json(books);
+    res.status(200).json({ message: `Books has been added` });
   } catch (error) {
     next(error);
   }
@@ -107,10 +104,39 @@ const getDetailBook = async (req, res, next) => {
   }
 };
 
+const getTransaction = async (req, res, next) => {
+  try {
+    let transactions = await Transaction.findAll({
+      attributes: {
+        exclude: ["createdAt", "updatedAt"],
+      },
+      include: [
+        {
+          model: Book,
+        },
+      ],
+      where: {
+        status: "Completed",
+        UserId: req.userLogin.id,
+      },
+    });
+
+    const unique = [
+      ...new Map(transactions.map((item) => [item["BookId"], item])).values(),
+    ];
+
+    res.status(200).json(unique);
+  } catch (error) {
+    console.log(error);
+    next(error);
+  }
+};
+
 module.exports = {
   registerCustomer,
   loginCustomer,
   addBooksToDB,
   getBooks,
   getDetailBook,
+  getTransaction,
 };

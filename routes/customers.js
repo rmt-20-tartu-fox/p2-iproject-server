@@ -5,6 +5,7 @@ const {
   addBooksToDB,
   getBooks,
   getDetailBook,
+  getTransaction,
 } = require("../controllers/customersController");
 const {
   getSnapToken,
@@ -24,6 +25,7 @@ router.post("/books", addBooksToDB);
 
 router.post("/payment", getSnapToken);
 
+router.get("/transactions", getTransaction);
 router.post("/transactions", transaction);
 // router.get("/mycarts");
 module.exports = router;

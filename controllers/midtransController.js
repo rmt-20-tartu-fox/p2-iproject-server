@@ -10,6 +10,9 @@ const getSnapToken = async (req, res, next) => {
   try {
     let email = req.userLogin.email;
     let { price, first_name, last_name, quantity, itemName } = req.body;
+    if (quantity <= 0 || !quantity) {
+      throw new Error("QUANTITY_REQUIRED");
+    }
     let parameter = {
       transaction_details: {
         order_id: `${Math.floor(Date.now() / 10)}`,
@@ -29,13 +32,6 @@ const getSnapToken = async (req, res, next) => {
         email: email,
       },
     };
-    // let token = await midtrans.post("/snap/v1/transactions", parameter, {
-    //   headers: {
-    //     Accept: "application/json",
-    //     "Content-Type": "application/json",
-    //     Authorization: `Basic ${btoa(process.env.SERVER_KEY + ":")}`,
-    //   },
-    // });
     const result = await snap.createTransaction(parameter);
     res.status(200).json(result);
   } catch (error) {
@@ -46,6 +42,7 @@ const getSnapToken = async (req, res, next) => {
 const transaction = async (req, res, next) => {
   try {
     let { BookId, order_id, transaction_status } = req.body;
+    console.log(req.userLogin.id);
     let newStatus = await Transaction.create({
       status: transaction_status,
       order_id: order_id,
@@ -54,6 +51,7 @@ const transaction = async (req, res, next) => {
     });
     res.status(201).json(newStatus);
   } catch (error) {
+    console.log(error);
     next(error);
   }
 };

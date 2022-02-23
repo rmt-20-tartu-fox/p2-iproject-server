@@ -17,6 +17,9 @@ const errorHandler = (err, req, res, next) => {
   ) {
     code = 401;
     msg = "Invalid token";
+  } else if (err.message == "QUANTITY_REQUIRED") {
+    code = 400;
+    msg = "Quantity is required";
   }
   res.status(code).json({ message: msg });
 };
