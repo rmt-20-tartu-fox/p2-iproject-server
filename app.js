@@ -131,12 +131,12 @@ app.get("/symptoms", (req, res, next) => {
 app.post("/diagnosis", (req, res, next) => {
   //* get token
   //! Sandbox, dummy data
-  var uri = "https://sandbox-authservice.priaid.ch/login";
-  var secret_key = apiMedicSecretKey;
+  // var uri = "https://sandbox-authservice.priaid.ch/login";
+  // var secret_key = apiMedicSecretKey;
 
   //? Real data
-  // var uri = "https://authservice.priaid.ch/login";
-  // var secret_key = process.env.API_MEDIC_SECRET_KEY;
+  var uri = "https://authservice.priaid.ch/login";
+  var secret_key = process.env.API_MEDIC_SECRET_KEY;
 
   var computedHash = CryptoJS.HmacMD5(uri, secret_key);
   var computedHashString = computedHash.toString(CryptoJS.enc.Base64);
