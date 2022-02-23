@@ -1,7 +1,7 @@
 const movie_api = require("../apis/movie_api");
-// const { format } = require("util");
-const { Transaction, Price } = require("../models");
-
+const midtransClient = require("midtrans-client");
+const { Transaction, Price, User } = require("../models");
+const serverKey = process.env.serverKey;
 const API_KEY = process.env.API_KEY;
 
 const getPopularMovie = async (req, res, next) => {
@@ -37,7 +37,7 @@ const addTransaction = async (req, res, next) => {
     const id = req.userOnLogin.id;
     // console.log(id, movieId, PriceId, "hereeeeeeeeee");
 
-    const movie = await Transaction.create(
+    const order = await Transaction.create(
       { UserId: id, MovieId: movieId, PriceId: PriceId },
       {
         attributes: {
@@ -46,38 +46,92 @@ const addTransaction = async (req, res, next) => {
       }
     );
 
-    res.status(201).json(movie);
+    res.status(201).json(order);
   } catch (err) {
     next(err);
   }
 };
 
-// app.get("/movies-latest", async (req, res, next) => {
-//   try {
-//     const response = await axios.get(
-//       "https://api.themoviedb.org/3/movie/latest?api_key=38f2cc376208d37fec1e1dbaa6c3ae29&language=en-US"
-//     );
+const getPrice = async (req, res, next) => {
+  try {
+    const order = await Price.findAll();
+    res.status(200).json(order);
+  } catch (err) {
+    next(err);
+  }
+};
 
-//     res.status(200).json(response.data);
-//   } catch (err) {
-//     console.log("🚀 ~ file: app.js ~ line 22 ~ app.get ~ err", err);
-//     res.status(500).json({ message: "see your console" });
-//   }
-// });
+const getTransaction = async (req, res, next) => {
+  try {
+    const id = req.userOnLogin.id;
+    const order = await Transaction.findAll({
+      where: {
+        UserId: id,
+      },
+      order: [["createdAt", "DESC"]],
+    });
+    res.status(200).json(order);
+  } catch (err) {
+    next(err);
+  }
+};
 
-// app.get("/genre-list", async (req, res, next) => {
-//   try {
-//     const response = await axios.get(moviegenres);
+// ! ================================================================ Nidtrans Payment
+const generateOrder = async (req, res, next) => {
+  try {
+    const { orderId } = req.params;
+    const { MovieId } = req.body;
+    console.log(req.body, orderId);
+    const userId = req.userOnLogin.id;
+    const resultOrder = await Transaction.findAll({
+      include: [
+        {
+          model: User,
+          include: [
+            {
+              model: Price,
+            },
+          ],
+        },
+      ],
+      where: {
+        id: orderId,
+      },
+    });
 
-//     res.status(200).json(response.data);
-//   } catch (err) {
-//     console.log("🚀 ~ file: app.js ~ line 22 ~ app.get ~ err", err);
-//     res.status(500).json({ message: "see your console" });
-//   }
-// });
+    let snap = new midtransClient.Snap({
+      isProduction: false,
+      serverKey: serverKey,
+    });
+
+    let parameter = {
+      transaction_details: {
+        order_id: orderId,
+        movie_id: MovieId,
+        gross_amount: resultOrder[0].User.Prices[0].price,
+      },
+      credit_card: {
+        secure: true,
+      },
+      customer_details: {
+        name: resultOrder[0].User.name,
+        email: resultOrder[0].User.email,
+      },
+    };
+
+    let generateTransaction = await snap.createTransaction(parameter);
+    res.status(200).json(generateTransaction);
+  } catch (err) {
+    console.log(err);
+    next(err);
+  }
+};
 
 module.exports = {
   getPopularMovie,
   getMovieDetail,
   addTransaction,
+  generateOrder,
+  getTransaction,
+  getPrice,
 };
