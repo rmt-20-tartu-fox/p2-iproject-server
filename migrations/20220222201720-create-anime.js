@@ -10,31 +10,24 @@ module.exports = {
       },
       malId: {
         type: Sequelize.INTEGER,
-        allowNull: false
       },
       imageUrl: {
         type: Sequelize.STRING,
-        allowNull: false
       },
       episodes: {
         type: Sequelize.INTEGER,
-        allowNull: false
       },
       duration: {
         type: Sequelize.STRING,
-        allowNull: false
       },
       rating: {
         type: Sequelize.STRING,
-        allowNull: false
       },
       rank: {
         type: Sequelize.INTEGER,
-        allowNull: false
       },
       popularity: {
         type: Sequelize.INTEGER,
-        allowNull: false
       },
       createdAt: {
         allowNull: false,

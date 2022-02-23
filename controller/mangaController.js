@@ -148,7 +148,7 @@ class Controller {
           res.status(500).json(err)
         })
     } catch (error) {
-      res.status(500).json(error)
+      next(error)
 
     }
   }
@@ -158,12 +158,10 @@ class Controller {
       const {
         animeId
       } = req.params
-      console.log(1, animeId);
       const currentUserId = req.currentUser.id
       axios.get(Base_Url + `/anime/${animeId}`)
         .then(resp => {
           let data = resp.data.data
-          console.log(resp.data);
           let anime = {
             malId: data.mal_id,
             imageUrl: data.images.jpg.large_image_url,
@@ -189,7 +187,7 @@ class Controller {
           res.status(500).json(err)
         })
     } catch (error) {
-      res.status(500).json(error)
+      next(error)
 
     }
   }
@@ -212,7 +210,7 @@ class Controller {
       })
       res.status(200).json(myFavorite1)
     } catch (error) {
-      res.status(500).json(error)
+      next(error)
 
     }
   }
@@ -233,12 +231,34 @@ class Controller {
           return el.Anime
         }
       })
-      console.log(myFavorite);
       res.status(200).json(myFavorite1)
     } catch (error) {
-      console.log(error);
-      res.status(500).json(error)
+      next(error)
 
+    }
+  }
+
+  static deleteMyfavorite = async (req, res, next) => {
+    try {
+      const { myfavoriteId } = req.params
+      const find = await MyFavorite.findByPk(+myfavoriteId)
+      if(find) {
+        const myFavorite = await MyFavorite.destroy ({
+          where: {
+            id: +myfavoriteId
+          }
+        })
+        res.status(200).json({message: `item has been removed from my favorite`})
+      } else {
+        throw {
+          code: 404,
+          name: 'notFound',
+          message: 'item not found'
+        }
+      }
+      
+    } catch (error) {
+      next(error)
     }
   }
 

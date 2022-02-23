@@ -17,6 +17,12 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   MyFavorite.init({
+    id: {
+      allowNull: false,
+      autoIncrement: true,
+      primaryKey: true,
+      type: DataTypes.INTEGER
+    },
     UserId: DataTypes.INTEGER,
     MangaId: DataTypes.INTEGER,
     AnimeId: DataTypes.INTEGER

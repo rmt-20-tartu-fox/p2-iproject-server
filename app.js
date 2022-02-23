@@ -6,7 +6,7 @@ const errorHandler = require('./middleware/errorHandler')
 const UserController = require('./controller/userController')
 const Controller = require('./controller/mangaController')
 const { verifyToken } = require('./helpers/jwt')
-const { User} = require('./models/index')
+const { User, MyFavorite} = require('./models/index')
 
 app.use(cors())
 app.use(express.urlencoded({extended:false}))
@@ -23,6 +23,10 @@ app.get('/animes', Controller.getAnime)
 
 app.get('/tops/mangas', Controller.getTopManga)
 app.get('/tops/animes', Controller.getTopAnime)
+
+
+app.get('/mangas/:id', Controller.getMangaDetail)
+app.get('/animes/:id', Controller.getAnimeDetail)
 
 app.use (
   authentication = async (req, res, next) => {
@@ -58,8 +62,34 @@ app.get('/myfavoritesanimes', Controller.myFavoritesAnime)
 app.post('/mangafavorites/:mangaId', Controller.addFavoriteManga)
 app.post('/animefavorites/:animeId', Controller.addFavoriteAnime)
 
-app.get('/mangas/:id', Controller.getMangaDetail)
-app.get('/animes/:id', Controller.getAnimeDetail)
+
+const authorization = async (req, res, next) => {
+  try {
+    const { myfavoriteId } = req.params
+    const currentUserId = req.currentUser.id
+    const myFavorite = await MyFavorite.findByPk(+myfavoriteId)
+
+    if(!myFavorite) {
+      throw {
+        code: 404,
+        name: 'notFound',
+        message: 'item not found'
+      }
+    }
+
+    if ( currentUserId === myFavorite.UserId || myFavorite) {
+      next()
+    } else {
+      throw {name: "NOT_ENOUGH_PERMISSION"}
+    }
+
+  } catch (error) {
+    next(error)
+  }
+}
+
+app.delete('/myfavorites/:myfavoriteId',authorization, Controller.deleteMyfavorite)
+
 
 app.use(errorHandler)
 
