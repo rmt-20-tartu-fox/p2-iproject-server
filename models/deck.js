@@ -21,7 +21,7 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true,
       type: DataTypes.INTEGER
     },
-    DeckName: DataTypes.STRING,
+
     CardName: DataTypes.STRING,
     CardType: DataTypes.STRING,
     CardImageUrl: DataTypes.STRING,

@@ -8,10 +8,7 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      DeckName: {
-        allowNull: false,
-        type: Sequelize.STRING
-      },
+
       CardName: {
         allowNull: false,
         type: Sequelize.STRING
