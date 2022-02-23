@@ -14,8 +14,24 @@ module.exports = (sequelize, DataTypes) => {
   }
   Geo.init(
     {
-      latitude: DataTypes.FLOAT,
-      longitude: DataTypes.FLOAT,
+      latitude: {
+        type: DataTypes.FLOAT,
+        allowNull: false,
+        validate: {
+          notNull: {
+            msg: "latitude is required",
+          },
+        },
+      },
+      longitude: {
+        type: DataTypes.FLOAT,
+        allowNull: false,
+        validate: {
+          notNull: {
+            msg: "longitude is required",
+          },
+        },
+      },
       UserId: {
         type: DataTypes.INTEGER,
         allowNull: false,

@@ -15,6 +15,18 @@ module.exports = (sequelize, DataTypes) => {
   Profile.init(
     {
       photos: DataTypes.STRING,
+      name: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          notNull: {
+            msg: "Name is required",
+          },
+          notEmpty: {
+            msg: "Name is required",
+          },
+        },
+      },
       education: DataTypes.STRING,
       job: DataTypes.STRING,
       description: DataTypes.TEXT,
