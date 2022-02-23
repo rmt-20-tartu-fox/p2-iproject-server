@@ -26,6 +26,14 @@ const errorHandler = (err, req, res, next) => {
       status = 403;
       message = "You are not authorized";
       break;
+    case "FORBIDDEN_NOT_OWNER":
+      status = 403;
+      message = "You Are Not the Owner";
+      break;
+    case "FORBIDDEN":
+      status = 403;
+      message = "You are not authorized";
+      break;
     case "NOT_FOUND":
       status = 404;
       message = "Data not found";

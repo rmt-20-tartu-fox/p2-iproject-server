@@ -5,11 +5,11 @@ const ownerAuthorization = async (req, res, next) => {
     const { id, role } = req.user;
 
     if (!id || !role) {
-      throw { name: "FORBIDDEN" };
+      throw { name: "FORBIDDEN_NOT_OWNER" };
     }
 
     if (role !== "Owner") {
-      throw { name: "FORBIDDEN" };
+      throw { name: "FORBIDDEN_NOT_OWNER" };
     }
 
     next()
