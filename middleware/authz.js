@@ -3,7 +3,7 @@ async function authorization(req, res, next) {
   try {
     const { id } = req.currentUser;
     const userId = req.params.id;
-    if (id !== userId) {
+    if (+id !== +userId) {
       throw new Error("NOT_ENOUGH_PERMISSION");
     }
     const user = await User.findByPk(id);

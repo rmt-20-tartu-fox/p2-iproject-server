@@ -13,6 +13,12 @@ function errorHandler(err, req, res, next) {
   } else if (err.message === "INVALID_USER_OR_TOKEN" || err.name === "JsonWebTokenError") {
     code = 401;
     msg = "Invalid user or token";
+  } else if (err.message === "NOT_ENOUGH_PERMISSION") {
+    code = 403;
+    msg = "Forbidden to access";
+  } else if (err.message === "USER_NOT_FOUND") {
+    code = 404;
+    message = "Entity not found";
   }
   console.log("here==============", err);
   res.status(code).json({ message: msg });
