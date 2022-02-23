@@ -13,10 +13,7 @@ const mapboxAccessToken = process.env.MAPBOXTOKEN;
 const geopifyAPI = process.env.GEOPIFYAPI;
 let apiMedicSecretKey = "Rs35Lba2M8Kkw4Z7W";
 enc();
-const jwt = require("jsonwebtoken");
-const bcrypt = require("bcryptjs");
-const secret = process.env.SECRET;
-const { User } = require("./models");
+const UserController = require("./controllers/userController");
 
 const httpServer = createServer(app); //* Socket
 const io = new Server(httpServer, {
@@ -54,53 +51,10 @@ io.on("connection", (socket) => {
 });
 
 //* Register user
-app.post("/register", async (req, res, next) => {
-  try {
-    const { email, password } = req.body;
-    let user = await User.create({ email, password });
-    res.status(201).json({ id: user.id, email: user.email });
-  } catch (err) {
-    if (err.errors) {
-      res.status(400).json({ message: err.errors[0].message });
-    } else {
-      res.status(500).json({ message: "Internal server error" });
-    }
-  }
-});
+app.post("/register", UserController.register);
 
 //* Login
-app.post("/login", async (req, res, next) => {
-  try {
-    const { email, password } = req.body;
-    if (!email || !password) {
-      res.status(400).json({ message: "Email or password must be inputted" });
-    } else {
-      let foundUser = await User.findOne({ where: { email } });
-      if (!foundUser) {
-        res.status(401).json({ message: "Invalid email/password" });
-      } else {
-        let isPass = bcrypt.compareSync(password, foundUser.password);
-        if (isPass) {
-          let payload = {
-            id: foundUser.id,
-            email: foundUser.email,
-          };
-
-          let token = jwt.sign(payload, secret);
-          res.status(200).json({ user: foundUser.email, access_token: token });
-        } else {
-          res.status(401).json({ message: "Invalid email/password" });
-        }
-      }
-    }
-  } catch (err) {
-    if (err.errors) {
-      res.status(400).json({ message: err.errors[0].message });
-    } else {
-      res.status(500).json({ message: "Internal server error" });
-    }
-  }
-});
+app.post("/login", UserController.login);
 
 //* Get token
 app.post("/loginToken", (req, res, next) => {
@@ -164,11 +118,11 @@ app.post("/symptoms", (req, res, next) => {
 
 //* Get symptoms from json
 app.get("/symptoms", (req, res, next) => {
-  //* Real data
-  // let data = require("./data/symptoms.json");
+  //? Real data
+  let data = require("./data/symptoms.json");
 
   //! Dummy data
-  let data = require("./data/dummySymptoms.json");
+  // let data = require("./data/dummySymptoms.json");
 
   res.status(200).json(data);
 });
@@ -204,11 +158,15 @@ app.post("/diagnosis", (req, res, next) => {
   axios
     .post(uri, {}, config)
     .then((resp) => {
-      token = resp.data.Token;
+      const token = resp.data.Token;
       //* Get diagnose
       const { symptoms, gender, yearOfBirth } = req.body;
 
+      //! Dummy data
       let url = `https://sandbox-healthservice.priaid.ch/diagnosis?symptoms=[${symptoms}]&gender=${gender}&year_of_birth=${yearOfBirth}&token=${token}&language=${language}`;
+
+      //? Real data
+      // let url = `https://healthservice.priaid.ch/diagnosis?symptoms=[${symptoms}]&gender=${gender}&year_of_birth=${yearOfBirth}&token=${token}&language=${language}`;
 
       return axios.get(url);
     })
@@ -261,8 +219,8 @@ app.post("/nearby", (req, res, next) => {
   axios
     .get(url)
     .then((resp) => {
-      longitude = resp.data.features[0].center[0];
-      latitude = resp.data.features[0].center[1];
+      const longitude = resp.data.features[0].center[0];
+      const latitude = resp.data.features[0].center[1];
       let categories = "healthcare.hospital";
       let limit = 20;
       let url = `https://api.geoapify.com/v2/places?categories=${categories}&filter=circle:${longitude},${latitude},${radius}&limit=${limit}&apiKey=${geopifyAPI}`;
