@@ -35,9 +35,9 @@ indexRouter.put(
   restaurantAuthorization
 );
 
-indexRouter.put("/profile/:id", uploadSingle);
+indexRouter.get("/profiles/:id", UserController.getOne)
+indexRouter.put("/profiles/:id", uploadSingle, UserController.edit);
 
-// indexRouter.post("/images/review/:id");
 
 indexRouter.post(
   "/reviews/:restaurantId",
@@ -45,6 +45,10 @@ indexRouter.post(
   customerAuthorization,
   ReviewController.create
 );
-indexRouter.delete("/reviews/:id", reviewAuthorization, ReviewController.delete);
+indexRouter.delete(
+  "/reviews/:id",
+  reviewAuthorization,
+  ReviewController.delete
+);
 
 module.exports = indexRouter;
