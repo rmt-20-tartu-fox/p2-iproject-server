@@ -1,6 +1,5 @@
 const { User, Bookmark } = require('../models')
 const openLibraryApi = require("../apis/openLibraryApi")
-const assemblyApi = require("../apis/assemblyApi")
 const { signToken, verifyToken } = require("../helpers/jwt")
 const { comparePass } = require("../helpers/hashPassword")
 const {OAuth2Client} = require('google-auth-library');
@@ -156,8 +155,41 @@ class BookmarkController{
 
   static getBookmark = async(req, res, next)=> {
     try {
-      const result = await Bookmark.findAll()
+      const { id } = req.userLogin
+      const result = await Bookmark.findAll({
+        where: {
+          UserId: id
+        }
+      })
       res.status(200).json(result)
+    } catch (error) {
+      next(error)
+    }
+  }
+
+  static deleteBookmark = async(req, res, next) => {
+    try {
+      const { id } = req.userLogin
+      const { bookmarkId } = req.params
+      const find = await Bookmark.findByPk(bookmarkId)
+      
+      if (find) {
+        const result = await Bookmark.destroy({
+          where: {
+            id: find.id,
+            UserId: id,
+          },
+          returning: true
+        })
+        res.status(200).json({message: `Book ${result.title} success remove from My Book!`})
+      } else {
+        throw {
+          code: 404,
+          name: 'Not Found',
+          message: 'Book not found!'
+        }
+      }
+      
     } catch (error) {
       next(error)
     }
