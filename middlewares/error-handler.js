@@ -13,6 +13,10 @@ const errorHandler = (err, req, res, next) => {
       status = 400;
       message = err;
       break;
+    case "MulterError":
+      status = 400;
+      message = "Maximum photo is 5";
+      break;
     case "JsonWebTokenError":
       status = 401;
       message = "Invalid token";
