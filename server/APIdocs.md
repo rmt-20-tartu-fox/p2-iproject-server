@@ -69,3 +69,43 @@ _Response (401 - Unauthorized)_
   "message": "Invalid email or password"
 }
 ```
+
+## 3. POST /upload
+
+Description:
+
+- Upload to feed the pet
+
+Request:
+
+- body:
+
+```json
+{
+  "file": "Form Data"
+}
+```
+
+_Response (201 - Created)_
+
+```json
+{
+  "data": ["a", "b", "c", "d"]
+}
+```
+
+_Response (400 - Bad Request)_
+
+```json
+{
+  "message": "Please upload a file!"
+}
+```
+
+_Response (400 - Bad Request)_
+
+```json
+{
+  "message": "File size cannot be larger than 2MB!"
+}
+```
