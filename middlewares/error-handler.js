@@ -50,8 +50,16 @@ const errorHandler = (err, req, res, next) => {
       message = "password is required";
       break;
     case "INVALID_USER":
-      status = 401;
+      status = 400;
       message = "Invalid email/password";
+      break;
+    case "PASSWORD_NOT_MATCH":
+      status = 400;
+      message = "Please Enter Correct Current Password";
+      break;
+    case "USER_NOT_FOUND":
+      status = 404;
+      message = "User not found";
       break;
     default:
       console.log(err);
