@@ -12,9 +12,9 @@ module.exports = (sequelize, DataTypes) => {
         through: models.Wishlist,
         foreignKey: "RestaurantId",
       });
-      Restaurant.belongsTo(models.User, {
-        foreignKey: "UserId",
-      });
+      // Restaurant.belongsTo(models.User, {
+      //   foreignKey: "UserId",
+      // });
       Restaurant.hasMany(models.Review, {
         foreignKey: "RestaurantId",
       });

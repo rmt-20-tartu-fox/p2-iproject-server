@@ -13,9 +13,9 @@ module.exports = (sequelize, DataTypes) => {
         through: models.Wishlist,
         foreignKey: "UserId",
       });
-      User.hasMany(models.Restaurant, {
-        foreignKey: "UserId",
-      });
+      // User.hasMany(models.Restaurant, {
+      //   foreignKey: "UserId",
+      // });
       User.hasMany(models.Review, {
         foreignKey: "UserId",
       });
