@@ -186,6 +186,22 @@ class UserController {
       next(error);
     }
   }
+
+  static async getOne(req, res, next) {
+    try {
+      const { id } = req.params;
+
+      const result = await User.findByPk(id, {
+        attributes: {
+          exclude: ["createdAt", "updatedAt", "password"]
+        }
+      });
+
+      res.status(200).json(result)
+    } catch (error) {
+      next(error)
+    }
+  }
 }
 
 module.exports = UserController;
