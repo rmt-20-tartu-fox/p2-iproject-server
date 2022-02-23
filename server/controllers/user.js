@@ -11,7 +11,7 @@ class UserController {
       const newUserData = await User.create({ 
         email, password: passwordHasher(password)
       })
-      response.status(201).json(newUserData)
+      response.status(201).json({message: "Register successful"})
     } catch(error) {
       next(error);
     }
