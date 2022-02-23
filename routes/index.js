@@ -12,7 +12,7 @@ indexRouter.post("/login", UserController.login);
 indexRouter.post("/register", UserController.register);
 indexRouter.post("/login-google", UserController.loginGoogle);
 
-indexRouter.get("/restaurants");
+indexRouter.get("/restaurants", RestaurantController.getAll);
 indexRouter.get("/restaurants/:id");
 
 indexRouter.get("/reviews/:restaurantId");
