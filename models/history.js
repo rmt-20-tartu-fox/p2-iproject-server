@@ -45,16 +45,10 @@ module.exports = (sequelize, DataTypes) => {
       }
     },
     value: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      validate: {
-        notNull: {
-          msg: "value is required"
-        },
-        notEmpty: {
-          msg: "value is required"
-        },
-      }
+      type: DataTypes.DECIMAL,
+    },
+    valueCrypto: {
+      type: DataTypes.DOUBLE,
     },
     attachment: DataTypes.STRING
   }, {

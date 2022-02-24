@@ -56,6 +56,18 @@ module.exports = (sequelize, DataTypes) => {
         },
       }
     },
+    crypto: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      validate: {
+        notNull: {
+          msg: "crypto is required"
+        },
+        notEmpty: {
+          msg: "crypto is required"
+        },
+      }
+    },
   }, {
     sequelize,
     modelName: 'Balance',
