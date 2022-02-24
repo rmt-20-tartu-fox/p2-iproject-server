@@ -1,0 +1,34 @@
+[
+  {
+    "name": "Latte",
+    "price": 18000,
+    "discount": 0,
+    "CategoryId": 1,
+    "imageUrl": "",
+    "status": "active"
+  },
+  {
+    "name": "Chocomalt",
+    "price": 15000,
+    "discount": 0,
+    "CategoryId": 1,
+    "imageUrl": "",
+    "status": "active"
+  },
+  {
+    "name": "Milky Taro",
+    "price": 15000,
+    "discount": 0,
+    "CategoryId": 1,
+    "imageUrl": "",
+    "status": "active"
+  },
+  {
+    "name": "Jasmine Tea",
+    "price": 13000,
+    "discount": 0,
+    "CategoryId": 1,
+    "imageUrl": "",
+    "status": "active"
+  }
+]
