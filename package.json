@@ -11,6 +11,10 @@
     "type": "git",
     "url": "git+https://github.com/haryosmd/p2-iproject-server.git"
   },
+  "engines": {
+    "node": "16.13.2",
+    "npm": "8.1.2"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
