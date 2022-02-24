@@ -11,10 +11,10 @@ module.exports = (sequelize, DataTypes) => {
   }
   Cart.init({
     isCheckout: DataTypes.BOOLEAN,
-      UserId: DataTypes.INTEGER,
-      ProductId: DataTypes.INTEGER,
-      isSelect: DataTypes.BOOLEAN,
-      quantity: DataTypes.INTEGER
+    UserId: DataTypes.INTEGER,
+    ProductId: DataTypes.INTEGER,
+    isSelect: DataTypes.BOOLEAN,
+    quantity: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'Cart',

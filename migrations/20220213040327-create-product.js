@@ -32,6 +32,10 @@ module.exports = {
       status: {
         type: Sequelize.STRING
       },
+      weight: {
+        allowNull: false,
+        type: Sequelize.INTEGER
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

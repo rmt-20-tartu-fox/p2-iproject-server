@@ -6,11 +6,6 @@ const { hashPasword } = require('../helper/bcrypt');
 const { convertToToken } = require('../helper/jwt');
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
     static associate(models) {
       User.belongsToMany(models.Product, {
         through: 'Carts',
@@ -56,6 +51,18 @@ module.exports = (sequelize, DataTypes) => {
         },
         notNull: {
           msg: 'Password cannot be null'
+        }
+      }
+    },
+    noTelp: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          msg: 'No Telp is Required'
+        },
+        notNull: {
+          msg: 'No Telp cannot be null'
         }
       }
     },

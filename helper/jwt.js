@@ -5,7 +5,7 @@ const secret = process.env.SECRET_KEY
 function convertToToken(payload){
   const token = jwt.sign({
     data: payload
-  }, secret, { expiresIn: 60 * 60 });
+  }, secret);
   return token
 }
 

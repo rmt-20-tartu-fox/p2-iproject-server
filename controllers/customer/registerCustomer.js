@@ -8,13 +8,15 @@ class RegisterCustomerController {
       const {
         name,
         email,
-        password
+        password,
+        noTelp
       } = req.body
       const payload = {
         name,
         email,
         password,
-        role: 'Customer'
+        role: 'Customer',
+        noTelp
       }
       const result = await User.create(payload)
       res.status(201).json({

@@ -5,6 +5,10 @@ const {
 } = require('../../models')
 const HistoryController = require('./history')
 const HistoryDetailController = require('./historyDetail')
+const Axios = require('axios')
+const midtransClient = require('midtrans-client');
+
+var paymentToken = ""
 
 class CartController {
   static async allCartByUserId(req, res, next) {
@@ -13,16 +17,30 @@ class CartController {
         UserId
       } = req.userLogin
 
+      const {
+        name
+      } = req.query
+
       const userAndCarts = await User.findOne({
         where: {
           id: UserId
         },
         include: ['productCart']
       })
-      res.status(200).json(userAndCarts)
-      const carts = userAndCarts.Products.filter(el => !el.Cart.isCheckout)
-      res.status(200).json(carts)
+
+      const carts = await Cart.findAll({
+        include: [ Product ],
+        where: {
+          UserId
+        }
+      })
+
+      const cartsIsCheckoutFalse = carts.filter(el => !el.isCheckout)
+      res.status(200).json({
+        carts: cartsIsCheckoutFalse
+      })
     } catch (err) {
+      console.log(err);
       next(err)
     }
   }
@@ -42,9 +60,7 @@ class CartController {
         message: 'Carts has been deleted'
       })
     } catch (err) {
-      console.log("🚀 ~ file: carts.js ~ line 47 ~ CartController ~ removeAllCarts ~ err", err)
       next(err)
-      console.log("🚀 ~ file: carts.js ~ line 49 ~ CartController ~ removeAllCarts ~ err", err)
     }
   }
   static async removeCartById(req, res, next) {
@@ -57,6 +73,7 @@ class CartController {
           id
         }
       })
+      
       if (!cart) {
         throw ({
           name: 'NOT FOUND',
@@ -111,15 +128,17 @@ class CartController {
       console.log("🚀 ~ file: carts.js ~ line 96 ~ CartController ~ addCart ~ err", err)
     }
   }
-  static async checkout(req, res, next) {
+  static async checkoutPopUp(req, res, next) {
     try {
       const {
         UserId,
-        name
+        name,
+        email
       } = req.userLogin
+
       const {
-        table
-      } = req.body
+        destination
+      } = req.headers
 
       const cartsSelected = await Cart.findAll({
         where: {
@@ -129,16 +148,7 @@ class CartController {
         include: [ Product ]
       })
 
-      const updateCartStatus = await Cart.update({
-        isCheckout: true,
-        isSelect: false
-      }, {
-        where: {
-          UserId,
-          isSelect: true
-        }
-      })
-      if (updateCartStatus[0] === 0) {
+      if (!cartsSelected.length) {
         throw ({
           name: 'checkout failed',
           code: 404,
@@ -152,27 +162,107 @@ class CartController {
         totalPrice += price
       });
 
+      let totalWeight = 0
+      cartsSelected.forEach(el => {
+        let weight = el.Product.weight
+        totalWeight += weight
+      });
+
       const payload = {
         name,
-        table,
-        total: totalPrice
-      }
-      const createHistory = await HistoryController.addHistories(payload)
-      if (createHistory !== false) {
-        const createDetail = await HistoryDetailController.addDetail(cartsSelected, createHistory.id)
-        console.log("🚀 ~ file: carts.js ~ line 163 ~ CartController ~ checkout ~ createDetail", createDetail)
+        total: totalPrice,
+        weight: totalWeight,
+        destination: +destination
       }
 
-      // if (!createHistory || !createDetail) {
-      //   throw ({
-      //     message: "Internal server error",
-      //     code: 500,
-      //   })
-      // }
+      req.forOngkir = payload
+      console.log("🚀 ~ file: carts.js ~ line 180 ~ CartController ~ checkoutPopUp ~ req.forOngkir", req.forOngkir)
+      
+      CartController.ongkir(req, res, next)
+    } catch (err) {
+      console.log(err);
+      next(err)
+    }
+  }
+  static async checkout(req, res, next) {
+    try {
+      console.log(req.forOngkir, 'ini');
+      const createHistory = await HistoryController.addHistories(req.forOngkir)
+      if (createHistory !== false) {
+        await HistoryDetailController.addDetail(cartsSelected, createHistory.id)
+      }
+
+      const payloadPayment = {
+        order_id: createHistory.id,
+        gross_amount: payload.total,
+        email,
+        name
+      }
+
+      req.forPayment = payloadPayment
+
+      CartController.payment(req, res, next)
+    } catch (err) {
+      console.log(err);
+      next(err)
+    }
+  }
+  static async allCity(req, res, next) {
+    try {
+      const {
+        province
+      } = req.headers
+
+      const cities = await Axios({
+        method: "get",
+        url: `https://api.rajaongkir.com/starter/city?province=${province}`,
+        headers: {
+          key: "1fd4016288844aeacd3f03930fd95625",
+        }
+      })
+      res.status(200).json(cities.data)
+    } catch (err) {
+      next(err)
+    }
+  }
+  static async allProvince(req, res, next) {
+    try {
+      const provinces = await Axios({
+        method: "GET",
+        url: "https://api.rajaongkir.com/starter/province",
+        headers: {
+          key: "1fd4016288844aeacd3f03930fd95625",
+        }
+      })
+      res.status(200).json(provinces.data)
+    } catch (err) {
+      console.log(err);
+      next(err)
+    }
+  }
+  static async ongkir(req, res, next) {
+    try {
+      const {
+        name,
+        total,
+        destination,
+        weight,
+      } = req.forOngkir
+
+      const dataOngkir = await Axios({
+        method: "post",
+        url: "https://api.rajaongkir.com/starter/cost",
+        headers: {
+          key: "1fd4016288844aeacd3f03930fd95625",
+        },
+        data: {origin: 455, destination, weight, courier: 'jne'}
+      })
       res.status(200).json({
-        message: 'Checkout successfully!'
+        dataOngkir: dataOngkir.data.rajaongkir.results,
+        payload: req.forOngkir
       })
     } catch (err) {
+      console.log(err);
       next(err)
     }
   }
@@ -184,7 +274,7 @@ class CartController {
       const {
         UserId
       } = req.userLogin
-
+      console.log("🚀 ~ file: carts.js ~ line 234 ~ CartController ~ changeIsSelect ~ id", req.params)
       const cart = await Cart.findOne({
         where: {
           id: +id
@@ -310,6 +400,56 @@ class CartController {
       next(err)
     }
   }
+  static payment(req, res, next) {
+    const {
+      order_id,
+      gross_amount,
+      email,
+      name
+    } = req.forPayment
+
+    const first_name = name.split(' ')[0]
+    let last_name = name.split(' ')[1]
+
+    if (!last_name) {
+      last_name = ""
+    }
+
+    let snap = new midtransClient.Snap({
+      // Set to true if you want Production Environment (accept real transaction).
+      isProduction : false,
+      serverKey : 'SB-Mid-server-MY7UjyT3Kw_qlsfdvb8a-Ehc'
+    });
+
+    let parameter = {
+      "transaction_details": {
+          "order_id": order_id,
+          "gross_amount": 10000
+      },
+      "credit_card":{
+          "secure" : true
+      },
+      "customer_details": {
+          "first_name": first_name,
+          "last_name": last_name,
+          "email": email,
+          "phone": "08111222333"
+      }
+    };
+
+    snap.createTransaction(parameter)
+      .then((transaction)=>{
+          // transaction token
+          let transactionToken = transaction.token;
+          paymentToken = transactionToken
+          console.log("🚀 ~ file: carts.js ~ line 412 ~ CartController ~ .then ~ paymentToken", paymentToken)
+          res.status(200).json({
+            message: 'Checkout successfully!',
+            paymentToken
+          })
+      })
+      .catch(err => false)
+    }
 }
 
 module.exports = CartController

@@ -3,6 +3,7 @@ const RegisterCustomerController = require('../controllers/customer/registerCust
 const router = require('express').Router()
 
 router.post('/login', LoginCustomerController.login)
+router.post('/login-google-account', LoginCustomerController.loginGoogle)
 router.post('/register', RegisterCustomerController.register)
 
 module.exports = router

@@ -52,14 +52,50 @@ class LoginCustomerController {
       const payload = {
         id: user.id,
         name: user.name,
-        role: user.role
+        role: user.role,
+        email: user.email
       }
       const token = convertToToken(payload)
       res.status(200).json({
         access_token: token,
         name: user.name,
-        role: user.role
+        role: user.role,
+        email: user.email
       })
+    } catch (err) {
+      next(err)
+    }
+  }
+  static async loginGoogle(req, res, next) {
+    try {
+      const {
+        token
+      } = req.body
+      const ticket = await client.verifyIdToken({
+        idToken: token,
+        audience: clientId
+      })
+      const payload = ticket.getPayload();
+      const name = payload.email
+      const result = await User.findOrCreate({
+        where: {
+          email: payload.email
+        },
+        defaults: {
+          username: name,
+          password: payload.at_hash,
+          role: "customer",
+        }
+      })
+      const tokenGenerate = convertToToken({
+        id: result[0].id
+      })
+      res.status(200).json({
+        accessToken: tokenGenerate,
+        name: result[0].username,
+        role: result[0].role
+      })
+
     } catch (err) {
       next(err)
     }

@@ -2,10 +2,10 @@
 module.exports = {
   async up(queryInterface, Sequelize) {
     const data = [{
-        name: 'Coffee',
+        name: 'Sepatu',
       },
       {
-        name: 'Food'
+        name: 'Jersey'
       }
     ]
     data.forEach(el => {

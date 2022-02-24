@@ -82,6 +82,9 @@ module.exports = (sequelize, DataTypes) => {
         }
       }
     },
+    weight: {
+      type: DataTypes.INTEGER,
+    },
     AuthorId: DataTypes.INTEGER,
     status: DataTypes.STRING
   }, {

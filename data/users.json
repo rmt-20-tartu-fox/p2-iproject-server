@@ -3,12 +3,14 @@
     "name": "Deris Satrio",
     "email": "derissatrio@gmail.com",
     "password": "$2a$10$I4.xNHVZSSTLL03pK9jVH.A6PKKswGJELolBRz/VDX7c8W8OOSVny",
-    "role": "Admin"
+    "role": "Admin",
+    "noTelp": "089264234324"
   },
   {
     "name": "Eka Ramdani",
     "email": "ekaramdani@gmail.com",
     "password": "$2a$10$OnQqxmK7yAjC3EWFE/07wOy6smt0IpCNUPBg9J7jU2kQAlSPeRRcK",
-    "role": "Customer"
+    "role": "Customer",
+    "noTelp": "087863184971"
   }
 ]

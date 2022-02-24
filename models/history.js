@@ -16,8 +16,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   History.init({
     name: DataTypes.STRING,
-    total: DataTypes.INTEGER,
-    table: DataTypes.STRING
+    total: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'History',

@@ -30,6 +30,7 @@ async function authentication(req, res, next) {
 
     req.userLogin = {
       UserId: payload.data.id,
+      email: payload.data.email,
       name: payload.data.name,
       role: payload.data.role
     }
