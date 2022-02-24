@@ -76,6 +76,30 @@ const getTransaction = async (req, res, next) => {
   }
 };
 
+const patchTransaction = async (req, res, next) => {
+  try {
+    // const id = req.userOnLogin.id;
+    const { orderId } = req.params;
+
+    const order = await Transaction.findByPk(orderId);
+
+    const result = await Transaction.update(
+      {
+        status: "success",
+      },
+      {
+        where: {
+          id: orderId,
+        },
+        returning: true,
+      }
+    );
+    res.status(200).json(result);
+  } catch (err) {
+    next(err);
+  }
+};
+
 // ! ================================================================ Nidtrans Payment
 const generateOrder = async (req, res, next) => {
   try {
@@ -134,4 +158,5 @@ module.exports = {
   generateOrder,
   getTransaction,
   getPrice,
+  patchTransaction,
 };
