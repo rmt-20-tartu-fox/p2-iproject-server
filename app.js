@@ -23,7 +23,7 @@ app.use("/", router);
 
 app.use(errorHandler);
 
-sendEmailByTime();
+// sendEmailByTime();
 
 app.listen(PORT, () => {
   console.log(`This server is Running at port ${PORT}`);
