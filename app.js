@@ -18,7 +18,7 @@ const httpServer = createServer(app)
 const io = new Server(httpServer, {
   cors: {
     // origin: "http://localhost:8080",
-    origin: "*",
+    origin: "https://hotelieur-ip-2022.web.app",
     methods: ["GET", "POST"],
     credentials: true
   },
