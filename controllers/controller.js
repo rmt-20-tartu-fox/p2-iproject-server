@@ -63,7 +63,7 @@ class Controller {
   static async postBalance(req, res, next) {
     try {
       console.log(123);
-      const { title, type } = req.body
+      const { title, type, crypto } = req.body
       console.log(req.body);
       const UserId = req.loginUser.id
       if (!title) {
@@ -72,7 +72,10 @@ class Controller {
       if (!type) {
         throw ({ code: 400, message: 'type is required' })
       }
-      const result = await Balance.create({ title, type, UserId })
+      if (crypto === undefined) {
+        throw ({ code: 400, message: 'crypto is required' })
+      }
+      const result = await Balance.create({ title, type, UserId, crypto })
       res.status(201).json(result)
     } catch (err) {
       next(err)
@@ -82,7 +85,8 @@ class Controller {
     try {
       const UserId = req.loginUser.id
       const result = await Balance.findAll({
-        where: { UserId }
+        where: { UserId },
+        include: History,
       })
       res.status(201).json(result)
     } catch (err) {
@@ -92,7 +96,7 @@ class Controller {
 
   static async postHistory(req, res, next) {
     try {
-      const { BalanceId, value } = req.body
+      const { BalanceId, value, valueCrypto } = req.body
       const UserId = req.loginUser.id
       let image = ''
 
@@ -108,7 +112,8 @@ class Controller {
       if (balance.UserId !== UserId) {
         throw ({ code: 403, message: 'Not Authorized' })
       }
-      const result = await History.create({ BalanceId, value, UserId, attachment: image })
+
+      const result = await History.create({ BalanceId, value, UserId, valueCrypto, attachment: image })
 
       res.status(201).json(result)
     } catch (err) {
@@ -120,33 +125,42 @@ class Controller {
     try {
       const UserId = req.loginUser.id
       const result = await History.findAll({
-        where: { UserId }
+        where: { UserId },
+        include: Balance,
+        order: ["createdAt"]
       })
       const newArr = result.map(el => {
         return el.value
       })
       const total = newArr.reduce(
-        (previousValue, currentValue) => previousValue + currentValue
+        (previousValue, currentValue) => Number(previousValue) + Number(currentValue)
       );
+      console.log(result);
       res.status(201).json({ result, total })
     } catch (err) {
       next(err)
     }
   }
-  static async getBitcoin(req, res, next) {
+  static async getCrypto(req, res, next) {
     try {
-      const result = await axios.get(`https://api.nomics.com/v1/currencies/ticker?key=${process.env.API_KEY_NOMICS}&ids=BTC&convert=IDR`)
+      const result = await axios.get(`https://api.nomics.com/v1/currencies/ticker?key=${process.env.API_KEY_NOMICS}&ids=BTC,ETC&convert=IDR`)
       console.log(result.data);
-      res.status(200).json(result.data[0].price)
+      res.status(200).json({ BTC: result.data[0].price, ETH: result.data[1].price })
     } catch (err) {
       next(err)
     }
   }
-  static async getEth(req, res, next) {
+
+
+  static async getForex(req, res, next) {
     try {
-      const result = await axios.get(`https://api.nomics.com/v1/currencies/ticker?key=${process.env.API_KEY_NOMICS}&ids=ETH&convert=IDR`)
-      console.log(result.data);
-      res.status(200).json(result.data[0].price)
+      const { forex } = req.body
+      const result = await axios.get(`https://api.nomics.com/v1/exchange-rates?key=${process.env.API_KEY_NOMICS}`)
+      let idr = result.data.find(o => o.currency === 'IDR');
+      let eur = result.data.find(o => o.currency === 'EUR');
+      let rate = 1 / idr.rate
+      let rate2 = eur.rate / idr.rate
+      res.status(200).json({ USD: rate, EUR: rate2 })
     } catch (err) {
       next(err)
     }
@@ -171,7 +185,7 @@ class Controller {
         return el.value
       })
       const total = newArr.reduce(
-        (previousValue, currentValue) => previousValue + currentValue
+        (previousValue, currentValue) => Number(previousValue) + Number(currentValue)
       );
       res.status(201).json({ result, total })
     } catch (err) {
@@ -182,7 +196,7 @@ class Controller {
   static async updateHistory(req, res, next) {
     try {
       const { id } = req.params
-      const { BalanceId, value, attachment } = req.body
+      const { BalanceId, value, attachment, createdAt } = req.body
       const UserId = req.loginUser.id
       const balance = await Balance.findByPk(BalanceId)
       const history = await History.findByPk(id)
@@ -195,9 +209,8 @@ class Controller {
       if (balance.UserId !== UserId || history.UserId !== UserId) {
         throw ({ code: 403, message: 'Not Authorized' })
       }
-
       const result = History.update({
-        BalanceId, value, attachment
+        BalanceId, value, attachment, createdAt
       }, {
         where: { id }
       })
