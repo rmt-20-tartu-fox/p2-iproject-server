@@ -1,4 +1,4 @@
-if (process.env.NODE_ENV !== "development") {
+if (process.env.NODE_ENV !== "production") {
   require("dotenv").config();
 }
 
@@ -29,4 +29,4 @@ app.listen(PORT, () => {
   console.log(`This server is Running at port ${PORT}`);
 });
 
-module.exports = app;
+// module.exports = app;
