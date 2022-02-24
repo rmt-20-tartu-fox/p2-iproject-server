@@ -4,6 +4,9 @@ const axios = require("axios");
 class UserRecipeWishList {
   static createWishList = async (req, res, next) => {
     try {
+      const APP_ID = process.env.APP_ID;
+      const APP_KEY = process.env.APP_KEY;
+
       const UserId = req.loginUser.id;
       // console.log(UserId, "<><><><>");
       const { RecipeId } = req.params;
@@ -24,7 +27,7 @@ class UserRecipeWishList {
       }
 
       const recipeResult = await axios.get(
-        `https://api.edamam.com/api/recipes/v2/${RecipeId}?type=public&app_id=37739ed6&app_key=2d43044520cc6293d202b58fb76aa198&field=uri&field=label&field=image&field=ingredientLines&field=calories`
+        `https://api.edamam.com/api/recipes/v2/${RecipeId}?type=public&app_id=${APP_ID}&app_key=${APP_KEY}&field=uri&field=label&field=image&field=ingredientLines&field=calories`
       );
       // console.log(recipeResult.data);
       const createWishList = await UserRecipe.create({
@@ -32,7 +35,7 @@ class UserRecipeWishList {
         RecipeId: RecipeId,
         recipe: recipeResult.data,
       });
-      res.status(201).json("created");
+      res.status(201).json({ message: "created" });
     } catch (err) {
       console.log(err);
       next(err);
@@ -48,22 +51,6 @@ class UserRecipeWishList {
         where: { UserId },
       });
 
-      // console.log(getWishList);
-      // let recipeId = getWishList[0].RecipeId;
-      // console.log(recipeId);
-
-      //tambah kolom recipe data di tabel wishlist tipe json, responds ke data base
-      // axios
-      //   .get(
-      //     `https://api.edamam.com/api/recipes/v2/${recipeId}?type=public&app_id=37739ed6&app_key=2d43044520cc6293d202b58fb76aa198`
-      //   )
-      //   .then((resp) => {
-      //     console.log(resp);
-      //     res.status(200).json(resp.data);
-      //   })
-      //   .catch((err) => {
-      //     next(err);
-      //   });
       res.status(200).json(getWishList);
     } catch (err) {
       console.log(err);
@@ -76,7 +63,7 @@ class UserRecipeWishList {
       const UserId = req.loginUser.id;
       // console.log(UserId, "<><><><>");
       const { id } = req.params;
-      console.log(req.params, "<><><><><><><>");
+      // console.log(req.params, "<><><><><><><>");
 
       const deleteWishList = await UserRecipe.destroy({
         where: { id },

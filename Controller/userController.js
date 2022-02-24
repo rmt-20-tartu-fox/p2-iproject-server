@@ -1,7 +1,7 @@
 const { hashPassword, comparePassword } = require("../helpers/bcrypt");
 const { generateToken } = require("../helpers/jwt");
 const { User } = require("../models");
-const sendEmail = require("../helpers/send_email");
+const { sendEmail } = require("../helpers/send_email");
 // const { OAuth2Client } = require("google-auth-library");
 
 class UserController {
@@ -15,15 +15,9 @@ class UserController {
         password,
       });
 
-      const payload = {
-        id: userRegister.id,
-        email: userRegister.email,
-      };
-
       sendEmail(userRegister.email);
 
       res.status(201).json({
-        access_token: generateToken(payload),
         email: userRegister.email,
       });
     } catch (err) {

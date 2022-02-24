@@ -7,7 +7,11 @@ const cors = require("cors");
 const app = express();
 const PORT = process.env.PORT || 3000;
 const errorHandler = require("./midlewares/errorHandler");
-const { sendEmailByTime, findEmail } = require("./helpers/send_email");
+const {
+  sendEmailByTime,
+  findEmail,
+  sendEmail,
+} = require("./helpers/send_email");
 
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));

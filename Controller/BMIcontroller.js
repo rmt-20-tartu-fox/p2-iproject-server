@@ -2,6 +2,7 @@ const axios = require("axios").default;
 class BmiController {
   static bmi = async (req, res, next) => {
     try {
+      const X_RAPIDAPI_KEY = process.env.X_RAPIDAPI_KEY;
       const { weight, height } = req.query;
       console.log(req.query);
       const options = await axios({
@@ -10,8 +11,7 @@ class BmiController {
         params: { weight: `${weight}`, height: `${height}` },
         headers: {
           "x-rapidapi-host": "body-mass-index-bmi-calculator.p.rapidapi.com",
-          "x-rapidapi-key":
-            "7f8ee39318msh065872cc27ce770p1f1b00jsne1ba0d881ce3",
+          "x-rapidapi-key": X_RAPIDAPI_KEY,
         },
       });
       // console.log(options.data.bmi);

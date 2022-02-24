@@ -26,10 +26,10 @@ function sendEmail(emailUser) {
 }
 
 function sendEmailByTime() {
-  const userEmaildata = User.findAll({
+  const emailList = User.findAll({
     attributes: ["email"],
   });
-  // console.log(userEmaildata);
+  // console.log(emailList);
 
   const transporter = nodemailer.createTransport({
     service: "gmail",
