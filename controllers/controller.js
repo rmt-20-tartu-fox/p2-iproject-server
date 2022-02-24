@@ -23,7 +23,7 @@ class Controller {
     catch (err) {
       if (err.name === "SequelizeUniqueConstraintError") {
         res.status(400).json({ message: "Email must be unique" })
-      } else if (err.errors[0].message === "Invalid email format") {
+      } else if (err?.errors[0]?.message === "Invalid email format") {
         res.status(400).json({ message: "Invalid email format" })
       } else {
         res.status(500).json({ message: "Internal server error" })
