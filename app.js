@@ -10,6 +10,9 @@ app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 app.use(cors())
 
+app.get('/', (req, res) => {
+  res.send('helloworld')
+})
 app.use(router)
 app.use(errorHandler)
 
