@@ -3,6 +3,7 @@ const router = express.Router();
 const querystring = require('querystring');
 const nodemailer = require('nodemailer');
 const midtransClient = require('midtrans-client');
+const axios = require("axios");
 
 // var Buffer = require('buffer/').Buffer
 // var SpotifyWebApi = require('spotify-web-api-node');
@@ -12,48 +13,52 @@ const midtransClient = require('midtrans-client');
 // const REDIRECT_URI = process.env.REDIRECT_URI
 // const CLIENT_SERVER_PAYMENT = process.env.CLIENT_SERVER_PAYMENT
 
-router.post('/send', (req, res) => {
-  const output = `
-    <p>You have a new contact request</p>
-    <h3>Contact Details</h3>
-    <ul>  
-      <li>Name: ${req.body.name}</li>
-      <li>Email: ${req.body.email}</li>
-    </ul>
-    <h3>Message</h3>
-    <p>Welcome to GESTURA! Your email has been registered</p>
-  `;
-
-  // create reusable transporter object using the default SMTP transport
-  let transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-        user: 'joshsudarso19@gmail.com', // generated ethereal user
-        pass: 'Akuadalah1'  // generated ethereal password
-    },
-    tls:{
-      rejectUnauthorized:false
-    }
-  });
-
-  // setup email data with unicode symbols
-  let mailOptions = {
-      from: '"Nodemailer Contact" <joshsudarso19@gmail.com>', // sender address
-      to: `${req.body.email}`, // list of receivers
-      subject: 'Node Contact Request', // Subject line
-      text: 'Hello world?', // plain text body
-      html: output // html body
-  };
-
-  // send mail with defined transport object
-  transporter.sendMail(mailOptions, (error, info) => {
-      if (error) {
-          return console.log(error);
+router.post('/send', async (req, res, next) => {
+  try {
+    const output = `
+      <p>You have a new contact request</p>
+      <h3>Contact Details</h3>
+      <ul>  
+        <li>Name: ${req.body.name}</li>
+        <li>Email: ${req.body.email}</li>
+      </ul>
+      <h3>Message</h3>
+      <p>Welcome to GESTURA! Your email has been registered</p>
+    `;
+  
+    // create reusable transporter object using the default SMTP transport
+    let transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+          user: 'joshsudarso19@gmail.com', // generated ethereal user
+          pass: 'Akuadalah1'  // generated ethereal password
+      },
+      tls:{
+        rejectUnauthorized:false
       }
-      console.log('Message sent: %s', info.messageId);   
-      console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
-  });
-  res.status(200).json({ message: 'Message has been sent' })
+    });
+  
+    // setup email data with unicode symbols
+    let mailOptions = {
+        from: '"Nodemailer Contact" <joshsudarso19@gmail.com>', // sender address
+        to: `${req.body.email}`, // list of receivers
+        subject: 'Node Contact Request', // Subject line
+        text: 'Hello world?', // plain text body
+        html: output // html body
+    };
+  
+    // send mail with defined transport object
+    transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+            return console.log(error);
+        }
+        console.log('Message sent: %s', info.messageId);   
+        console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
+    });
+    res.status(200).json({ message: 'Message has been sent' })
+  } catch (error) {
+    next(error)
+  }
 });
 
 router.post('/payment', async (req, res) => {

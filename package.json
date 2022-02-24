@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/boogerjosh/p2-iproject-server#readme",
   "dependencies": {
+    "axios": "^0.26.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.2",
     "buffer": "^6.0.3",
