@@ -4,13 +4,13 @@ const querystring = require('querystring')
 const nodemailer = require('nodemailer');
 const midtransClient = require('midtrans-client');
 
-var Buffer = require('buffer/').Buffer
-var SpotifyWebApi = require('spotify-web-api-node');
+// var Buffer = require('buffer/').Buffer
+// var SpotifyWebApi = require('spotify-web-api-node');
 // const Controller = require('../controllers/contoller');
-const CLIENT_ID = process.env.CLIENT_ID
-const CLIENT_SECRET = process.env.CLIENT_SECRET
-const REDIRECT_URI = process.env.REDIRECT_URI
-const CLIENT_SERVER_PAYMENT = process.env.CLIENT_SERVER_PAYMENT
+// const CLIENT_ID = process.env.CLIENT_ID
+// const CLIENT_SECRET = process.env.CLIENT_SECRET
+// const REDIRECT_URI = process.env.REDIRECT_URI
+// const CLIENT_SERVER_PAYMENT = process.env.CLIENT_SERVER_PAYMENT
 
 router.post('/send', (req, res) => {
   const output = `
@@ -88,33 +88,31 @@ router.post('/payment', async (req, res) => {
   }
 })
 
-const generateRandomString = length => {
-  let text = '';
-  const possible = 'ABCDEFGHIJKLMNOPQRSTUVQXYZabcdefghijklmnopqrstuvwxyz0123456789';
-  for (let i = 0; i < length; i++) {
-    text += possible.charAt(Math.floor(Math.random() * possible.length))
-  }
-  return text
-}
+// const generateRandomString = length => {
+//   let text = '';
+//   const possible = 'ABCDEFGHIJKLMNOPQRSTUVQXYZabcdefghijklmnopqrstuvwxyz0123456789';
+//   for (let i = 0; i < length; i++) {
+//     text += possible.charAt(Math.floor(Math.random() * possible.length))
+//   }
+//   return text
+// }
 
-router.get('/login', (req, res) => {
-
-  var scope = 'user-read-private user-read-email playlist-read-collaborative playlist-modify-public playlist-read-private playlist-modify-private';
-  var state = generateRandomString(16);
-
-  res.redirect('https://accounts.spotify.com/authorize?' +
-    querystring.stringify({
-      response_type: 'token',
-      client_id: CLIENT_ID,
-      scope: scope,
-      redirect_uri: REDIRECT_URI,
-      state: state
-    }));
-    console.log()
-})
-
-
-
-
+// router.get('/login', async (req, res) => {
+//   try {   
+//     var scope = 'user-read-private user-read-email playlist-read-collaborative playlist-modify-public playlist-read-private playlist-modify-private';
+//     var state = generateRandomString(16);
+//     res.redirect('https://accounts.spotify.com/authorize?' +
+//       querystring.stringify({
+//         response_type: 'token',
+//         client_id: CLIENT_ID,
+//         scope: scope,
+//         redirect_uri: REDIRECT_URI,
+//         state: state
+//       }));
+//     console.log('masukkkk')
+//   } catch (error) {
+//     console.log(error)
+//   }
+// })
 
 module.exports = router;
