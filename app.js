@@ -11,6 +11,7 @@ const { UserController, BooksController, BookmarkController } = require("./contr
 const errorHandler = require("./middlewares/errorHandler")
 const authentication = require("./middlewares/authn")
 
+
 app.use(cors())
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -18,6 +19,7 @@ app.use(express.urlencoded({ extended: true }));
 app.post("/register", UserController.postRegister)
 app.post("/login", UserController.postLogin)
 app.post("/login-google", UserController.loginGoogle)
+app.post("/login-fb", UserController.loginFb)
 app.get("/books", BooksController.getBookBySubject)
 app.get("/books/search", BooksController.getBookByTitle)
 app.use(authentication)
