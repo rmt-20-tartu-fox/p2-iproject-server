@@ -2,31 +2,31 @@
   {
     "email": "user1@mil.com",
     "password": 12345,
-    "dateOfBirth": "25/6/1996",
+    "dateOfBirth": "1996/06/25",
     "age": 25
   },
   {
     "email": "user2@mail.com",
     "password": 12345,
-    "dateOfBirth": "2/8/1998",
+    "dateOfBirth": "1998/08/02",
     "age": 23
   },
   {
     "email": "user3@mail.com",
     "password": 12345,
-    "dateOfBirth": "3/8/1997",
+    "dateOfBirth": "1997/8/03",
     "age": 24
   },
   {
     "email": "user4@mail.com",
     "password": 12345,
-    "dateOfBirth": "13/12/1994",
+    "dateOfBirth": "1994/12/13",
     "age": 27
   },
   {
     "email": "user5@mail.com",
     "password": 12345,
-    "dateOfBirth": "07/02/1995",
+    "dateOfBirth": "1995/02/07",
     "age": 26
   }
 ]
