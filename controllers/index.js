@@ -4,6 +4,11 @@ const { signToken, verifyToken } = require("../helpers/jwt")
 const { comparePass } = require("../helpers/hashPassword")
 const {OAuth2Client} = require('google-auth-library');
 const client = new OAuth2Client('337335887389-af6plqi8r6h0lgjdrgthijrvrck10kgn.apps.googleusercontent.com');
+const FacebookTokenStrategy = require('passport-facebook-token');
+const FACEBOOK_APP_ID = process.env.FACEBOOK_APP_ID;
+const FACEBOOK_APP_SECRET = process.env.FACEBOOK_APP_ID;
+
+
 
 class UserController {
   static postRegister = async (req, res, next) => {
@@ -103,6 +108,29 @@ class UserController {
       next(error)
     }
     
+  }
+
+  static loginFb = async (req, res, next) => {
+    try {
+      const passport = new FacebookTokenStrategy({
+        clientID: FACEBOOK_APP_ID,
+        clientSecret: FACEBOOK_APP_SECRET,
+        fbGraphVersion: 'v3.0'
+        }, function(access_token, refreshToken, profile, done) {
+          User.findOrCreate({facebookId: profile.id}, function (error, user) {
+            return done(error, user);
+          });
+        }
+      );
+      
+      const {facebookToken} = req.body
+      const userFb = await passport.authenticate(facebookToken)
+
+      console.log(userFb);
+
+    } catch (error) {
+      console.log(error);
+    }
   }
 }
 
