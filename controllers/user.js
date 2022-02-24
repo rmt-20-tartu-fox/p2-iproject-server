@@ -18,6 +18,7 @@ class UserController {
   }
   static async login (request, response, next) {
     try {
+      console.log(`masuk`);
       const { email, password } = request.body
       const userData = await User.findOne({
         where: {
@@ -49,6 +50,23 @@ class UserController {
           message: "Invalid email or password"
         })
       }
+    } catch(error) {
+      next(error)
+    }
+  }
+  static async getAllEmail (request, response, next) {
+    try {
+      let mailOptions = {
+        from: "daharrisa@gmail.com",
+        to: null,
+        subject: "Hi! Fellow PiBuYo user",
+        text: "Your pet seems to be hungry now, you can feed him again.",
+      };
+      const usersEmailData = await User.findAll({
+        attributes: ["email"],
+      })
+        .then((emailData) => mailOptions.to = emailData)
+      return mailOptions
     } catch(error) {
       next(error)
     }

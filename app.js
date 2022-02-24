@@ -1,4 +1,4 @@
-if(process.env.NODE_ENV !== 'production') {
+if (process.env.NODE_ENV !== "production") {
   require("dotenv").config();
 }
 const cors = require("cors");
@@ -10,7 +10,9 @@ const nodemailer = require("nodemailer");
 
 const EMAIL_PASSWORD_KEY = process.env.EMAIL_PASSWORD_KEY;
 
+console.log(process.env.NODE_ENV);
 const { User } = require("./models");
+const { getAllEmail } = require("./helper/email");
 
 const FileController = require("./controllers/file");
 const UserController = require("./controllers/user");
@@ -24,10 +26,6 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-const usersEmailData = User.findAll({
-  attributes: ["email"],
-});
-
 const transporter = nodemailer.createTransport({
   service: "gmail",
   secure: false,
@@ -40,14 +38,10 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-let mailOptions = {
-  from: "daharrisa@gmail.com",
-  to: "daharrisa@hotmail.com",
-  subject: "Hi! Fellow PiBuYo user",
-  text: "Your pet seems to be hungry now, you can feed him again.",
-};
+//default 0 12 * * *
+cron.schedule("0 12 * * *", async function () {
+  const mailOptions = await getAllEmail();
 
-cron.schedule("0 12 * * *", function () {
   transporter.sendMail(mailOptions, function (error, info) {
     if (error) {
       console.log(error);

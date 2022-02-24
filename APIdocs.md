@@ -109,3 +109,8 @@ _Response (400 - Bad Request)_
   "message": "File size cannot be larger than 2MB!"
 }
 ```
+
+## 4. GET /weather
+## 5. GET /pet
+## 6. POST /pet
+## 7. PATCH /pet
