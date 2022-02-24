@@ -66,8 +66,8 @@ class Controller {
 
       res.status(200).json({
         count: users.count,
-        dist: distances,
-        rows: users.rows,
+        dist: distances[0],
+        rows: users.rows[0],
       });
     } catch (error) {
       next(error);

@@ -41,7 +41,10 @@ class Controller {
     try {
       const UserId = req.currentUser.id;
       const baseUrl = "https://ridhasidi-wolfy.herokuapp.com/";
-      const photo = baseUrl + req.file.path.replace("\\", "/");
+      let photo = "";
+      if (req.file) {
+        photo = baseUrl + req.file.path.replace("\\", "/");
+      }
       const { name, education, job, description, sex, gender } = req.body;
       const newProfile = await Profile.create({
         name,
