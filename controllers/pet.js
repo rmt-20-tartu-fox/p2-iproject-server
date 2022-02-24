@@ -8,7 +8,7 @@ class PetController {
       const OwnerID = request.userData.id;
       console.log(request.body);
       const { name } = request.body;
-      const hunger = 100;
+      const hunger = 70;
       const craving = "Bone, meat, sausages";
 
       const data = Pet.create({
