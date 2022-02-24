@@ -3,7 +3,10 @@ const axios = require("axios").default;
 class BookingAPI {
   static async getHotel(req, res, next) {
     try {
-      const { longitude, latitude, checkin, checkout } = req.body;
+      let { longitude, latitude, checkin, checkout } = req.body;
+
+      if (!longitude) longitude = '107.6191'
+      if (!latitude) latitude = '6.9175'
 
       let options = {
         method: "GET",
