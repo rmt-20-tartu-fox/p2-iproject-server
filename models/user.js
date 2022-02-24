@@ -14,7 +14,6 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      User.hasOne(models.Profile, {foreignKey: 'UserId'})
     }
   }
   User.init({
@@ -24,9 +23,15 @@ module.exports = (sequelize, DataTypes) => {
       validate: {
         notEmpty: {msg: 'Email is required!'},
         notNull: {msg: 'Email is required!'},
-        isEmail: true
+        isEmail: {
+          args: true,
+          msg: 'Invalid email format!'
+        }
       },
-      unique: true
+      unique: {
+        args: true,
+        msg: 'Email must be unique!'
+      }
     },
     password: {
       type: DataTypes.STRING,
