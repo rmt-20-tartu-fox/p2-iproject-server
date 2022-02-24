@@ -55,6 +55,9 @@ cron.schedule("0 12 * * *", function () {
   });
 });
 
+app.get("/", (request, response) => {
+  response.send("hello world");
+});
 app.post("/register", UserController.register);
 app.post("/login", UserController.login);
 app.post("/upload", FileController.upload);
