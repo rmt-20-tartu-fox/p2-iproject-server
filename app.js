@@ -2,6 +2,8 @@ if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config()
 }
 
+const PORT = process.env.PORT || 3000
+
 const express = require('express')
 const cors = require('cors')
 
@@ -17,7 +19,7 @@ const router = require('./routers')
 app.use('/', router)
 app.use(errorHandler)
 
-app.listen(3000, (req, res) => {
+app.listen(PORT, (req, res) => {
   console.log('listen');
 })
 
