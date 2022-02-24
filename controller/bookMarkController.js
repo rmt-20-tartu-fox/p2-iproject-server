@@ -6,6 +6,8 @@ class BookMarkController {
       const { id } = req.currentUser;
       const { hotel_id, room_id, data } = req.body;
 
+      console.log(req.body)
+
       const bookmark = await BookMark.create({
         hotel_id,
         room_id,
