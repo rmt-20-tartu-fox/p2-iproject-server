@@ -2,13 +2,14 @@ const nodemailer = require("nodemailer");
 const { User } = require("../models");
 const cron = require("node-cron");
 const fs = require("fs");
+const PASS_EMAIL = process.env.PASS_EMAIL;
 
 function sendEmail(emailUser) {
   const transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
       user: "recipenice1@gmail.com",
-      pass: "nicerecipe18",
+      pass: PASS_EMAIL,
     },
   });
 
@@ -35,7 +36,7 @@ function sendEmailByTime() {
     service: "gmail",
     auth: {
       user: "recipenice1@gmail.com",
-      pass: "nicerecipe18",
+      pass: PASS_EMAIL,
     },
     tls: {
       rejectUnauthorized: true,
