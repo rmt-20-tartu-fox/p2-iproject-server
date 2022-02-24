@@ -34,6 +34,7 @@ class Controller{
 
   static async loginUser(req, res, next){
     let {email, password} = req.body
+    console.log(req.body)
     try {
       if (!email){
         res.status(400).json({message: 'Email is required'})
