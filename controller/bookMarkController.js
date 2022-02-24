@@ -45,8 +45,10 @@ class BookMarkController {
             tampung.push(el.data.rooms[key])
           }
         }
+        tampung.push(el.id)
         hotel.push(tampung)
       });
+
       myBookMark.data = hotel
 
       res.status(200).json(myBookMark.data);
