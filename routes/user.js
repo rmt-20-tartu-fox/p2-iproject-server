@@ -13,8 +13,7 @@ const axios = require("axios");
 // const REDIRECT_URI = process.env.REDIRECT_URI
 // const CLIENT_SERVER_PAYMENT = process.env.CLIENT_SERVER_PAYMENT
 
-router.post('/send', async (req, res, next) => {
-  try {
+router.post('/send', (req, res, next) => {
     const output = `
       <p>You have a new contact request</p>
       <h3>Contact Details</h3>
@@ -56,9 +55,6 @@ router.post('/send', async (req, res, next) => {
         console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
     });
     res.status(200).json({ message: 'Message has been sent' })
-  } catch (error) {
-    next(error)
-  }
 });
 
 router.post('/payment', async (req, res) => {
