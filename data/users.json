@@ -1,7 +1,7 @@
 {
 "Users": [
 	{
-		"id" : 1,
+
 		"name" : "Arief",
 		"email" : "foodpedia.dago@gmail.com",
 		"password" : "$2a$08$E6L1w2755jKPj1iyNSo.du6CK1e37XFwWkpyIhdJnPf4mWzAgntvi",
@@ -11,7 +11,7 @@
 		"status" : "member"
 	},
 	{
-		"id" : 2,
+
 		"name" : "user1",
 		"email" : "user1@user.com",
 		"password" : "$2a$08$EPNg5sW7KCRBkoNE1RhCr.tBfsaBXFiZItC3IV19ACLUF3vxzVML.",
