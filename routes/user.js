@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const querystring = require('querystring')
+const querystring = require('querystring');
 const nodemailer = require('nodemailer');
 const midtransClient = require('midtrans-client');
 
@@ -53,16 +53,16 @@ router.post('/send', (req, res) => {
       console.log('Message sent: %s', info.messageId);   
       console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
   });
+  res.status(200).json({ message: 'Message has been sent' })
 });
 
 router.post('/payment', async (req, res) => {
   let snap = new midtransClient.Snap({
     isProduction : false,
-    serverKey : CLIENT_SERVER_PAYMENT
+    serverKey : 'SB-Mid-server-etMCuR0aCqusi59aR6Fa6A4s'
   });
   try {
     const { name, email, price, itemName } = req.body
-    console.log(req.body)
     let parameter = {
       transaction_details: {
           order_id: `${Math.floor(Date.now() / 10)}`,
