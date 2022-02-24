@@ -5,6 +5,11 @@ const librivox = require("../apis/librivox");
 const serpapi = require("../apis/serpapi");
 const { default: axios } = require("axios");
 const { sequelize } = require("../models");
+const nodemailer = require("nodemailer");
+const { OAuth2Client } = require("google-auth-library");
+const { Op } = require("sequelize");
+const { google } = require("googleapis");
+const OAuth2 = google.auth.OAuth2;
 
 const registerCustomer = async (req, res, next) => {
   try {
@@ -19,6 +24,12 @@ const registerCustomer = async (req, res, next) => {
 const loginCustomer = async (req, res, next) => {
   try {
     let { email, password } = req.body;
+    if (!email) {
+      throw new Error("NEED_EMAIL");
+    }
+    if (!password) {
+      throw new Error("NEED_PASSOWRD");
+    }
     let user = await User.findOne({ where: { email: email } });
     if (!user) {
       throw new Error("NOT_FOUND");
@@ -69,9 +80,10 @@ const addBooksToDB = async (req, res, next) => {
             next(error);
           });
       });
+      res.status(201).json({ message: `Books has been added` });
+    } else {
+      res.status(400).json({ message: `Dupication books` });
     }
-
-    res.status(200).json({ message: `Books has been added` });
   } catch (error) {
     next(error);
   }
@@ -79,11 +91,19 @@ const addBooksToDB = async (req, res, next) => {
 
 const getBooks = async (req, res, next) => {
   try {
-    let { page } = req.query;
-
+    let { page, title } = req.query;
+    let condition;
+    if (title) {
+      condition = {
+        title: {
+          [Op.iLike]: `%${title}%`,
+        },
+      };
+    }
     let books = await Book.findAndCountAll({
       limit: 10,
       offset: (page - 1) * 10,
+      where: condition,
     });
     res.status(200).json(books);
   } catch (error) {
@@ -127,7 +147,62 @@ const getTransaction = async (req, res, next) => {
 
     res.status(200).json(unique);
   } catch (error) {
-    console.log(error);
+    next(error);
+  }
+};
+
+const sendEmail = async (req, res, next) => {
+  try {
+    let { title, link } = req.body;
+    let transporter = nodemailer.createTransport({
+      service: "Gmail",
+      auth: {
+        user: process.env.EMAIL, // generated ethereal user
+        pass: process.env.PASSWORD, // generated ethereal password
+      },
+      tls: {
+        rejectUnauthorized: false,
+      },
+    });
+    let mailOptions = {
+      from: process.env.EMAIL,
+      to: req.userLogin.email,
+      subject: "Success for payment",
+      text: `success buy ${title}. this is the link ${link}`,
+    };
+    let info = await transporter.sendMail(mailOptions);
+    res.status(200).json(info);
+  } catch (error) {
+    next(error);
+  }
+};
+
+const googleLogin = async (req, res, next) => {
+  try {
+    const CLIENT_ID = process.env.CLIENT_ID;
+    const client = new OAuth2Client(CLIENT_ID);
+    const { token } = req.body;
+    const ticket = await client.verifyIdToken({
+      idToken: token,
+      audience: CLIENT_ID,
+    });
+    const payload = ticket.getPayload();
+    const [user] = await User.findOrCreate({
+      where: {
+        email: payload.email,
+      },
+      defaults: {
+        password: `${payload.email}-${new Date()}-${Math.random() * 100}`,
+      },
+    });
+    const payloadFromServer = signToken({
+      id: user.id,
+      email: user.email,
+    });
+    res.status(200).json({
+      access_token: payloadFromServer,
+    });
+  } catch (error) {
     next(error);
   }
 };
@@ -139,4 +214,6 @@ module.exports = {
   getBooks,
   getDetailBook,
   getTransaction,
+  sendEmail,
+  googleLogin,
 };

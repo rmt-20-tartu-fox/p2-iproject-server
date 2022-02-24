@@ -1,13 +1,13 @@
 const midtransClient = require("midtrans-client");
 const { Transaction } = require("../models");
-const midtrans = require("../apis/midtrans");
 
 const getSnapToken = async (req, res, next) => {
-  let snap = new midtransClient.Snap({
-    isProduction: false,
-    serverKey: process.env.SERVER_KEY,
-  });
   try {
+    let snap = new midtransClient.Snap({
+      isProduction: false,
+      serverKey: process.env.SERVER_KEY,
+    });
+
     let email = req.userLogin.email;
     let { price, first_name, last_name, quantity, itemName } = req.body;
     if (quantity <= 0 || !quantity) {
@@ -42,7 +42,6 @@ const getSnapToken = async (req, res, next) => {
 const transaction = async (req, res, next) => {
   try {
     let { BookId, order_id, transaction_status } = req.body;
-    console.log(req.userLogin.id);
     let newStatus = await Transaction.create({
       status: transaction_status,
       order_id: order_id,
@@ -51,7 +50,6 @@ const transaction = async (req, res, next) => {
     });
     res.status(201).json(newStatus);
   } catch (error) {
-    console.log(error);
     next(error);
   }
 };

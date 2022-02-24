@@ -6,6 +6,8 @@ const {
   getBooks,
   getDetailBook,
   getTransaction,
+  googleLogin,
+  sendEmail,
 } = require("../controllers/customersController");
 const {
   getSnapToken,
@@ -15,7 +17,7 @@ const authentication = require("../middlewares/authn");
 
 router.post("/register", registerCustomer);
 router.post("/login", loginCustomer);
-
+router.post("/login-google", googleLogin);
 router.get("/books", getBooks);
 
 router.use(authentication);
@@ -27,5 +29,6 @@ router.post("/payment", getSnapToken);
 
 router.get("/transactions", getTransaction);
 router.post("/transactions", transaction);
+router.post("/send-emails", sendEmail);
 // router.get("/mycarts");
 module.exports = router;

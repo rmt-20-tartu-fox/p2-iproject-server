@@ -38,7 +38,18 @@ module.exports = (sequelize, DataTypes) => {
           },
         },
       },
-      order_id: DataTypes.STRING,
+      order_id: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          notNull: {
+            msg: `Order id is required`,
+          },
+          notEmpty: {
+            msg: `Order id is required`,
+          },
+        },
+      },
       status: DataTypes.STRING,
     },
     {

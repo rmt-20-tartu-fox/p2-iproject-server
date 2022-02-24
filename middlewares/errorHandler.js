@@ -20,6 +20,15 @@ const errorHandler = (err, req, res, next) => {
   } else if (err.message == "QUANTITY_REQUIRED") {
     code = 400;
     msg = "Quantity is required";
+  } else if (err.message == "NEED_EMAIL") {
+    code = 400;
+    msg = "Email is required";
+  } else if (err.message == "NEED_PASSWORD") {
+    code = 400;
+    msg = "Password is required";
+  } else if (err.message == "BOOK_NOT_FOUND") {
+    code = 404;
+    msg = `Book not found`;
   }
   res.status(code).json({ message: msg });
 };
