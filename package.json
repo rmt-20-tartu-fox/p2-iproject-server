@@ -13,6 +13,10 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "engines": {
+    "node": "16.x",
+    "npm": "8.x"
+  },
   "bugs": {
     "url": "https://github.com/boogerjosh/p2-iproject-server/issues"
   },
