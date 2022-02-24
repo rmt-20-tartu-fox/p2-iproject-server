@@ -1,0 +1,47 @@
+[
+  {
+    "name": "Frost",
+    "iconUrl": "https://staticctf.akamaized.net/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/1OWFtfiEXleLSENciCSQQR/8fcced59c0125073e506f2dee0201015/Y1S1_BADGE_Frost_L.png",
+    "imageUrl": "https://staticctf.akamaized.net/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/4IrcYxDo6aVBQyxDOFirQE/852e6c6c0e8a46303469921efae3d6dc/R6-operator-frost.png",
+    "ability": "Welcome Mat",
+    "quote": "There are two things the human body needs most in a survival situation: Water, and hope.",
+    "content": "The rubber mat and concealed metal jaws are bolted in place. When the pressure plate is engaged, two sets of jaws at ankle and shin height deploy, locking the person in place. Requires two people to release the jaws and reset the trap.",
+    "videoUrl": "https://youtu.be/GAQEsRmoJvk"
+  },
+  {
+    "name": "Valkyrie",
+    "iconUrl": "https://staticctf.akamaized.net/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/44qXJmZmAwaD4w44JnPuOx/c54c8b9d3a6813ab8ce3e3f1dd4ef408/Y1S2_BADGE_Valkyrie_L.png",
+    "imageUrl": "https://staticctf.akamaized.net/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/5q1yIrIxoddG5pds2Nq3mz/7dc46a59bbfb6959296d01469916f44c/R6-operator-valkyrie.png",
+    "ability": "Black Eye",
+    "quote": "If you don`t constantly feel like you`re being watched, then you aren`t paying attention.",
+    "content": "Encased in a tinted silicone ball, coated in micro-suction cups, the quick deploy camera maintains a clear view thanks to the internal gyroscope that dictates the angle of the lens. The suction cups allow the camera to adhere to any surface, while the gyroscope mounted lens stabilises the camera angle and focus. The live video feed is available to all operators.",
+    "videoUrl": "https://youtu.be/VTqJ0g5u3Tw"
+  },
+  {
+    "name": "Caveira",
+    "iconUrl": "https://staticctf.akamaized.net/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/4H1dOkcdZIKblKkAWjD390/10e57f4829eabda30f4aa1044e49893d/Y1S3_BADGE_Caveira_L.png",
+    "imageUrl": "https://staticctf.akamaized.net/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/3BfIIo48RsMmkntTXU54g5/93826b4340e2fda49d959054b15151c0/R6-operator-caveira.png",
+    "ability": "Silent Step",
+    "quote": "Not every child gets to choose who they grow up to be.",
+    "content": "The “Luison” is wrapped in a rock-based mineral fiber to both insulate and soundproof the silencer. This weapon allows Caveira to incapacitate her target discreetly and conduct an interrogation. The “Luison” is not only formidable to neutralize your opponent while remaining undetected; it also ensures that no one gets away.",
+    "videoUrl": "https://www.youtube.com/embed/lqsL4QpKXeM"
+  },
+  {
+    "name": "Echo",
+    "iconUrl": "https://staticctf.akamaized.net/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/3MRqAdUybJ7GR9gX4wPAI4/992938a70a4e53b91478358634e77ca7/Y1S4_BADGE_Echo_L.png",
+    "imageUrl": "https://staticctf.akamaized.net/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/2dZawp2HB63pTV3Zwgro6L/8278d19b2e9ae6b1f4ef45784a217c89/R6-operator-echo.png",
+    "ability": "Yokai",
+    "quote": "Don`t ask me what I`m doing on my phone. You don`t want to know.",
+    "content": "Equipped with an acoustic hailing device, this signature drone can fire ultrasonic bursts that disorient all targets in a given perimeter. Yokai also transmits a video feed to Echo, who keeps his immediate perimeter secure. Embrace the power of technology and embody a turret Defender who can both hold up the siege and support roamers.",
+    "videoUrl": "https://www.youtube.com/embed/12hNVzz4CYY"
+  },
+  {
+    "name": "Mira",
+    "iconUrl": "https://staticctf.akamaized.net/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/u1KR6aogjLncAtaVOciTc/ba730583f9c20cad6d3ca996d366a707/Y2S1_BADGE_Mira_L.png",
+    "imageUrl": "https://staticctf.akamaized.net/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/6wZplm8r956WXGrSYlULTU/0f9c0a33abfd42d9102723886850b8ca/R6-operator-mira.png",
+    "ability": "Black Mirror",
+    "quote": "Think of me as your conscience. I see everything, and I’m just as ruthless.",
+    "content": "A specialized laminated glass, which when deployed with oxyacetylene can carve out a one-way mirror on any wall. If the air pressure is disrupted, however, the glass is ejected and creates a daring opening for both defenders and attackers.",
+    "videoUrl": "https://www.youtube.com/embed/TuNPJIVR9AM"
+  }
+]

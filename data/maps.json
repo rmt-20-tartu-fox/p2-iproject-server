@@ -1,0 +1,14 @@
+[
+  {
+    "name": "Kafe Dostoyevsky",
+    "imgUrl": "https://staticctf.akamaized.net/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/2nIuPSHvbM57TK90VSwBEm/70144ada56cf1ba72103aeb4ece9ed1a/r6-maps-kafe.jpg"
+  },
+  {
+    "name": "Chalet",
+    "imgUrl": "https://staticctf.akamaized.net/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/Km3ZJUM7ZMVbGsi6gad5Y/c3185ded1870d374c5ee15f9d1d5bd3d/r6-maps-chalet.jpg"
+  },
+  {
+    "name": "Club House",
+    "imgUrl": "https://staticctf.akamaized.net/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/1vCw5eD2XzxZlv6Au1gtui/baeebaa75cd672e0af8f9f624cf61bde/r6-maps-clubhouse.jpg"
+  }
+]

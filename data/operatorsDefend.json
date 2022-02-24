@@ -1,0 +1,92 @@
+[
+  {
+    "name": "Kapkan",
+    "iconUrl": "https://staticctf.akamaized.net/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/797q7C5YA89eFqw4RB40ka/f9435d1b4d13d41472e22d305c961cb9/Y0R6_BADGE_Kapkan_L.png",
+    "imageUrl": "https://staticctf.akamaized.net/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/4DCZD6bED0srAvUDbciDgO/f7b915b1d07854638973fbc23aa0ad9b/R6-operator-kapkan.png",
+    "ability": "Entry Denial Device",
+    "quote": "There are many different kinds of cunning. Fortunately, survival requires only one.",
+    "content": "Kapkan is a trap Operator and a deadly addition to a Defending team. Kapkan is equipped with a Entry Denial Device (EDD-MK II). This trap is a packed C4 charge activated when motion is detected. It can be placed on door and window frames -- denying key entry points for attackers.",
+    "videoUrl": "https://youtu.be/3ktw-fnNH2Q"
+  },
+  {
+    "name": "Tachanka",
+    "iconUrl": "https://staticctf.akamaized.net/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/7hpI2mcmvyjC2vG6ieltLo/f217b1dc449c0514b55e471193a38c91/Y0R6_BADGE_Tachanka_L.png",
+    "imageUrl": "https://staticctf.akamaized.net/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/3anG5CUIzp0MWB9T6tIpy9/bd81ae97ecd984afe84813384eb027d8/r6s-operator-tachanka.png",
+    "ability": "Shumikha Launcher",
+    "quote": "They told me I`d died. They were wrong. I was reborn.",
+    "content": "Tachanka`s new gadget, the Shumikha Launcher, is perfect for area denial and for covering unfavorable angles. Its heavy incendiary grenades can bounce multiple times, and their fuse timer only starts after the first bounce, giving them a lot of versatility. \nTachanka is equipped with 10 grenades at the beginning of a match and the Launcher can hold up to 7. For maximum effectiveness, use several grenades together to cover a wider area and prevent your opponents from avoiding them. Once launched, you`ll only be able to reload one at a time.",
+    "videoUrl": "https://youtu.be/-nY12UiyJlc"
+  },
+  {
+    "name": "Bandit",
+    "iconUrl": "https://staticctf.akamaized.net/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/4Vasjq82J1TNjNE38J7LmV/e1725f8d9ea2b85565e40b54faac85b8/Y0R6_BADGE_Bandit_L.png",
+    "imageUrl": "https://staticctf.akamaized.net/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/7uF3w5MYCFA1zikIkECPi9/f03570fd8c7739361619726638561c7a/R6-operator-bandit.png",
+    "ability": "Shock Wire",
+    "quote": "Survival is all about timing. Nature doesn`t give second chances.",
+    "content": "Bandit is a secure, anti-hard breacher and roamer, capable of denying key entry points for the attackers and defending the objective while on the move. Bandit is capable of electrifying a variety of surfaces thanks to his special ability: Crude Electrical Device or CED-1 Shock Wire.",
+    "videoUrl": "https://youtu.be/oRWJz0ydW_Y"
+  },
+  {
+    "name": "Jager",
+    "iconUrl": "https://staticctf.akamaized.net/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/1cCvTmKwnnovVmpZmDyPkA/b064f5ad6b9e7398d820d9ea90ff9366/Y0R6_BADGE_Jager_L.png",
+    "imageUrl": "https://staticctf.akamaized.net/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/18FXPSsVVIDvyKvMi4cmnO/bac05dd81df9a8f48336babdc5030cff/R6-operator-jager.png",
+    "ability": "Active Defense System",
+    "quote": "Birthdays. Proposals. These should be surprises. No one wants a grenade to the face.",
+    "content": "Jager can help his team create a defensive stronghold before roaming the map to intercept flanking attackers. He is capable of destroying incoming projectiles due to his unique deployable gadget : the Active Defense System or ADS.",
+    "videoUrl": "https://youtu.be/2npk9_mXfbg"
+  },
+  {
+    "name": "Rook",
+    "iconUrl": "https://staticctf.akamaized.net/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/3Yk1noMd9re0RLlrXJSWtR/7a55e80593c487827293a114835dba63/Y0R6_BADGE_Rook_L.png",
+    "imageUrl": "https://staticctf.akamaized.net/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/17CNRjTOFVKS1Q8Zou4ZVD/663dae86e2902f210bf2b1504904dbd0/R6-operator-rook.png",
+    "ability": "Armor Pack",
+    "quote": "If you're going to get shot, you may as well do it right.",
+    "content": "Rook is an anchor and buff Operator, capable of providing a boost to the Defenders, giving them a valuable advantage in a firefight. Rook is capable of protecting himself and his team mates through his unique ability: R1N RHINO Armor.",
+    "videoUrl": "https://youtu.be/6aH6vryoy_w"
+  },
+  {
+    "name": "Doc",
+    "iconUrl": "https://staticctf.akamaized.net/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/71Nl3v0LqHyo9eXV6xTFQd/1ba4f057b6acad3ec700ca9e60b53d6c/Y0R6_BADGE_Doc_L.png",
+    "imageUrl": "https://staticctf.akamaized.net/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/7cZ1TDHehPRrgv6uJ2GIoy/d6feddd3fc1a0769a8ad56afa658e572/R6-operator-doc.png",
+    "ability": "Stim Pistol",
+    "quote": "My job is to keep you alive. Make it as hard as you like.",
+    "content": "Handheld, trigger-operated pistol. 1mg dose of epinephrine, in a saline solution. The pistol is powered by a pressurized CO2 canister.",
+    "videoUrl": "https://youtu.be/Q9hgqkdTFHc"
+  },
+  {
+    "name": "Pulse",
+    "iconUrl": "https://staticctf.akamaized.net/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/ChAeJzdmwxuvhZTrV81rK/8c16116f4c719a3df864df6639e2f52e/Y0R6_BADGE_Pulse_L.png",
+    "imageUrl": "https://staticctf.akamaized.net/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/3eOrdhZhYBqcFJdD0ygcGI/ba8ce2069fd409480fc74b8a5dbf8afd/R6-operator-pulse.png",
+    "ability": "Hearbeat Sensor",
+    "quote": "The heart is just a motor. Like any machine, it can be fine-tuned.",
+    "content": "Pulse is a roamer and intel Operator for a defending team. Thanks to his HB-5 Cardiac Sensor, Pulse can track attackers through surfaces, gathering valuable intel on their position.",
+    "videoUrl": "https://youtu.be/xfzZWg0vYeY"
+  },
+  {
+    "name": "Castle",
+    "iconUrl": "https://staticctf.akamaized.net/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/kzznLctjOsXJZAg0F2HPB/dea28fa008515d6ddaa0d2659f4dc253/Y0R6_BADGE_Castle_L.png",
+    "imageUrl": "https://staticctf.akamaized.net/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/569euf91mHD0ZceUnO5tVl/d2c58485cf44e51c130373fe8007f4d0/R6-operator-castle.png",
+    "ability": "Armor Panel",
+    "quote": "Listen up, people: No one dies today. Any questions`ll just have to wait.",
+    "content": "Castle is an anchor and secure Operator, capable of creating defensive strongholds around the objective, controlling the flow of the attackers and slowing down their assault. Castle's unique ability is to create reinforced barricades using the: UTP1-Universal Tactical Panel.",
+    "videoUrl": "https://youtu.be/leU4EDVe4kU"
+  },
+  {
+    "name": "Smoke",
+    "iconUrl": "https://staticctf.akamaized.net/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/6mOMxoc3t27R9Gr9wFtt6T/f5f90a6be6a6710bee686ce69df29906/Y0R6_BADGE_Smoke_L.png",
+    "imageUrl": "https://staticctf.akamaized.net/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/5NUuXBKokP1KmAGR8Q7fqE/9628143388fc1c2f50162c1ccdf94942/R6-operator-smoke.png",
+    "ability": "Remote Gas Grenade",
+    "quote": "Sure, I care about the environment. Immediately around me, anyway.",
+    "content": "Detonator. Remote receiver. Double-sided tape allows vertical or horizontal mounting.",
+    "videoUrl": "https://youtu.be/3B1wIBrjmPM"
+  },
+  {
+    "name": "Mute",
+    "iconUrl": "https://staticctf.akamaized.net/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/3exeHnxH1tmUmQTequWRKa/e1b6c6f057eb24722dd7860af0276316/Y0R6_BADGE_Mute_L.png",
+    "imageUrl": "https://staticctf.akamaized.net/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/3gItFrDP0bBZsDXPdPp8ni/4314eb876028a87ae7fb20cc3215d3f6/R6-operator-mute.png",
+    "ability": "Signal Disruptor",
+    "quote": "People think my codename is because I don`t like to talk. Maybe I just don`t like you.",
+    "content": "Collapsible antennas. Device can be planted on floors. Digital display. Activation levers.",
+    "videoUrl": "https://youtu.be/JAljvCbVM1g"
+  }
+]
