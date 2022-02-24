@@ -3,7 +3,7 @@ const openLibraryApi = require("../apis/openLibraryApi")
 const { signToken, verifyToken } = require("../helpers/jwt")
 const { comparePass } = require("../helpers/hashPassword")
 const {OAuth2Client} = require('google-auth-library');
-const client = new OAuth2Client('337335887389-af6plqi8r6h0lgjdrgthijrvrck10kgn.apps.googleusercontent.com');
+const client = new OAuth2Client('236503276567-fo4d0b9kvvg1dbosso5sa2a53f6tdcht.apps.googleusercontent.com');
 const FacebookTokenStrategy = require('passport-facebook-token');
 const FACEBOOK_APP_ID = process.env.FACEBOOK_APP_ID;
 const FACEBOOK_APP_SECRET = process.env.FACEBOOK_APP_ID;
@@ -71,7 +71,7 @@ class UserController {
       const { token } = req.body
       const ticket = await client.verifyIdToken({
         idToken: token,
-        audience: '337335887389-af6plqi8r6h0lgjdrgthijrvrck10kgn.apps.googleusercontent.com'
+        audience: '236503276567-fo4d0b9kvvg1dbosso5sa2a53f6tdcht.apps.googleusercontent.com'
       });
   
       const payload = ticket.getPayload()
