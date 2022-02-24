@@ -1,0 +1,189 @@
+[
+  {
+    "name": "Sepatu Futsal Adidas Nitrocharge",
+    "price": 400000,
+    "description": "Struktur Nitrocharge membuat pergerakan pemain menjadi lebih smooth, serta memberikan passing dan shooting yang lebih akurat. Tak salah jika Xabi Alonso dan David Silva menggunakan sepatu ini.",
+    "stock": 100,
+    "imageUrl": "https://ecs7.tokopedia.net/blog-tokopedia-com/uploads/2018/10/1.-Sepatu-Futsal-Adidas-Nitrocharge-300x300.jpg",
+    "AuthorId": 1,
+    "status": "public",
+    "CategoryId": 1,
+    "weight": 1700
+  },
+  {
+    "name": "Sepatu Futsal Adidas Goletto",
+    "price": 250000,
+    "description": "Sepatu yang digunakan oleh Bastian Schweinsteiger ini punya sol sintetis yang ringan, namun memiliki ketahanan tangguh. Sepatu ini memberikan kenyamanan saat kamu pertama kali menginjakkan kaki di lapangan.",
+    "stock": 90,
+    "imageUrl": "https://ecs7.tokopedia.net/blog-tokopedia-com/uploads/2018/10/2.-Sepatu-Futsal-Adidas-Goletto-300x300.jpg",
+    "status": "public",
+    "AuthorId": 1,
+    "CategoryId": 1,
+    "weight": 1700
+  },
+  {
+    "name": "Sepatu Futsal Adidas Predator",
+    "price": 400000,
+    "description": "Adidas Predator cocok untuk penyerang maupun gelandang serang yang punya insting ‘membunuh’ tinggi dan mencetak gol sebanyak-banyaknya. Sepatu ini digunakan oleh Paul Pogba, Robin van Persie, hingga Mesut Ozil.",
+    "stock": 30,
+    "imageUrl": "https://ecs7.tokopedia.net/blog-tokopedia-com/uploads/2018/10/3.-Sepatu-Futsal-Adidas-Predator-300x300.jpg",
+    "status": "public",
+    "AuthorId": 1,
+    "CategoryId": 1,
+    "weight": 1700
+  },
+  {
+    "name": "Sepatu Futsal Adidas Nemeziz",
+    "price": 599000,
+    "description": "Jenis minuman kopi yang kedua adalah latte. Sebagai minuman kopi paling populer di dunia, latte terdiri dari espresso dan steamed milk dengan sedikit busa di atasnya. Latte bisa dipesan dalam bentuk dan rasa originalnya, atau dengan tambahan perasa mulai dari vanilla hingga kayu manis. Latte juga terkenal dengan latte art-nya, yakni seni menggambar bentuk atau pola di atas busa minuman ini.",
+    "stock": 72,
+    "imageUrl": "https://ecs7.tokopedia.net/blog-tokopedia-com/uploads/2018/10/4.-Sepatu-Futsal-Adidas-Nemeziz-300x300.jpg",
+    "status": "public",
+    "AuthorId": 1,
+    "CategoryId": 1,
+    "weight": 1700
+  },
+  {
+    "name": "Sepatu Futsal Nike Hypervenom",
+    "price": 253000,
+    "description": "Nike Hypervenom memberikan kelincahan, kekuatan dan ketahanan kepada pengguna sepanjang permainan. Sepatu ini digunakan oleh sederet bintang, seperti Neymar, Robert Lewandowski, hingga Kylian Mbappe.",
+    "stock": 72,
+    "imageUrl": "https://ecs7.tokopedia.net/blog-tokopedia-com/uploads/2018/10/5.-Sepatu-Futsal-Nike-Hypervenom-300x300.jpg",
+    "status": "public",
+    "AuthorId": 1,
+    "CategoryId": 1,
+    "weight": 1700
+  },
+  {
+    "name": "Sepatu Futsal Nike Mercurial",
+    "price": 125000,
+    "description": "Nike Mercurial membantumu mengontrol bola secara lebih presisi dan menunjang kamu menyentuh kecepatan tertinggi saat berlari di lapangan. Pemain bola yang menggunakan ini, yaitu Cristiano Ronaldo, Raheem Sterling, hingga Eden Hazard.",
+    "stock": 72,
+    "imageUrl": "https://ecs7.tokopedia.net/blog-tokopedia-com/uploads/2018/10/6.-Sepatu-Futsal-Nike-Mercurial-300x300.jpg",
+    "status": "public",
+    "AuthorId": 1,
+    "CategoryId": 1,
+    "weight": 1700
+  },
+  {
+    "name": "Sepatu Futsal Nike Lunar",
+    "price": 200000,
+    "description": "Nike Lunar juga memberikan keseimbangan pada setiap pergerakan di lapangan. Sepatu ini cocok digunakan oleh kamu yang biasa bermain santai, namun tetap ‘mematikan’ dengan pergerakan tak terduga.",
+    "stock": 49,
+    "imageUrl": "https://ecs7.tokopedia.net/blog-tokopedia-com/uploads/2018/10/7.-Sepatu-Futsal-Nike-Lunar-300x300.jpg",
+    "status": "public",
+    "AuthorId": 1,
+    "CategoryId": 1,
+    "weight": 1700
+  },
+  {
+    "name": "Sepatu Futsal Puma Evospeed",
+    "price": 230000,
+    "description": "Puma Evospeed cocok bagi kamu yang mampu menyerang dan memiliki kemampuan berlari dalam kecepatan tinggi. Sepatu ini digunakan oleh Olivier Giroud, Hector Bellerin, hingga Marco Reus.",
+    "stock": 59,
+    "imageUrl": "https://ecs7.tokopedia.net/blog-tokopedia-com/uploads/2018/10/8.-Sepatu-Futsal-Puma-Evospeed-300x300.jpg",
+    "status": "public",
+    "AuthorId": 1,
+    "CategoryId": 1,
+    "weight": 1700
+  },
+  {
+    "name": "Sepatu Futsal Puma Evopower",
+    "price": 299000,
+    "description": "Puma Evopower dilengkapi material yang elastis, membuat kamu merasa tetap empuk ketika bergerak, berlari dan menendang bola. Sepatu ini digunakan pesepak bola ternama, seperti Cesc Fabregas, Mario Balotelli, hingga Yaya Toure.",
+    "stock": 100,
+    "imageUrl": "https://ecs7.tokopedia.net/blog-tokopedia-com/uploads/2018/10/9.-Sepatu-Futsal-Puma-Evopower-300x300.jpg",
+    "status": "public",
+    "AuthorId": 1,
+    "CategoryId": 1,
+    "weight": 1700
+  },
+  {
+    "name": "Sepatu Futsal Mizuno Basara",
+    "price": 299000,
+    "description": "Basara dirancang untuk membuat pengguna bergerak lincah dan bebas menentukan arah gerakan saat berlari sambil mengecoh lawan. Didukung material sintetis berkualitas, sepatu ini membuat bola sulit lepas dari genggamanmu.",
+    "stock": 59,
+    "imageUrl": "https://ecs7.tokopedia.net/blog-tokopedia-com/uploads/2018/10/10.-Sepatu-Futsal-Mizuno-Basara-300x300.jpg",
+    "status": "public",
+    "AuthorId": 1,
+    "CategoryId": 1,
+    "weight": 1700
+  },
+  {
+    "name": "Sepatu Futsal Mizuno Neo Shin",
+    "price": 299000,
+    "description": "Mizuno Neo Shin ditujukan untuk para pemain yang mementingkan akselerasi terbaik dan penetrasi akurat setiap melakukan serangan ke gawang lawan. Lekukannya memungkinkan kamu untuk menendang dengan powerful dan tepat sasaran.",
+    "stock": 100,
+    "imageUrl": "https://ecs7.tokopedia.net/blog-tokopedia-com/uploads/2018/10/10.-Sepatu-Futsal-Mizuno-Basara-300x300.jpg",
+    "status": "public",
+    "AuthorId": 1,
+    "CategoryId": 1,
+    "weight": 1700
+  },
+  {
+    "name": "Sepatu Futsal Specs Metasala",
+    "price": 900000,
+    "description": "Sepatu futsal Specs Metasala bisa jadi alternatif terbaik, jika kamu mencari sepatu terjangkau yang bisa diandalkan untuk meraih performa terbaik. Metasala memberikan stabilitas, ketahanan dan akeselerasi terbaik di setiap pertandingan.",
+    "stock": 55,
+    "imageUrl": "https://ecs7.tokopedia.net/blog-tokopedia-com/uploads/2018/10/11.-Sepatu-Futsal-Mizuno-Neo-Shin-300x300.jpg",
+    "status": "public",
+    "AuthorId": 1,
+    "CategoryId": 1,
+    "weight": 1700
+  },
+  {
+    "name": "Narrow Indonesia",
+    "price": 500000,
+    "description": "Salah satu produk asli buatan dalam negeri yakni Narrow Indonesia yang merupakan produsen jersey futsal yang terletak di Bandung, Jawa Barat. Produk – produk jersey di Narrow ini sudah banyak dipakai oleh tim – tim futsal lokal dari mulai amatiran. Disini kamu bisa mengcustom sendiri jersey sesuai keinginan.",
+    "stock": 55,
+    "imageUrl": "https://ds393qgzrxwzn.cloudfront.net/resize/m720x480/cat1/img/images/0/cbOpwTuEKg.jpg",
+    "status": "public",
+    "AuthorId": 1,
+    "CategoryId": 2,
+    "weight": 1200
+  },
+  {
+    "name": "Nike",
+    "price": 900000,
+    "description": "Beberapa tim sepakbola dunia menjadi bekerja sama dengan apparel Nike. Jika berbicara kualitas sudah tidak perlu dibicarakan lagi, semua tahu bagaimana kualitas jersey Nike asli. Harga jersey original dari Nike memang tergolong mahal dan buat kamu yang punya budget berlebih ingin membeli jersey Nike bisa langsung kunjungi situs resminya atau datang ke store Nike.",
+    "stock": 100,
+    "imageUrl": "https://ds393qgzrxwzn.cloudfront.net/resize/m720x480/cat1/img/images/0/MMYa4mD26U.jpg",
+    "status": "public",
+    "AuthorId": 1,
+    "CategoryId": 2,
+    "weight": 1200
+  },
+  {
+    "name": "Puma",
+    "price": 400000,
+    "description": "Brand lain yang menjadi pilihan untuk membeli jersey sepakbola adalah Puma. Dari sejarahnya Puma ini merupakan adik dari Adidas dan sampai saat ini keduanya tetap bersaing menjadi apparel nomor satu untuk olahraga sepakbola. Seperti halnya brand lain, Puma juga menjadi salah satu apparel yang mensponsori tim – tim besar sepakbola dunia seperti Arsenal, Borrusia Dortmund, dan lain – lain.",
+    "stock": 55,
+    "imageUrl": "https://ds393qgzrxwzn.cloudfront.net/resize/m720x480/cat1/img/images/0/VCYc5LWqT0.jpg",
+    "status": "public",
+    "AuthorId": 1,
+    "CategoryId": 2,
+    "weight": 1200
+  },
+  {
+    "name": "Umbro",
+    "price": 900000,
+    "description": "Jersey dari Umbro ini bisa dibilang memiliki harga yang cukup bersahabat. kamu yang ingin tetap tampil gaya saat berolahraga sepakbola, sebaiknya memilih jersey dari Umbro ini.",
+    "stock": 55,
+    "imageUrl": "https://ds393qgzrxwzn.cloudfront.net/resize/m720x480/cat1/img/images/0/rmr3q1tXlP.jpg",
+    "status": "public",
+    "AuthorId": 1,
+    "CategoryId": 2,
+    "weight": 1200
+  },
+  {
+    "name": "Diadora",
+    "price": 900000,
+    "description": "Kamu pasti sudah tidak asing kan dengan brand Diadora. Ya, Diadora juga merupakan salah satu apparel asal Italia yang juga menjadi produsen fashion jersey dan peralatan olahraga sepakbola. Diadora sendiri menjadi sponsor di beberapa klub ternama dunia dan jersey tim nasional.",
+    "stock": 55,
+    "imageUrl": "https://ds393qgzrxwzn.cloudfront.net/resize/m720x480/cat1/img/images/0/cbOpwTuEKg.jpg",
+    "status": "public",
+    "AuthorId": 1,
+    "CategoryId": 2,
+    "weight": 1200
+  }
+]
