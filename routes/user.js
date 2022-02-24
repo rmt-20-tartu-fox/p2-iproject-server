@@ -13,7 +13,7 @@ const axios = require("axios");
 // const REDIRECT_URI = process.env.REDIRECT_URI
 // const CLIENT_SERVER_PAYMENT = process.env.CLIENT_SERVER_PAYMENT
 
-router.post('/send', (req, res, next) => {
+router.post('/send', (req, res) => {
     const output = `
       <p>You have a new contact request</p>
       <h3>Contact Details</h3>
