@@ -42,7 +42,7 @@ class RecipesController {
       const APP_ID = process.env.APP_ID;
       const APP_KEY = process.env.APP_KEY;
       let { recipeId } = req.params;
-      console.log(recipeId);
+      // console.log(recipeId);
       axios
         .get(
           `https://api.edamam.com/api/recipes/v2/${recipeId}?type=public&app_id=${APP_ID}&app_key=${APP_KEY}`

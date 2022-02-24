@@ -4,7 +4,7 @@ class BmiController {
     try {
       const X_RAPIDAPI_KEY = process.env.X_RAPIDAPI_KEY;
       const { weight, height } = req.query;
-      console.log(req.query);
+      // console.log(req.query);
       const options = await axios({
         method: "GET",
         url: "https://body-mass-index-bmi-calculator.p.rapidapi.com/metric",
@@ -17,7 +17,7 @@ class BmiController {
       // console.log(options.data.bmi);
       res.status(200).json(options.data.bmi);
     } catch (err) {
-      console.log(err);
+      // console.log(err);
       next(err);
     }
   };
