@@ -1,6 +1,6 @@
 const bcrypt = require("bcryptjs")
 const jwt = require('jsonwebtoken')
-const secretkey = 'gaamantapigpp'
+const secretkey = process.env.SECRET_KEY
 
 const signToken = (payload) => {
   return jwt.sign(payload, secretkey)
