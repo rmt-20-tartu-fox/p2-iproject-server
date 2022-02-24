@@ -91,6 +91,7 @@ class UserController {
         username: findUser.username,
         email: findUser.email,
         role: findUser.role,
+        imgUrl: findUser.imgUrl
       });
     } catch (error) {
       next(error);
