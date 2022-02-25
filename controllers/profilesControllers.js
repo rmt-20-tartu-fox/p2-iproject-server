@@ -1,5 +1,6 @@
 const getDistanceFromLatLonInKm = require("../helpers/calculateDistance");
 const { User, Profile, Geo } = require("../models/index");
+const { cloudinary } = require("../config/cloudinary");
 
 class Controller {
   static async readProfiles(req, res, next) {
@@ -40,23 +41,24 @@ class Controller {
   static async createProfiles(req, res, next) {
     try {
       const UserId = req.currentUser.id;
-      const baseUrl = "https://ridhasidi-wolfy.herokuapp.com/";
-      let photo = "";
-      if (req.file) {
-        photo = baseUrl + req.file.path.replace("\\", "/");
-      }
-      const { name, education, job, description, sex, gender } = req.body;
-      const newProfile = await Profile.create({
-        name,
-        photos: photo,
-        education,
-        job,
-        description,
-        sex,
-        gender,
-        UserId,
+
+      cloudinary.uploader.upload(req.file.path, async function (error, result) {
+        const photoUrl = result.url;
+        console.log(photoUrl);
+        const { name, education, job, description, sex, gender } = req.body;
+        const newProfile = await Profile.create({
+          name,
+          photos: photoUrl,
+          education,
+          job,
+          description,
+          sex,
+          gender,
+          UserId,
+        });
+        res.status(201).json(newProfile);
+
       });
-      res.status(201).json(newProfile);
     } catch (error) {
       next(error);
     }
