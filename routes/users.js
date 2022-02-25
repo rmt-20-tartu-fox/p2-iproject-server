@@ -27,7 +27,7 @@ router.post("/:id/likes", likeController.createLikes);
 router.get("/matches", matchController.viewMatches);
 
 // user conversation
-router.post("/matches/:id/conversations");
-router.get("/matches/:id/conversations");
+// router.post("/matches/:id/conversations");
+// router.get("/matches/:id/conversations");
 
 module.exports = router;
