@@ -1,0 +1,23 @@
+{
+"Users": [
+	{
+
+		"name" : "Arief",
+		"email" : "foodpedia.dago@gmail.com",
+		"password" : "$2a$08$E6L1w2755jKPj1iyNSo.du6CK1e37XFwWkpyIhdJnPf4mWzAgntvi",
+		"createdAt" : "2022-02-22T20:15:15.912Z",
+		"updatedAt" : "2022-02-22T20:15:15.912Z",
+		"role" : "costumer",
+		"status" : "member"
+	},
+	{
+
+		"name" : "user1",
+		"email" : "user1@user.com",
+		"password" : "$2a$08$EPNg5sW7KCRBkoNE1RhCr.tBfsaBXFiZItC3IV19ACLUF3vxzVML.",
+		"createdAt" : "2022-02-23T17:41:31.612Z",
+		"updatedAt" : "2022-02-23T17:41:31.612Z",
+		"role" : "costumer",
+		"status" : "member"
+	}
+]}

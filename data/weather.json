@@ -1,0 +1,34 @@
+[
+  {
+    "name": "Sunny",
+    "imgUrl": "@/assets/images/weather/sunny.png"
+  },
+  {
+    "name": "Clear Sky",
+    "imgUrl": "@/assets/images/weather/cloudy.png"
+  },
+  {
+    "name": "Few clouds",
+    "imgUrl": "@/assets/images/weather/few-cloud.png"
+  },
+  {
+    "name": "Broken clouds",
+    "imgUrl": "@/assets/images/weather/few-cloud.png"
+  },
+  {
+    "name": "Overcast clouds",
+    "imgUrl": "@/assets/images/weather/overcast.png"
+  },
+  {
+    "name": "Scattered clouds",
+    "imgUrl": "@/assets/images/weather/partially-cloudy-day.png"
+  },
+  {
+    "name": "Rain",
+    "imgUrl": "@/assets/images/weather/drizzle.png"
+  },
+  {
+    "name": "Thunderstorm with rain",
+    "imgUrl": "@/assets/images/weather/stormy.png"
+  }
+]
