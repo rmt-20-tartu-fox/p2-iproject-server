@@ -1,0 +1,32 @@
+[
+  {
+    "email": "user1@mil.com",
+    "password": 12345,
+    "dateOfBirth": "1996/06/25",
+    "age": 25
+  },
+  {
+    "email": "user2@mail.com",
+    "password": 12345,
+    "dateOfBirth": "1998/08/02",
+    "age": 23
+  },
+  {
+    "email": "user3@mail.com",
+    "password": 12345,
+    "dateOfBirth": "1997/8/03",
+    "age": 24
+  },
+  {
+    "email": "user4@mail.com",
+    "password": 12345,
+    "dateOfBirth": "1994/12/13",
+    "age": 27
+  },
+  {
+    "email": "user5@mail.com",
+    "password": 12345,
+    "dateOfBirth": "1995/02/07",
+    "age": 26
+  }
+]
