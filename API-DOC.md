@@ -78,7 +78,6 @@ _Response (500 - Internal Server Error)_
 
 ```json
 {
-  "code": 500, 
   "message": "Internal Server Error"
 }
 ```
@@ -103,9 +102,10 @@ _Response (200 - Created)_
 
 ```json
 {
-  "code": 200,
-  "message": "Login Successful",
-  "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTEsImVtYWlsIjoiYWRtaW4yQGdtYWlsLmNvbSIsImlhdCI6MTY0MzY1Njg5OX0.kzlaVReZTVjqarbMGgajkefECVZ1OGer--hGAwQPO3M"
+    "id": 3,
+    "email": "user3@user.com",
+    "name": "user3",
+    "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiZW1haWwiOiJ1c2VyM0B1c2VyLmNvbSIsInJvbGUiOiJjb3N0dW1lciIsImlhdCI6MTY0NTY3ODgzNywiZXhwIjoxNjQ1NjkzMjM3fQ.ksIIOkYILePJwLR5oUVkuAPgGgcC7-QfoK5ONFv1fYU"
 }
 ```
 
@@ -113,8 +113,7 @@ _Response (401 - Unauthorize)_
 
 ```json
 {
-  "code": 401,
-  "message": "Please input some data first"
+  "message": "Invalid Input Email or Password"
 }
 OR
 {

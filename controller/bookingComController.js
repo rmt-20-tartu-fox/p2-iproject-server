@@ -1,12 +1,13 @@
 const axios = require("axios").default;
+const BOOKING_API = process.env.BOOKING_API;
 
 class BookingAPI {
   static async getHotel(req, res, next) {
     try {
       let { longitude, latitude, checkin, checkout } = req.body;
 
-      if (!longitude) longitude = '107.6191'
-      if (!latitude) latitude = '6.9175'
+      if (!longitude) longitude = "107.6191";
+      if (!latitude) latitude = "6.9175";
 
       let options = {
         method: "GET",
@@ -30,8 +31,7 @@ class BookingAPI {
         },
         headers: {
           "x-rapidapi-host": "booking-com.p.rapidapi.com",
-          "x-rapidapi-key":
-            "b2d6979e45msh4535f2eb6faae6ep1bd4acjsneebd13a671c8",
+          "x-rapidapi-key": BOOKING_API,
         },
       };
 
@@ -63,8 +63,7 @@ class BookingAPI {
         },
         headers: {
           "x-rapidapi-host": "booking-com.p.rapidapi.com",
-          "x-rapidapi-key":
-            "b2d6979e45msh4535f2eb6faae6ep1bd4acjsneebd13a671c8",
+          "x-rapidapi-key": BOOKING_API,
         },
       };
 
@@ -85,8 +84,7 @@ class BookingAPI {
         params: { locale: "id", name: search },
         headers: {
           "x-rapidapi-host": "booking-com.p.rapidapi.com",
-          "x-rapidapi-key":
-            "b2d6979e45msh4535f2eb6faae6ep1bd4acjsneebd13a671c8",
+          "x-rapidapi-key": BOOKING_API,
         },
       };
 

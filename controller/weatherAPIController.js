@@ -1,5 +1,6 @@
 const axios = require("axios").default;
 const { Weather } = require("../models");
+const WEATHER_API = process.env.WEATHER_API;
 
 class WeatherAPI {
   static async getWeather(req, res, next) {
@@ -18,8 +19,7 @@ class WeatherAPI {
         },
         headers: {
           "x-rapidapi-host": "weatherbit-v1-mashape.p.rapidapi.com",
-          "x-rapidapi-key":
-            "b2d6979e45msh4535f2eb6faae6ep1bd4acjsneebd13a671c8",
+          "x-rapidapi-key": WEATHER_API,
         },
       };
 
