@@ -41,6 +41,7 @@ class Controller {
   static async createProfiles(req, res, next) {
     try {
       const UserId = req.currentUser.id;
+
       cloudinary.uploader.upload(req.file.path, async function (error, result) {
         const photoUrl = result.url;
         console.log(photoUrl);
@@ -56,6 +57,7 @@ class Controller {
           UserId,
         });
         res.status(201).json(newProfile);
+
       });
     } catch (error) {
       next(error);

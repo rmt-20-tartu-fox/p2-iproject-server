@@ -2,7 +2,9 @@ const { default: axios } = require("axios");
 const { Op } = require("sequelize");
 const getDistanceFromLatLonInKm = require("../helpers/calculateDistance");
 const { User, Profile, Geo } = require("../models/index");
+
 const rapidApiKey = process.env.RAPID_API_KEY;
+
 
 class Controller {
   static async getAllUsers(req, res, next) {
@@ -31,6 +33,7 @@ class Controller {
       let paramQuery = {
         where: {
           [Op.and]: [],
+
         },
         attributes: {
           exclude: ["dateOfBirth", "password", "createdAt", "updatedAt"],
@@ -50,6 +53,7 @@ class Controller {
 
       let allDistances = [];
       if (maxDistance) {
+
         // get Geo from all users
         const allGeos = await Geo.findAll({
           where: {
@@ -101,6 +105,7 @@ class Controller {
         percent: +result.data.percentage,
         count: users.count,
         dist: distances,
+
         rows: users.rows[0],
       });
     } catch (error) {
