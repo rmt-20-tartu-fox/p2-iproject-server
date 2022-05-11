@@ -8,8 +8,6 @@ const { sequelize } = require("../models");
 const nodemailer = require("nodemailer");
 const { OAuth2Client } = require("google-auth-library");
 const { Op } = require("sequelize");
-const { google } = require("googleapis");
-const OAuth2 = google.auth.OAuth2;
 
 const registerCustomer = async (req, res, next) => {
   try {
@@ -17,12 +15,14 @@ const registerCustomer = async (req, res, next) => {
     let user = await User.create({ email, password });
     res.status(201).json({ id: user.id, email: user.email });
   } catch (error) {
+    // console.log(error);
     next(error);
   }
 };
 
 const loginCustomer = async (req, res, next) => {
   try {
+    console.log("<<<<<");
     let { email, password } = req.body;
     if (!email) {
       throw new Error("NEED_EMAIL");
@@ -203,6 +203,7 @@ const googleLogin = async (req, res, next) => {
       access_token: payloadFromServer,
     });
   } catch (error) {
+    console.log(error)
     next(error);
   }
 };

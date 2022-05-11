@@ -35,6 +35,7 @@ const getSnapToken = async (req, res, next) => {
     const result = await snap.createTransaction(parameter);
     res.status(200).json(result);
   } catch (error) {
+    console.log(error)
     next(error);
   }
 };

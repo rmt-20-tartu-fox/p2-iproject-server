@@ -1,3 +1,5 @@
+const { errorLogger } = require("../logging/logger");
+
 const errorHandler = (err, req, res, next) => {
   let code = 500;
   let msg = `Internal server error`;
@@ -29,6 +31,9 @@ const errorHandler = (err, req, res, next) => {
   } else if (err.message == "BOOK_NOT_FOUND") {
     code = 404;
     msg = `Book not found`;
+  } else {
+    msg = err.message;
+    errorLogger.error(msg);
   }
   res.status(code).json({ message: msg });
 };
